@@ -1,15 +1,22 @@
 const express = require ('express');
 const router = express.Router();
 
+const mainController = require ('../controllers/main-controller'); 
+router.get('/', mainController.index);
+
+
+
+/**** requerimos los archivos donde estan las rutas de cada seccion *********/
 const usuariosRoutes = require('./usuarios-routes'); 
-
-router.get('/', function(req,res){
-    res.send('PAGINA PRINCIPAL DE LA APLICACION'); 
-})
+const dependenciasRoutes = require ('./dependencias-routes');
 
 
-/******* RUTAS DELACIONADAS CON USUARIOS *******/
+/*************rutas principales de cada seccion de la aplicacion ********/
 router.use('/usuarios', usuariosRoutes); 
+router.use('/dependencias', dependenciasRoutes);
+
+
+
 
 
 module.exports = router; 
