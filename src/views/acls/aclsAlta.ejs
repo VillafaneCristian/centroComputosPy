@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Alta de acls</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header') %>
+
+    </header>
+    <main>
+        
+        <%- include ('../partials/accesosRapidos') %>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo">ALTA DE ACLS</h2>
+            <form action="">
+                <div class="formulario_div">
+                    <label class="formulario_label" for="tipo">TIPO:</label>
+                    <input class="formulario_input" type="text" name="tipo" id="tipo">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="descripcion">DESCRIPCION:</label>
+                    <textarea class="formulario_input" name="descripcion" id="descripcion"></textarea>
+                    
+                </div>                
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">GUARDAR</button>
+                </div>
+            </form>
+        </section>
+        
+        
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

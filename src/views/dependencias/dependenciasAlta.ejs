@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Alta de dependencia</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header') %>
+
+    </header>
+    <main>
+        
+        <%- include ('../partials/accesosRapidos') %>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo">ALTA DE DEPENDENCIA</h2>
+            <form action="">
+                <div class="formulario_div">
+                    <label class="formulario_label" for="codigo">CODIGO:</label>
+                    <input class="formulario_input" type="text" name="codigo" id="codigo">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="nombre">NOMBRE:</label>
+                    <input class="formulario_input" type="text" name="nombre" id="nombre">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="email">EMAIL:</label>
+                    <input class="formulario_input" type="email" name="email" id="email">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="telefono">TELEFONO:</label>
+                    <input class="formulario_input" type="number" name="telefono" id="telefono">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="piso">PISO: </label>
+                    <select class="formulario_select" name="piso" id="piso">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="0">Planta Baja</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="lado">LADO: </label>
+                    <select class="formulario_select" name="lado" id="lado">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="rio">Rio</option>
+                        <option value="retiro">Retiro</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="comentarios">COMENTARIOS</label>
+                    <textarea class="formulario_input" name="comentarios" id="comentarios"></textarea>
+                </div>
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">GUARDAR</button>
+                </div>
+            </form>
+        </section>
+        
+        
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>

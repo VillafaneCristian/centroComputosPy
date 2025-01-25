@@ -1,9 +1,8 @@
 const express = require ('express');
+const usuariosController = require('../controllers/usuarios-controller');
 const router = express.Router();
 
-router.get('/', function(req,res){
-    res.send('ALTA DE USUARIOS');     
-})
+router.get('/alta', usuariosController.alta);     
 
 
 module.exports = router; 

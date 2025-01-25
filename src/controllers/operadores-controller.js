@@ -1,6 +1,7 @@
 module.exports = {
+
     alta: function(req,res){
-        res.render('usuarios/usuariosAlta');
+        res.render('operadores/operadoresAlta'); 
     }
 
-};
+}

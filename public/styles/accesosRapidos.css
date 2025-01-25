@@ -1,0 +1,47 @@
+.accesosRapidos{
+    display: none;
+}
+
+
+@media (min-width:780px){
+
+    .accesosRapidos{
+        max-width: 1200px;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .accesosRapidos-articulo{
+        border: 1px solid black;
+        width: 15%;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .accesosRapidos-articulo img{
+        width: 90%;
+    }
+    
+    .accesosRapidos-articulo a{
+        text-decoration: none;
+    }
+
+    .accesosRapidos-articulo p{
+        text-align: center;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+    
+}
+
+
+
+/********************************/
+
+
+
+
