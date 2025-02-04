@@ -51,6 +51,7 @@ CREATE TABLE operadores (
     email VARCHAR(100),
     telefono VARCHAR (50),
     codigoArea_id VARCHAR(15),
+    avatar VARCHAR(200), 
     contrasenia VARCHAR(200),
     PRIMARY KEY (cuilOperador_id),
     FOREIGN KEY (codigoArea_id) REFERENCES areas (codigoArea_id)

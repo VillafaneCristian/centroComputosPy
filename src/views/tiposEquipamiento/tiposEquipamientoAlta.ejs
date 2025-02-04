@@ -23,10 +23,13 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">ALTA DE TIPOS DE EQUIPAMIENTO</h2>
-            <form action="">
+            <form action="/tiposEquipamiento/guardar" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="tipo">TIPO:</label>
                     <input class="formulario_input" type="text" name="tipo" id="tipo">
+                    <% if (errors && errors.tipo) { %>
+                        <p class="error"><%= errors.tipo.msg %> </p>
+                    <% } %>
                 </div>                
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>

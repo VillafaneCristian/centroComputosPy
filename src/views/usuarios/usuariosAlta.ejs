@@ -61,19 +61,19 @@
                     <label class="formulario_label" for="dependencia">DEPENDENCIA: </label>
                     <select class="formulario_select" name="dependencia" id="dependencia">
                         <option value="">Seleccione una opcion</option>
-                        <option value="f01_sec1" <%= errors && oldData.dependencia === 'f01_sec1' ? 'selected' : '' %>>
+                        <option value="f01_sec1" <%= oldData && oldData.dependencia === "f01_sec1" ? 'selected' : '' %>>
                             Juzgado Nacional y correcional Nº1, Secretaria Nº1
                         </option>
-                        <option value="f01_sec2" <%= errors && oldData.dependencia === 'f01_sec2' ? 'selected' : '' %>>
+                        <option value="f01_sec2" <%= oldData && oldData.dependencia === "f01_sec2" ? 'selected' : '' %>>
                             Juzgado Nacional y correcional Nº1, Secretaria Nº2
                         </option>
-                        <option value="f02_sec3" <%= errors && oldData.dependencia === 'f02_sec3' ? 'selected' : '' %>>
+                        <option value="f02_sec3" <%= oldData && oldData.dependencia === 'f02_sec3' ? 'selected' : '' %>>
                             Juzgado Nacional y correcional Nº2, Secretaria Nº3
                         </option>
-                        <option value="f02_sec4" <%= errors && oldData.dependencia === 'f02_sec4' ? 'selected' : '' %>>
+                        <option value="f02_sec4" <%= oldData && oldData.dependencia === 'f02_sec4' ? 'selected' : '' %>>
                             Juzgado Nacional y correcional Nº2, Secretaria Nº4
                         </option>
-                        <option value="f03_sec5" <%= errors && oldData.dependencia === 'f03_sec5' ? 'selected' : '' %>>
+                        <option value="f03_sec5" <%= oldData && oldData.dependencia === 'f03_sec5' ? 'selected' : '' %>>
                             Juzgado Nacional y correcional Nº3, Secretaria Nº5
                         </option>
                     </select>

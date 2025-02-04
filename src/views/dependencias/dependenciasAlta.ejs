@@ -26,47 +26,62 @@
             <form action="/dependencias/guardar" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="codigo">CODIGO:</label>
-                    <input class="formulario_input" type="text" name="codigo" id="codigo">
+                    <input class="formulario_input" type="text" name="codigo" id="codigo" value="<%= oldData ? oldData.codigo : '' %>">
+                    <% if (errors && errors.codigo){ %>
+                        <p class="error"><%= errors.codigo.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="nombre">NOMBRE:</label>
-                    <input class="formulario_input" type="text" name="nombre" id="nombre">
+                    <input class="formulario_input" type="text" name="nombre" id="nombre" value="<%= oldData ? oldData.nombre : '' %>">
+                    <% if (errors && errors.nombre){ %>
+                        <p class="error"><%= errors.nombre.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="email">EMAIL:</label>
-                    <input class="formulario_input" type="email" name="email" id="email">
+                    <input class="formulario_input" type="email" name="email" id="email" value="<%= oldData ? oldData.email : '' %>">
+                    <% if (errors && errors.email){ %>
+                        <p class="error"><%= errors.email.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
-                    <input class="formulario_input" type="number" name="telefono" id="telefono">
+                    <input class="formulario_input" type="number" name="telefono" id="telefono" value="<%= oldData ? oldData.telefono : '' %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="piso">PISO: </label>
                     <select class="formulario_select" name="piso" id="piso">
                         <option value="">Seleccione una opcion</option>
-                        <option value="0">Planta Baja</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
+                        <option value="0" <%= oldData.piso === "0" ? 'selected' : '' %>>Planta Baja</option>
+                        <option value="1" <%= oldData.piso === "1" ? 'selected' : '' %>>1</option>
+                        <option value="2" <%= oldData.piso === "2" ? 'selected' : '' %>>2</option>
+                        <option value="3" <%= oldData.piso === "3" ? 'selected' : '' %>>3</option>
+                        <option value="4" <%= oldData.piso === "4" ? 'selected' : '' %>>4</option>
+                        <option value="5" <%= oldData.piso === "5" ? 'selected' : '' %>>5</option>
+                        <option value="6" <%= oldData.piso === "6" ? 'selected' : '' %>>6</option>
+                        <option value="7" <%= oldData.piso === "7" ? 'selected' : '' %>>7</option>
+                        <option value="8" <%= oldData.piso === "8" ? 'selected' : '' %>>8</option>
+                        <option value="9" <%= oldData.piso === "9" ? 'selected' : '' %>>9</option>
                     </select>
+                    <% if (errors && errors.piso){ %>
+                        <p class="error"><%= errors.piso.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="lado">LADO: </label>
                     <select class="formulario_select" name="lado" id="lado">
                         <option value="">Seleccione una opcion</option>
-                        <option value="rio">Rio</option>
-                        <option value="retiro">Retiro</option>
+                        <option value="rio" <%= oldData.lado === "rio" ? 'selected' : '' %>>Rio</option>
+                        <option value="retiro" <%= oldData.lado === "retiro" ? 'selected' : '' %>>Retiro</option>
                     </select>
+                    <% if (errors && errors.lado){ %>
+                        <p class="error"><%= errors.lado.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="comentarios">COMENTARIOS</label>
-                    <textarea class="formulario_input" name="comentarios" id="comentarios"></textarea>
+                    <textarea class="formulario_input" name="comentarios" id="comentarios"><%= oldData ? oldData.comentarios : '' %></textarea>
                 </div>
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>
