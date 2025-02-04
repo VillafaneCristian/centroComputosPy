@@ -13,7 +13,9 @@ const operadoresRoutes = require ('./operadores-routes');
 const aclsRoutes = require ('./acls-routes'); 
 const areasRoutes = require ('./areas-routes'); 
 const tiposEquipamientoRoutes = require ('./tiposEquipamiento-routes'); 
-
+const edificiosRoutes = require ('./edificios-routes');
+const equipamientoRoutes = require ('./equipamiento-routes');
+const incidentesRoutes = require ('./incidentes-routes');
 
 /*************rutas principales de cada seccion de la aplicacion ********/
 router.use('/usuarios', usuariosRoutes); 
@@ -22,6 +24,9 @@ router.use('/operadores', operadoresRoutes);
 router.use('/acls', aclsRoutes);
 router.use('/areas',areasRoutes);
 router.use('/tiposEquipamiento', tiposEquipamientoRoutes);
+router.use('/edificios', edificiosRoutes);
+router.use('/equipamiento', equipamientoRoutes);
+router.use('/incidentes', incidentesRoutes);
 
 
 

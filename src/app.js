@@ -1,6 +1,7 @@
-let express = require ('express');
-let path = require ('path'); 
-let app = express(); 
+const express = require ('express');
+const path = require ('path'); 
+const app = express(); 
+const session = require ('express-session');
 
 
 /*************middleware de aplicacion para que express vea la carpeta pubic como carpeta de archivos publicos ****/
@@ -10,6 +11,17 @@ app.use(express.static(publicPath));
 //*** seteamos EJS como template engine y de la carpeta views como la carpeta donde estarás las vistas ***/
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname,'views')); 
+
+//*********** middleware para que se pueda capturar la informacion que viene en el body de los formularios ***********/
+app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
+//*************************** seteo del middleware express-session ***********************************************/
+app.use (session({
+    secret: 'Its a secret',
+    resave: false,
+    saveUninitialized: false
+}));
 
 //*********** indicamos cual es el archivo principal de ruteo **************** //
 const mainRoutes = require ('./routes/main-routes'); 

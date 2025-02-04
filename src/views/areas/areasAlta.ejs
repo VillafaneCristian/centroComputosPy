@@ -23,40 +23,60 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">ALTA DE AREAS</h2>
-            <form action="">
+            <form action="/areas/guardar" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="codigo">CODIGO:</label>
-                    <input class="formulario_input" type="text" name="codigo" id="codigo">
+                    <input class="formulario_input" type="text" name="codigo" id="codigo" value="<%= oldData ? oldData.codigo : '' %>">
+                    <% if (errors && errors.codigo) { %>
+                        <p class="error"> <%= errors.codigo.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="nombre">NOMBRE:</label>
-                    <input class="formulario_input" type="text" name="nombre" id="nombre">
+                    <input class="formulario_input" type="text" name="nombre" id="nombre" value="<%= oldData ? oldData.nombre : '' %>">
+                    <% if (errors && errors.nombre) { %>
+                        <p class="error"> <%= errors.nombre.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="email">EMAIL:</label>
-                    <input class="formulario_input" type="email" name="email" id="email">
+                    <input class="formulario_input" type="email" name="email" id="email" value="<%= oldData ? oldData.email : '' %>">
+                    <% if (errors && errors.email) { %>
+                        <p class="error"> <%= errors.email.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
-                    <input class="formulario_input" type="number" name="telefono" id="telefono">
+                    <input class="formulario_input" type="number" name="telefono" id="telefono" value="<%= oldData ? oldData.telefono : '' %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="encargado">ENCARGADO:</label>
-                    <input class="formulario_input" type="text" name="encargado" id="encargado">
+                    <input class="formulario_input" type="text" name="encargado" id="encargado" value="<%= oldData ? oldData.encargado : '' %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="edificio">EDIFICIO: </label>
                     <select class="formulario_select" name="edificio" id="edificio">
                         <option value="">Seleccione una opcion</option>
-                        <option value="0">Planta Baja</option>
-                        <option value="1">Av Comodoro Py 2002</option>
-                        <option value="2">Lavalle 654</option>
-                        <option value="2">Cerrito 430</option>
+                        <option value="0" <%= oldData && oldData.edificio === "0" ? "selected" : '' %> >
+                            Planta Baja
+                        </option>
+                        <option value="1" <%= oldData && oldData.edificio === "1" ? "selected" : '' %>>
+                            Av Comodoro Py 2002
+                        </option>
+                        <option value="2" <%= oldData && oldData.edificio === "2" ? "selected" : '' %>>
+                            Lavalle 654
+                        </option>
+                        <option value="3" <%= oldData && oldData.edificio === "3" ? "selected" : '' %>>
+                            Cerrito 430
+                        </option>
                     </select>
+                    <% if (errors && errors.edificio) { %>
+                        <p class="error"> <%= errors.edificio.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="comentarios">COMENTARIOS</label>
-                    <textarea class="formulario_input" name="comentarios" id="comentarios"></textarea>
+                    <textarea class="formulario_input" name="comentarios" id="comentarios"><%= oldData ? oldData.comentarios : '' %></textarea>
                 </div>
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>

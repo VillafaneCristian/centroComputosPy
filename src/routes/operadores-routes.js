@@ -4,6 +4,7 @@ const operadoresController = require ('../controllers/operadores-controller');
 
 
 router.get('/alta', operadoresController.alta); 
+router.get('/listado', operadoresController.listado);
 
 
 

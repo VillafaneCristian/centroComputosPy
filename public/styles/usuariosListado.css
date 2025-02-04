@@ -1,0 +1,16 @@
+.cuil, .email, .telefono, .dependencia{
+    display: none;
+}
+
+@media (min-width:480px){
+    
+    .cuil, .email{
+        display: block;
+    }
+
+}
+
+@media (min-width:780px){
+
+
+}

@@ -1,0 +1,27 @@
+.listado{
+    text-align: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.listado_titulo{
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-decoration: underline;
+}
+table{
+    width: 90%;
+    margin: auto;
+}
+
+th{
+    padding: 0 10px;
+}
+
+tr{
+    border: 2px solid pink;
+}
+
+td{
+    padding: 0 10px;
+}

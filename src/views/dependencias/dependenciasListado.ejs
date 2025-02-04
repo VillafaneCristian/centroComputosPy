@@ -4,21 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <%- include ('./partials/stylesComunes') %>
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesTablas') %>
+
+        <link rel="stylesheet" href="/styles/dependenciasListado.css">
     
-        <%- include ('./partials/scriptsComunes') %>
+        <%- include ('../partials/scriptsComunes') %>
 
     <title>Listado de dependencia</title>
 </head>
 <body>
     <header>
 
-        <%- include ('./partials/header.ejs') %>
+        <%- include ('../partials/header.ejs') %>
 
     </header>
     <main>
         
-        <%- include ('partials/accesosRapidos.ejs')%>
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="listado">
+            <h2 class="listado_titulo">LISTADO DE DEPENDENCIAS</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th class="codigo">CODIGO</th>
+                        <th class="nombre">NOMBRE</th>
+                        <th class="email">EMAIL</th>
+                        <th class="telefono">TELEFONO</th>
+                        <th class="piso">PISO</th>
+                        <th class="lado">LADO</th>
+                        <th>VER</th>
+                        <th>EDITAR</th>
+                        <th>ELIMINAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="codigo">F01</td>
+                        <td class="nombre">Juzgado Federal N°1</td>
+                        <td class="email">jncrimcorrfed1@pjn.gov.ar</td>
+                        <td class="telefono">4032-8084</td>
+                        <td class="piso">1er piso</td>
+                        <td class="lado">rio</td>
+                        <td><i class="fa-solid fa-eye"></i></td>
+                        <td><i class="fa-solid fa-pen-to-square"></i></td>
+                        <td><i class="fa-solid fa-trash-can"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         
     </main>
     <footer>

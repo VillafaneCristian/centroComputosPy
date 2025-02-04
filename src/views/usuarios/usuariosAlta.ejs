@@ -24,22 +24,34 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">ALTA DE USUARIOS</h2>
-            <form action="">
+            <form action="/usuarios/guardar" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="cuil">CUIL:</label>
-                    <input class="formulario_input" type="number" name="cuil" id="cuil">
+                    <input class="formulario_input" type="number" name="cuil" id="cuil" value="<%= oldData ? oldData.cuil : '' %>">
+                    <% if(errors && errors.cuil){ %> 
+                        <p class="error"> <%= errors.cuil.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="nombre">NOMBRE:</label>
-                    <input class="formulario_input" type="text" name="nombre" id="nombre">
+                    <input class="formulario_input" type="text" name="nombre" id="nombre" value="<%= oldData ? oldData.nombre : '' %>">
+                    <% if(errors && errors.nombre){ %> 
+                        <p class="error"> <%= errors.nombre.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="apellido">APELLIDO:</label>
-                    <input class="formulario_input" type="text" name="apellido" id="apellido">
+                    <input class="formulario_input" type="text" name="apellido" id="apellido" value="<%= oldData ? oldData.apellido : '' %>">
+                    <% if(errors && errors.apellido){ %> 
+                        <p class="error"> <%= errors.apellido.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="email">EMAIL:</label>
-                    <input class="formulario_input" type="email" name="email" id="email">
+                    <input class="formulario_input" type="email" name="email" id="email" value="<%= oldData ? oldData.email : '' %>">
+                    <% if(errors && errors.email){ %> 
+                        <p class="error"> <%= errors.email.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
@@ -49,12 +61,25 @@
                     <label class="formulario_label" for="dependencia">DEPENDENCIA: </label>
                     <select class="formulario_select" name="dependencia" id="dependencia">
                         <option value="">Seleccione una opcion</option>
-                        <option value="f01_sec1">Juzgado Nacional y correcional Nº1, Secretaria Nº1</option>
-                        <option value="f01_sec2">Juzgado Nacional y correcional Nº1, Secretaria Nº2</option>
-                        <option value="f02_sec3">Juzgado Nacional y correcional Nº2, Secretaria Nº3</option>
-                        <option value="f02_sec4">Juzgado Nacional y correcional Nº2, Secretaria Nº4</option>
-                        <option value="f03_sec5">Juzgado Nacional y correcional Nº3, Secretaria Nº5</option>
+                        <option value="f01_sec1" <%= errors && oldData.dependencia === 'f01_sec1' ? 'selected' : '' %>>
+                            Juzgado Nacional y correcional Nº1, Secretaria Nº1
+                        </option>
+                        <option value="f01_sec2" <%= errors && oldData.dependencia === 'f01_sec2' ? 'selected' : '' %>>
+                            Juzgado Nacional y correcional Nº1, Secretaria Nº2
+                        </option>
+                        <option value="f02_sec3" <%= errors && oldData.dependencia === 'f02_sec3' ? 'selected' : '' %>>
+                            Juzgado Nacional y correcional Nº2, Secretaria Nº3
+                        </option>
+                        <option value="f02_sec4" <%= errors && oldData.dependencia === 'f02_sec4' ? 'selected' : '' %>>
+                            Juzgado Nacional y correcional Nº2, Secretaria Nº4
+                        </option>
+                        <option value="f03_sec5" <%= errors && oldData.dependencia === 'f03_sec5' ? 'selected' : '' %>>
+                            Juzgado Nacional y correcional Nº3, Secretaria Nº5
+                        </option>
                     </select>
+                    <% if(errors && errors.dependencia){ %> 
+                        <p class="error"> <%= errors.dependencia.msg %> </p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>

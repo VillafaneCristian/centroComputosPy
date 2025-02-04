@@ -23,14 +23,20 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">ALTA DE ACLS</h2>
-            <form action="">
+            <form action="/acls/guardar" method="post">
                 <div class="formulario_div">
                     <label class="formulario_label" for="tipo">TIPO:</label>
-                    <input class="formulario_input" type="text" name="tipo" id="tipo">
+                    <input class="formulario_input" type="text" name="tipo" id="tipo" value="<%= oldData ? oldData.tipo : '' %>">
+                    <% if (errors && errors.tipo) { %>
+                        <p class="error"> <%= errors.tipo.msg  %> </p> 
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="descripcion">DESCRIPCION:</label>
-                    <textarea class="formulario_input" name="descripcion" id="descripcion"></textarea>
+                    <textarea class="formulario_input" name="descripcion" id="descripcion"><%= oldData ? oldData.descripcion : '' %></textarea>
+                    <% if (errors && errors.descripcion) { %>
+                        <p class="error"> <%= errors.descripcion.msg  %> </p> 
+                    <% } %>
                     
                 </div>                
                 <div class="formulario_div">
