@@ -30,7 +30,14 @@
                     <% if (errors && errors.tipo) { %>
                         <p class="error"><%= errors.tipo.msg %> </p>
                     <% } %>
-                </div>                
+                </div>     
+                <div class="formulario_div">
+                    <label class="formulario_label" for="descripcion">DESCRIPCION:</label>
+                    <textarea class="formulario_input" name="descripcion" id="descripcion"></textarea>
+                    <% if (errors && errors.descripcion) { %>
+                        <p class="error"><%= errors.descripcion.msg %> </p>
+                    <% } %>
+                </div>                  
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>
                 </div>

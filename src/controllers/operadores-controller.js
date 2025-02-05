@@ -1,3 +1,5 @@
+const operadoresServicio = require ('../services/operadores-service');
+
 module.exports = {
 
     alta: function(req,res){
@@ -14,7 +16,8 @@ module.exports = {
     },
 
     guardar: function(req,res) {
-        res.send(req.body);
+        operadoresServicio.guardarOperador(req.body);
+        res.send('se creo el operador ingresado');
     },
 
     listado: function(req,res){

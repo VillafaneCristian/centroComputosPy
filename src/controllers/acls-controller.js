@@ -1,3 +1,5 @@
+const aclsService = require ('../services/acls-service');
+
 module.exports = {
 
     alta: function(req,res){
@@ -13,8 +15,7 @@ module.exports = {
     },
 
     guardar: function(req,res){
-        res.send(req.body);
+        aclsService.guardarAcl(req.body);
+        res.redirect('/acls/listado');
     }
-
-
 };

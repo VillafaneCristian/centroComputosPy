@@ -1,3 +1,5 @@
+const tipoEquipamientoService = require ('../services/tiposEquipamiento-service');
+
 module.exports = {
 
     alta: function(req,res){
@@ -14,7 +16,8 @@ module.exports = {
     },
 
     guardar: function(req,res){
-        res.send(req.body);
+        tipoEquipamientoService.guardarTipoEquipamiento(req.body)
+        res.send('se dio de alta un tipo de equipamiento nuevo');
     }
 
 };

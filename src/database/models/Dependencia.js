@@ -1,42 +1,45 @@
-module.exports = function (sequelize, dataTypes){
+module.exports = (sequelize, dataTypes) => {
 
-    const alias = 'Operador'; 
+    const alias= 'Dependencia'; 
 
     const cols = {
-        cuilOperadorId: {
-            autoIncrement: false,
+        codigoDependenciaId: {
             primaryKey: true,
-            type: dataTypes.INTEGER
+            autoIncrement: false,
+            type: dataTypes.STRING
         },
+
         nombre: {
             type: dataTypes.STRING
         },
-        apellido: {
-            type: dataTypes.STRING
-        },
+
         email: {
             type: dataTypes.STRING
         },
+
         telefono: {
+            type: dataTypes.INTEGER
+        },
+
+        piso: {
             type: dataTypes.STRING
         },
-        codigoAreaId: {
+
+        lado: {
             type: dataTypes.STRING
         },
-        avatar:{
-            type: dataTypes.STRING
-        },
-        contrasenia:{
+
+        descripcion: {
             type: dataTypes.STRING
         }
     };
 
     const config = {
-        tableName:  'operadores',
+        tableName: 'dependencias',
         timestamps: false,
         underscored: false
     };
-    
-    const Operador = sequelize.define(alias, cols, config);
-    return Operador;  
-};
+
+    const Dependencia = sequelize.define(alias, cols, config);
+    return Dependencia;
+}

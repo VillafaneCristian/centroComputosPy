@@ -23,7 +23,7 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">ALTA DE ACLS</h2>
-            <form action="/acls/guardar" method="post">
+            <form action="/acls/guardar" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="tipo">TIPO:</label>
                     <input class="formulario_input" type="text" name="tipo" id="tipo" value="<%= oldData ? oldData.tipo : '' %>">

@@ -1,3 +1,5 @@
+const dependenciasService = require ('../services/dependencias-service');
+
 module.exports = {
     alta: function (req,res){
         const errors = req.session.errors;
@@ -17,6 +19,7 @@ module.exports = {
     },
 
     guardar: function(req,res){
-        res.send(req.body);
+        dependenciasService.guardarDependencia(req.body)
+        res.redirect('/operadores/listado'); 
     }
 }
