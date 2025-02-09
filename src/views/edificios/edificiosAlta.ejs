@@ -33,10 +33,18 @@
                     <% } %>
                 </div>
                 <div class="formulario_div">
+                    <label for="localidad" class="formulario_label">LOCALIDAD:</label>
+                    <select class="formulario_input" name="localidad" id="localidad">
+                        <option value="CABA">CABA</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="codigoPostal">CODIGO POSTAL:</label>
+                    <textarea class="formulario_input" name="codigoPostal" id="codigoPostal"></textarea> 
+                </div>
+                <div class="formulario_div">
                     <label class="formulario_label" for="descripcion">DESCRIPCION:</label>
-                    <textarea class="formulario_input" name="descripcion" id="descripcion"></textarea>
-                    
-                    
+                    <textarea class="formulario_input" name="descripcion" id="descripcion"></textarea> 
                 </div>                
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>

@@ -55,31 +55,25 @@
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
-                    <input class="formulario_input" type="number" name="telefono" id="telefono">
+                    <input class="formulario_input" type="text" name="telefono" id="telefono">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="dependencia">DEPENDENCIA: </label>
                     <select class="formulario_select" name="dependencia" id="dependencia">
                         <option value="">Seleccione una opcion</option>
-                        <option value="f01_sec1" <%= oldData && oldData.dependencia === "f01_sec1" ? 'selected' : '' %>>
-                            Juzgado Nacional y correcional Nº1, Secretaria Nº1
-                        </option>
-                        <option value="f01_sec2" <%= oldData && oldData.dependencia === "f01_sec2" ? 'selected' : '' %>>
-                            Juzgado Nacional y correcional Nº1, Secretaria Nº2
-                        </option>
-                        <option value="f02_sec3" <%= oldData && oldData.dependencia === 'f02_sec3' ? 'selected' : '' %>>
-                            Juzgado Nacional y correcional Nº2, Secretaria Nº3
-                        </option>
-                        <option value="f02_sec4" <%= oldData && oldData.dependencia === 'f02_sec4' ? 'selected' : '' %>>
-                            Juzgado Nacional y correcional Nº2, Secretaria Nº4
-                        </option>
-                        <option value="f03_sec5" <%= oldData && oldData.dependencia === 'f03_sec5' ? 'selected' : '' %>>
-                            Juzgado Nacional y correcional Nº3, Secretaria Nº5
-                        </option>
+                        <% listadoDependencias.forEach((unaDependencia)=>{ %>
+                            <option value="<%=unaDependencia.codigoDependenciaId %>" <%= oldData && oldData.dependencia === unaDependencia.codigoDependenciaId ? 'selected' : '' %>>
+                                <%=unaDependencia.nombre %>
+                            </option>
+                        <% }) %>
                     </select>
                     <% if(errors && errors.dependencia){ %> 
                         <p class="error"> <%= errors.dependencia.msg %> </p>
                     <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="comentarios">COMENTARIOS</label>
+                    <textarea class="formulario_input" name="comentarios" id="comentarios"><%= oldData ? oldData.comentarios : '' %></textarea>
                 </div>
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">GUARDAR</button>

@@ -54,16 +54,17 @@
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
-                    <input class="formulario_input" type="number" name="telefono" id="telefono"  value="<%= oldData ? oldData.telefono : '' %>">
+                    <input class="formulario_input" type="text" name="telefono" id="telefono"  value="<%= oldData ? oldData.telefono : '' %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="piso">AREA: </label>
                     <select class="formulario_select" name="area" id="area">
                         <option value="">Seleccione una opcion</option>
-                        <option value="c2" <%= oldData && oldData.area === "c2" ? 'selected' : '' %>>Centro de computos Comodoro Py</option>
-                        <option value="dgt-redes" <%= oldData && oldData.area === "dgt-redes" ? 'selected' : '' %>>Redes</option>
-                        <option value="dgt-cableado" <%= oldData && oldData.area === "dgt-cableado" ? 'selected' : '' %>>Cableado</option>
-                        <option value="dgt-taller" <%= oldData && oldData.area === "dgt-taller" ? 'selected' : '' %>>Taller</option>
+                        <% listadoAreas.forEach((unArea)=>{ %>
+                            <option value="<%= unArea.codigoAreaId %>" <%= oldData && oldData.area === unArea.codigoAreaId ? 'selected' : '' %>>
+                                <%= unArea.nombre %>
+                            </option>
+                        <% }) %>
                     </select>
                     <% if (errors && errors.area) { %>
                         <p class="error"><%= errors.area.msg %></p>

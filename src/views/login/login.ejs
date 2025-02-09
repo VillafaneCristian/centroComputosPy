@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include ('../partials/stylesFormularios') %>
+
+    <link rel="stylesheet" href="/styles/login.css">
+
+    <title>Logueo de la aplicacion</title>
+</head>
+<body>
+    <section>
+        <article class="logueo-imagen">
+            <img src="/images/header/logo.jpg" alt="Logo, imagen principal">
+        </article>
+        <article class="logueo-datos">
+            <form action="/login/ingresar" method="post" novalidate>
+                <div class="logueo-div">
+                    <label class="logueo-label" for="cuil" >CUIL:</label>
+                    <input class="logueo-input" type="text" name="cuil" value="<%= oldData ? oldData.cuil : '' %>">
+                    <% if (errors && errors.cuil) { %>
+                        <p class="error"><%= errors.cuil.msg %></p>
+                    <% } %>
+                </div>
+                <div class="logueo-div">
+                    <label class="logueo-label" for="contrasenia">PASSWORD:</label>
+                    <input class="logueo-input" type="password" name="contrasenia">
+                    <% if (errors && errors.contrasenia) { %>
+                        <p class="error"><%= errors.contrasenia.msg %></p>
+                    <% } %>
+                </div>
+                <div class="logueo-div logueo-div-button">
+                    <button type="submit">INGRESAR</button>
+                </div>
+            </form>
+        </article>
+    </section>
+</body>
+</html>

@@ -7,6 +7,8 @@ const operadoresMiddleware = require ('../middlewares/operadores-middleware');
 
 router.get('/alta', operadoresController.alta); 
 router.get('/listado', operadoresController.listado);
+router.get('/modificarAvatar', operadoresController.modificarAvatar); 
+
 
 router.post('/guardar', operadoresValidations, operadoresMiddleware, operadoresController.guardar);
 

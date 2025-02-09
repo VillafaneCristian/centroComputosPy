@@ -24,33 +24,38 @@
         <%- include ('../partials/accesosRapidos.ejs')%>
 
         <section class="listado">
-            <h2 class="listado_titulo">LISTADO DE USUARIOS REGISTRADOS</h2>
+            <h2 class="listado_titulo">LISTADO DE USUARIOS</h2>
             <table>
                 <thead>
                     <tr>
-                        <th class="cuil">CUIL</th>
-                        <th class="nombre">NOMBRE</th>
-                        <th class="apellido">APELLIDO</th>
-                        <th class="email">EMAIL</th>
-                        <th class="telefono">TELEFONO</th>
-                        <th class="dependencia">DEPENDENCIA</th>
+                        <th>CUIL</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>EMAIL</th>
+                        <th>TELEFONO</th>
+                        <th>DETALLES</th>
+                        <th>DEPENDENCIA</th>
                         <th>VER</th>
                         <th>EDITAR</th>
                         <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="cuil">20318243655</td>
-                        <td class="nombre">Cristian</td>
-                        <td class="apellido">Villafañe</td>
-                        <td class="email">cristiandantes@hotmail.com</td>
-                        <td class="telefono">4032-7479</td>
-                        <td class="dependencia">Centro de computos</td>
-                        <td><i class="fa-solid fa-eye"></i></td>
-                        <td><i class="fa-solid fa-pen-to-square"></i></td>
-                        <td><i class="fa-solid fa-trash-can"></i></td>
-                    </tr>
+                    <% listadoUsuarios.forEach((unUsuario) => { %>
+                        <tr>
+                            <td><%= unUsuario.cuilUsuarioId %></td>
+                            <td><%= unUsuario.nombre %></td>
+                            <td><%= unUsuario.apellido %></td>
+                            <td><%= unUsuario.email %></td>
+                            <td><%= unUsuario.telefono %></td>
+                            <td><%= unUsuario.comentario %></td>
+                            <td><%= unUsuario.codigoDependenciaId %></td>
+                            <td><i class="fa-solid fa-eye"></i></td>
+                            <td><i class="fa-solid fa-pen-to-square"></i></td>
+                            <td><i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                    <% }) %>
+                    
                 </tbody>
             </table>
         </section>

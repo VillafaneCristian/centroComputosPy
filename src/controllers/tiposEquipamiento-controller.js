@@ -18,6 +18,16 @@ module.exports = {
     guardar: function(req,res){
         tipoEquipamientoService.guardarTipoEquipamiento(req.body)
         res.send('se dio de alta un tipo de equipamiento nuevo');
+    },
+
+    listado: function(req,res){
+        tipoEquipamientoService.obtenerTiposEquipamientoAlmacenados()
+            .then((listadoTiposEquipamiento) => {
+                res.render('tiposEquipamiento/tiposEquipamientoListado',{listadoTiposEquipamiento:listadoTiposEquipamiento});
+            })
+            .catch((e)=>{
+                console.log(e)
+            });
     }
 
 };

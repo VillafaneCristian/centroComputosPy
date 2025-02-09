@@ -1,4 +1,5 @@
 const db = require ('../database/models/index');
+const bcryptjs = require ('bcryptjs');
 
 module.exports = {
 
@@ -9,10 +10,18 @@ module.exports = {
             apellido: operadorData.apellido,
             email: operadorData.email,
             telefono: operadorData.telefono,
-            //codigoAreaId: operadorData.area,
+            codigoAreaId: operadorData.area,
             avatar: 'default.jpg',
-            contrasenia: operadorData.contrasenia
+            contrasenia: bcryptjs.hashSync(operadorData.contrasenia,10)
         });
+    },
+
+    obtenerOperadoresAlmacenados: function(){
+        return db.Operador.findAll();
+    },
+
+    obtenerOperadorPorCuil: function(operadorCuil) {
+        return db.Operador.findByPk(operadorCuil); 
     }
 
 };

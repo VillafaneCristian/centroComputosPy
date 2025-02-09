@@ -5,6 +5,7 @@ const tiposEquipamientoValidations = require ('../validations/tiposEquipamiento-
 const tiposEquipamientoMiddleware = require ('../middlewares/tiposEquipamiento-middleware');
 
 router.get('/alta', tiposEquipamientoController.alta);
+router.get('/listado', tiposEquipamientoController.listado);
 
 router.post('/guardar', tiposEquipamientoValidations, tiposEquipamientoMiddleware, tiposEquipamientoController.guardar);
 

@@ -6,6 +6,8 @@ const areasMiddleware = require ('../middlewares/areas-middleware');
 
 
 router.get('/alta', areasController.alta);
+router.get('/listado', areasController.listado); 
+
 router.post('/guardar', areasValidations, areasMiddleware, areasController.guardar);
 
 

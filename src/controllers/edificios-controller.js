@@ -15,7 +15,17 @@ module.exports = {
 
     guardar: function(req,res){
         edificiosService.guardarEdificio(req.body);
-        res.send('Se creo un edificio nuevo');
+        res.redirect('/edificios/listado');
+    }, 
+
+    listado: function (req,res){
+        edificiosService.obtenerEdificiosAlmacenados()
+            .then((listadoEdificios)=>{
+                res.render('edificios/edificioslistado', {listadoEdificios: listadoEdificios});
+            })
+            .catch((e) => {
+                console.log(e);
+            });
     }
 
 }

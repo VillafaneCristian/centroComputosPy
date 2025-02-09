@@ -47,7 +47,7 @@
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
-                    <input class="formulario_input" type="number" name="telefono" id="telefono" value="<%= oldData ? oldData.telefono : '' %>">
+                    <input class="formulario_input" type="text" name="telefono" id="telefono" value="<%= oldData ? oldData.telefono : '' %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="encargado">ENCARGADO:</label>
@@ -57,18 +57,13 @@
                     <label class="formulario_label" for="edificio">EDIFICIO: </label>
                     <select class="formulario_select" name="edificio" id="edificio">
                         <option value="">Seleccione una opcion</option>
-                        <option value="0" <%= oldData && oldData.edificio === "0" ? "selected" : '' %> >
-                            Planta Baja
-                        </option>
-                        <option value="1" <%= oldData && oldData.edificio === "1" ? "selected" : '' %>>
-                            Av Comodoro Py 2002
-                        </option>
-                        <option value="2" <%= oldData && oldData.edificio === "2" ? "selected" : '' %>>
-                            Lavalle 654
-                        </option>
-                        <option value="3" <%= oldData && oldData.edificio === "3" ? "selected" : '' %>>
-                            Cerrito 430
-                        </option>
+
+                        <% listadoEdificios.forEach((unEdificio)=>{ %>
+                            <option value="<%= unEdificio.edificioId %>" <%= oldData && oldData.edificio == unEdificio.edificioId ? 'selected' : '' %>>
+                                <%= unEdificio.ubicacion %>
+                            </option>
+
+                        <% }) %>
                     </select>
                     <% if (errors && errors.edificio) { %>
                         <p class="error"> <%= errors.edificio.msg %> </p>

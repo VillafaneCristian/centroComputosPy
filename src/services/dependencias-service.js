@@ -1,9 +1,10 @@
 const db = require ('../database/models/index');
+const { obtenerAclsAlmacenados } = require('./acls-service');
 
 module.exports = {
 
     guardarDependencia: (dependenciaData) => {
-        db.Dependencia.create({
+        return db.Dependencia.create({
             codigoDependenciaId: dependenciaData.codigo,
             nombre: dependenciaData.nombre,
             email: dependenciaData.email,
@@ -11,13 +12,10 @@ module.exports = {
             piso: dependenciaData.piso,
             lado: dependenciaData.lado,
             descripcion: dependenciaData.comentarios
-        })
-        .then((dependenciaGuardada) => {
-            console.log('Se da de alta la dependencia: ' + dependenciaGuardada.nombre);
-        })
-        .catch((e)=>{
-            console.log(e)
         });
+    },
+    
+    obtenerDependenciasAlmacenadas: function(){
+        return db.Dependencia.findAll();
     }
-
 }

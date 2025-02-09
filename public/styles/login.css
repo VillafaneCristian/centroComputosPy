@@ -1,0 +1,61 @@
+section{
+    width: 90%;
+    margin: auto;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.logueo-imagen{
+   width: 100%; 
+}
+
+.logueo-imagen img{
+    width: 100%;
+}
+
+.logueo-datos{
+    margin-top: 20px;
+}
+
+.logueo-label{
+    display: block;
+    margin: 5px 0;
+}
+
+.logueo-input{
+    width: 100%;
+}
+
+.logueo-div{
+    width: 60%;
+    margin: auto;
+}
+
+.logueo-div-button{
+    text-align: center;
+    margin-top: 15px;
+}
+
+.logueo-div button{
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+@media (min-width:480px){
+  
+    section{
+        width: 70%;
+    }
+
+}
+
+@media (min-width:780px){
+
+    section{
+        width: 20%;
+        margin-top: 100px;
+    }
+   
+
+}

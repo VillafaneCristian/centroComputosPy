@@ -5,6 +5,8 @@ module.exports = {
     guardarEdificio: function (edificioData){
         db.Edificio.create({
             ubicacion: edificioData.ubicacion,
+            localidad: edificioData.localidad,
+            codigoPostal: edificioData.codigoPostal,
             descripcion: edificioData.descripcion
         })
         .then((edificioGuardado)=>{
@@ -13,6 +15,10 @@ module.exports = {
         .catch((e)=>{
             console.log(e);
         })
+    },
+
+    obtenerEdificiosAlmacenados: function(){
+        return db.Edificio.findAll();
     }
 
 }

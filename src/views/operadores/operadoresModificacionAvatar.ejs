@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include ('../partials/stylesComunes') %>
+    <%- include ('../partials/stylesFormularios') %>
+
+    <%- include ('../partials/scriptsComunes') %>
+
+    <title>Document</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header.ejs') %>
+
+    </header>
+    <main>
+
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h1 class="formulario_titulo">Modificacion del AVATAR</h1>
+            <form action="" novalidate>
+                <div class="formulario_div">
+                    <input class="formulario_input" type="file">
+                </div>
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">GUARDAR</button>
+                </div>
+            </form>
+        </section>
+    </main>
+</body>
+</html>m

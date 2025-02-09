@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
     
         <%- include ('../partials/scriptsComunes') %>
 
@@ -19,6 +20,140 @@
     <main>
         
         <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo">ALTA DE EQUIPOS</h2>
+            <form action="/equipamiento/guardar" method="post" novalidate>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
+                    <input class="formulario_input" type="text" name="numeroSerie" id="numeroSerie">
+                </div>     
+                <div class="formulario_div">
+                    <label class="formulario_label" for="tipoEquipamiento">TIPO DE EQUIPAMIENTO:</label>
+                    <select class="formulario_input" name="tipoEquipamiento" id="tipoEquipamiento">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="desktop">Desktop</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="marca">MARCA:</label>
+                    <select class="formulario_input" name="marca" id="marca">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="lenovo">Lenovo</option>
+                        <option value="bangho">Bangho</option>
+                        <option value="sansei">Sansei</option>
+                        <option value="hp">Hewlett Packard</option>
+                        <option value="dell">Dell</option>
+                        <option value="lexmark">Lexmark</option>
+                        <option value="brother">Brother</option>
+                        <option value="oki">OKI</option>
+                        <option value="samsung">Samsung</option>
+                    </select>
+                </div> 
+                <div class="formulario_div">
+                    <label class="formulario_label" for="modelo">MODELO:</label>
+                    <select class="formulario_input" name="modelo" id="modelo">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="9485-A21">9485-A21</option>
+                        <option value="OPTIMA-1793">OPTIMA 1793</option>
+                        <option value="OPTIMA-T4">OPTIMA T4</option>
+                        <option value="CROSS">CROSS</option>
+                        <option value="MS-421">MS-421</option>
+                        <option value="MS-610">MS-610</option>
+                    </select>
+                </div>  
+                <div class="formulario_div">
+                    <label class="formulario_label" for="hostname">HOSTNAME:</label>
+                    <input class="formulario_input" type="text" name="hostname" id="hostname">
+                </div>  
+                <div class="formulario_div">
+                    <label class="formulario_label" for="numeroIp">NUMERO DE IP:</label>
+                    <input class="formulario_input" type="text" name="numeroIp" id="numeroIp">
+                </div>          
+                <div class="formulario_div">
+                    <label class="formulario_label" for="foto">FOTO:</label>
+                    <input class="formulario_input" type="file" name="foto" id="foto">
+                </div>            
+                <div class="formulario_div">
+                    <label class="formulario_label" for="estado">ESTADO: </label>
+                    <select class="formulario_input" name="estado" id="estado">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="enStock">En stock</option>
+                        <option value="instalado">instalado</option>
+                        <option value="reparacion">Reparacion</option>
+                        <option value="baja">baja</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="procesador">PROCESADOR:</label>
+                    <select class="formulario_input" name="procesador" id="procesador">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="INTEL-I5">INTEL I5</option>
+                        <option value="AMD-Ryzen3">AMD-Ryzen 3</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="memoriaRam">MEMORIA RAM:</label>
+                    <select class="formulario_input" name="memoriaRam" id="memoriaRam">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="DDR4-8GB">DDR4-8GB</option>
+                        <option value="DDR5-8GB">DDR5-8GB</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="tipoDisco">TIPO DE DISCO RIGIDO:</label>
+                    <select class="formulario_input" name="tipoDisco" id="tipoDisco">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="HDD">HDD</option>
+                        <option value="SSD">SSD</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="capacidadDisco">CAPACIDAD DE DISCO RIGIDO:</label>
+                    <select class="formulario_input" name="capacidadDisco" id="capacidadDisco">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="256GB">256 GB</option>
+                        <option value="500GB">500 GB</option>
+                        <option value="1TB">1 TB</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
+                    <select class="formulario_input" name="dependencia" id="dependencia">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="juz1_sec01">Juzgado 1 secretaria 1</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="usuario">USUARIO:</label>
+                    <select class="formulario_input" name="usuario" id="usuario">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="20318243655">Cristian</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="Internet">INTERNET:</label>
+                    <label for="">SI</label>
+                    <input type="radio" name="Internet" id="internet">
+                    <label for="">NO</label>
+                    <input type="radio" name="Internet" id="internet">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="aclAsignado">ACL ASIGNADO:</label>
+                    <select class="formulario_input" name="aclAsignado" id="aclAsignado">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="prosecretarios">prosecretarios</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="detalles">DETALLES:</label>
+                    <textarea class="formulario_input" name="detalles" id="detalles"></textarea>
+                </div>       
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">GUARDAR</button>
+                </div>
+            </form>
+        </section>
         
     </main>
     <footer>

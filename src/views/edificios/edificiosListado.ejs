@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesTablas') %>
+
+        <link rel="stylesheet" href="/styles/dependenciasListado.css">
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Listado de dependencia</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header.ejs') %>
+
+    </header>
+    <main>
+        
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="listado">
+            <h2 class="listado_titulo">LISTADO DE EDIFICIOS</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>UBICACION</th>
+                        <th>LOCALIDAD</th>
+                        <th>CODIGO POSTAL</th>
+                        <th>DESCRIPCION</th>
+                        <th>VER</th>
+                        <th>EDITAR</th>
+                        <th>ELIMINAR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <% listadoEdificios.forEach((unEdificio) => { %>
+                        <tr> 
+                            <td><%= unEdificio.ubicacion %></td>
+                            <td><%= unEdificio.localidad %></td>
+                            <td><%= unEdificio.codigoPostal %></td>
+                            <td><%= unEdificio.descripcion %></td>
+                            <td><i class="fa-solid fa-eye"></i></td>
+                            <td><i class="fa-solid fa-pen-to-square"></i></td>
+                            <td><i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+                   <% }) %>
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>

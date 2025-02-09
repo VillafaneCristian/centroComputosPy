@@ -5,6 +5,8 @@ const edificiosValidations = require ('../validations/edificios-validations');
 const edificiosMiddleware = require ('../middlewares/edificios-middleware');
 
 router.get('/alta', edificiosController.alta);
+router.get('/listado', edificiosController.listado);
+
 
 router.post('/guardar', edificiosValidations, edificiosMiddleware, edificiosController.guardar);
 

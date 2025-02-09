@@ -1,53 +1,49 @@
-module.exports = (sequelize, dataTypes) => {
+module.exports = function (sequelize, dataTypes){
 
-    const alias= 'Dependencia'; 
+    const alias = 'Usuario';
 
     const cols = {
-        codigoDependenciaId: {
+        cuilUsuarioId: {
             primaryKey: true,
             autoIncrement: false,
             type: dataTypes.STRING
         },
-
         nombre: {
             type: dataTypes.STRING
         },
-
+        apellido: {
+            type: dataTypes.STRING
+        },
         email: {
             type: dataTypes.STRING
         },
-
         telefono: {
             type: dataTypes.STRING
         },
-
-        piso: {
+        comentario: {
             type: dataTypes.STRING
         },
-
-        lado: {
-            type: dataTypes.STRING
-        },
-
-        descripcion: {
+        codigoDependenciaId: {
             type: dataTypes.STRING
         }
+
     };
 
     const config = {
-        tableName: 'dependencias',
+        tableName: 'usuarios',
         timestamps: false,
         underscored: false
-    };
+    }
 
-    const Dependencia = sequelize.define(alias, cols, config);
 
-    Dependencia.associate = function (models) {
-        Dependencia.hasMany(models.Usuario, {
-            as:'usuarios',
+    const Usuario = sequelize.define(alias , cols , config);
+
+    Usuario.associate = function (models){
+        Usuario.belongsTo (models.Dependencia, {
+            as: 'dependencia',
             foreignKey: 'codigoDependenciaId'
-        })
-    };
+        });
+    }
 
-    return Dependencia;
+    return Usuario;
 }

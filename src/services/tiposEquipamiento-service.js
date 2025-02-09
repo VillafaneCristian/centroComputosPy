@@ -13,6 +13,10 @@ module.exports = {
         .catch((e) => {
             console.log(e);
         });
+    },
+
+    obtenerTiposEquipamientoAlmacenados: function(){
+        return db.TipoEquipamiento.findAll();
     }
 
 }

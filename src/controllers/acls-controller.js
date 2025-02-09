@@ -15,7 +15,24 @@ module.exports = {
     },
 
     guardar: function(req,res){
-        aclsService.guardarAcl(req.body);
-        res.redirect('/acls/listado');
+        aclsService.guardarAcl(req.body)
+        .then((aclGuardado) => {
+                    console.log(`Se creo el acl: ${aclGuardado.nombre}`);
+                    res.redirect('/acls/listado');
+                })
+                .catch((e) => {
+                    console.log(e);
+                });
+    },
+
+    listado: function(req,res){
+        aclsService.obtenerAclsAlmacenados()
+            .then((listadoAcls)=>{
+                res.render('acls/aclsListado',{listadoAcls:listadoAcls});
+            })
+            .catch((e) => {
+                console.log(e);
+            });
+        
     }
 };

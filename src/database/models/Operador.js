@@ -37,6 +37,14 @@ module.exports = function (sequelize, dataTypes){
         underscored: false
     };
     
-    const Operador = sequelize.define(alias, cols, config);
+    const Operador = sequelize.define (alias, cols, config);
+
+    Operador.associate = function (models) {
+        Operador.belongsTo(models.Area, {
+            as: 'Area',
+            foreignKey: 'codigoAreaId'
+        });
+    };
+
     return Operador;  
 };

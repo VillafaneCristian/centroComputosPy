@@ -4,7 +4,9 @@ const aclsController = require ('../controllers/acls-controller');
 const aclsValidations = require ('../validations/acls-validations'); 
 const aclsMiddleware = require ('../middlewares/acls-middleware');
 
-router.use('/alta', aclsController.alta); 
+router.get('/alta', aclsController.alta); 
+router.get('/listado', aclsController.listado);
+
 router.post('/guardar', aclsValidations, aclsMiddleware, aclsController.guardar);
 
 

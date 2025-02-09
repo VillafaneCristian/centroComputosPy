@@ -15,11 +15,23 @@ module.exports = {
     },
 
     listado: function(req,res){
-        res.render('dependencias/dependenciasListado');
+        dependenciasService.obtenerDependenciasAlmacenadas()
+        .then((listadoDependencias) => {
+            res.render('dependencias/dependenciasListado',{listadoDependencias:listadoDependencias});
+        })
+        .catch((e)=>{
+            console.log(e);
+        });     
     },
 
     guardar: function(req,res){
         dependenciasService.guardarDependencia(req.body)
-        res.redirect('/operadores/listado'); 
+        .then((dependenciaGuardada) => {
+            console.log('Se da de alta la dependencia: ' + dependenciaGuardada.nombre);
+        })
+        .catch((e)=>{
+            console.log(e)
+        });
+        res.redirect('/dependencias/listado'); 
     }
 }

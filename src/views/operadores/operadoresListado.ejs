@@ -28,29 +28,36 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="cuil">CUIL</th>
-                        <th class="nombre">NOMBRE</th>
-                        <th class="apellido">APELLIDO</th>
-                        <th class="email">EMAIL</th>
-                        <th class="telefono">TELEFONO</th>
-                        <th class="area">AREA</th>
+                        <th>CUIL</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>EMAIL</th>
+                        <th>TELEFONO</th>
+                        <th>AREA</th> 
+                        <th>AVATAR</th>
                         <th>VER</th>
                         <th>EDITAR</th>
                         <th>ELIMINAR</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="cuil">20318243655</td>
-                        <td class="nombre">Cristian</td>
-                        <td class="apellido">Villafañe</td>
-                        <td class="email">cristiandantes@hotmail.com</td>
-                        <td class="telefono">4032-7479</td>
-                        <td class="area">Centro de computos</td>
-                        <td><i class="fa-solid fa-eye"></i></td>
-                        <td><i class="fa-solid fa-pen-to-square"></i></td>
-                        <td><i class="fa-solid fa-trash-can"></i></td>
-                    </tr>
+                    <% listadoOperadores.forEach((unOperador)=>{ %>
+
+                        <tr>
+                            <td><%= unOperador.cuilOperadorId %></td>
+                            <td><%= unOperador.nombre %></td>
+                            <td><%= unOperador.apellido %></td>
+                            <td><%= unOperador.email %></td>
+                            <td><%= unOperador.telefono %></td>
+                            <td><%= unOperador.codigoAreaId %></td>
+                            <td><%= unOperador.avatar %></td>
+                            <td><i class="fa-solid fa-eye"></i></td>
+                            <td><i class="fa-solid fa-pen-to-square"></i></td>
+                            <td><i class="fa-solid fa-trash-can"></i></td>
+                        </tr>
+
+                    <% }) %>
+                   
                 </tbody>
             </table>
         </section>

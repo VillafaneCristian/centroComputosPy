@@ -1,4 +1,5 @@
-const operadoresServicio = require ('../services/operadores-service');
+const operadoresService = require ('../services/operadores-service');
+const areasService = require ('../services/areas-service');
 
 module.exports = {
 
@@ -7,21 +8,37 @@ module.exports = {
         const oldData = req.session.oldData;
         req.session.errors = null;
         req.session.oldData = null;
-        res.render('operadores/operadoresAlta',
-            {
-                errors: errors ? errors : null,
-                oldData: oldData ? oldData : null
-            }
-        ); 
+        areasService.obtenerAreasAlmacenadas()
+            .then((listadoAreas)=>{
+                res.render('operadores/operadoresAlta',
+                    {
+                    errors: errors ? errors : null,
+                    oldData: oldData ? oldData : null,
+                    listadoAreas: listadoAreas ? listadoAreas : null
+                    }
+                ); 
+            })
+            .catch((e)=>{
+                console.log(e);
+            })  
     },
 
     guardar: function(req,res) {
-        operadoresServicio.guardarOperador(req.body);
-        res.send('se creo el operador ingresado');
+        operadoresService.guardarOperador(req.body);
+        res.redirect('/operadores/listado');
     },
 
     listado: function(req,res){
-        res.render('operadores/operadoresListado');
+        operadoresService.obtenerOperadoresAlmacenados()
+            .then((listadoOperadores)=>{
+                res.render('operadores/operadoresListado',{listadoOperadores:listadoOperadores});
+            })
+            .catch((e) => {
+                console.log(e);
+            }) 
+    },
+    modificarAvatar: function(req,res){
+        res.render('operadores/operadoresModificacionAvatar'); 
     }
 
 }

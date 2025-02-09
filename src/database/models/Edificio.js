@@ -8,6 +8,12 @@ module.exports = function (sequelize , dataTypes) {
             autoIncrement: true,
             type: dataTypes.INTEGER
         },
+        localidad: {
+            type: dataTypes.STRING
+        },
+        codigoPostal: {
+            type: dataTypes.STRING
+        },
         ubicacion: {
             type: dataTypes.STRING
         },
@@ -24,5 +30,14 @@ module.exports = function (sequelize , dataTypes) {
     }
 
     const Edificio = sequelize.define(alias , cols , config);
+
+    Edificio.associate = function(models){
+        Edificio.hasMany (models.Area, {
+            as: 'areas',
+            foreignKey: 'edificioId'
+        })
+    }
+    
+
     return Edificio;
 }
