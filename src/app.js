@@ -3,6 +3,8 @@ const path = require ('path');
 const app = express(); 
 const session = require ('express-session');
 
+/** middleware de aplicacion donde se guarda la informacion del usuario logueado en una variable para compartir a las vistas**/
+const operadorLogueadoDatosMiddleware = require ('./middlewares/operadorLogueadoDatos-middleware');
 
 /*************middleware de aplicacion para que express vea la carpeta pubic como carpeta de archivos publicos ****/
 const publicPath = path.join(__dirname,'../public');
@@ -23,13 +25,19 @@ app.use (session({
     saveUninitialized: false
 }));
 
+app.use(operadorLogueadoDatosMiddleware);
+
 //*********** indicamos cual es el archivo principal de ruteo **************** //
 const mainRoutes = require ('./routes/main-routes'); 
 app.use('/',mainRoutes); 
+
+
 
 //*** levantamos el servidor, lo ponemos a escuchar en el puerto 3000 ***/; 
 const PORT = 3000;
 app.listen(PORT,()=>{
     console.log(`Servidor corriendo en el puerto ${PORT}`)
 }) 
+
+
 

@@ -46,7 +46,15 @@ module.exports = (sequelize, dataTypes) => {
         Dependencia.hasMany(models.Usuario, {
             as:'usuarios',
             foreignKey: 'codigoDependenciaId'
-        })
+        });
+        Dependencia.hasMany(models.Equipamiento,{
+            as: 'equipamientos',
+            foreignKey: 'codigoDependenciaId'
+        });
+        Dependencia.hasMany(models.Incidente,{
+            as: 'incidentes',
+            foreignKey: 'codigoDependenciaId'
+        });
     };
 
     return Dependencia;

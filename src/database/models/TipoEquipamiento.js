@@ -24,5 +24,13 @@ module.exports = (sequelize, dataTypes) => {
     };
 
     const TipoEquipamiento = sequelize.define(alias , cols , config);
+
+    TipoEquipamiento.associate = function (models){
+        TipoEquipamiento.hasMany(models.Equipamiento,{
+            as: 'equipamientos',
+            foreignKey: 'tipoEquipamientoId'
+        });
+    }
+
     return TipoEquipamiento;
 };

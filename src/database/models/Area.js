@@ -46,6 +46,10 @@ module.exports = function (sequelize, dataTypes) {
             as: 'operadores',
             foreignKey: 'codigoAreaId'
         });
+        Area.hasMany (models.Incidente, {
+            as: 'incidentes',
+            foreignKey: 'codigoAreaId'
+        });
     };
     return Area;
 }

@@ -28,12 +28,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th>CODIGO</th>
                         <th>NOMBRE</th>
-                        <th>ENCARGADO</th>
                         <th>EMAIL</th>
                         <th>TELEFONO</th>
-                        <th>DESCRIPCION</th>
                         <th>VER</th>
                         <th>EDITAR</th>
                         <th>ELIMINAR</th>
@@ -42,12 +39,9 @@
                 <tbody>
                    <% listadoAreas.forEach((unArea) => { %>
                         <tr> 
-                            <td><%= unArea.codigoAreaId %></td>
                             <td><%= unArea.nombre %></td>
-                            <td><%= unArea.encargado %></td>
                             <td><%= unArea.email %></td>
                             <td><%= unArea.telefono %></td>
-                            <td><%= unArea.descripcion %></td>
                             <td><i class="fa-solid fa-eye"></i></td>
                             <td><i class="fa-solid fa-pen-to-square"></i></td>
                             <td><i class="fa-solid fa-trash-can"></i></td>

@@ -39,6 +39,11 @@ module.exports = {
     },
     modificarAvatar: function(req,res){
         res.render('operadores/operadoresModificacionAvatar'); 
+    },
+
+    salir: function(req,res){
+        req.session.destroy();
+        res.redirect('/login');
     }
 
 }

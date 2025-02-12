@@ -1,0 +1,36 @@
+.verUsuario-section{
+    border: 1px solid black;
+    max-width:800px;
+    margin: auto;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.verUsuario-titulo{
+    margin: 20px;
+    text-decoration: underline;
+}
+
+.verUsuario-article{
+    width: 50%;
+    margin: auto;
+}
+
+.article-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.article-nombre{
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.verUsuario-regresar{
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 20px;
+}

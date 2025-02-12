@@ -33,6 +33,18 @@ module.exports = {
     guardar: function(req,res){
         usuariosService.guardarUsuario(req.body);
         res.redirect('/usuarios/listado');
+    },
+
+    ver: function(req,res){
+        const cuil = req.params.cuil;
+        usuariosService.obtenerUsuarioPorCuil(cuil)
+            .then((usuarioEncontrado)=>{
+                console.log(usuarioEncontrado)
+                res.render('usuarios/usuariosVer',{usuarioEncontrado:usuarioEncontrado});
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
     }
 
 }

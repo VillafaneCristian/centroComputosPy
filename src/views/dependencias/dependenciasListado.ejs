@@ -28,13 +28,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th>CODIGO</th>
                         <th>NOMBRE</th>
                         <th>EMAIL</th>
                         <th>TELEFONO</th>
-                        <th>PISO</th>
-                        <th>LADO</th>
-                        <th>DESCRIPCION</th>
                         <th>VER</th>
                         <th>EDITAR</th>
                         <th>ELIMINAR</th>
@@ -43,13 +39,9 @@
                 <tbody>
                     <% listadoDependencias.forEach((unaDependencia)=>{ %>
                         <tr>
-                            <td><%= unaDependencia.codigoDependenciaId %></td>
                             <td><%= unaDependencia.nombre %></td>
                             <td><%= unaDependencia.email %></td>
                             <td><%= unaDependencia.telefono %></td>
-                            <td><%= unaDependencia.piso %></td>
-                            <td><%= unaDependencia.lado %></td>
-                            <td><%= unaDependencia.descripcion %></td>
                             <td><i class="fa-solid fa-eye"></i></td>
                             <td><i class="fa-solid fa-pen-to-square"></i></td>
                             <td><i class="fa-solid fa-trash-can"></i></td>

@@ -23,6 +23,14 @@ module.exports = function (sequelize, dataTypes) {
     }
     
     const Acl = sequelize.define (alias , cols , config);
+
+    Acl.associate = function (models) {
+        Acl.hasMany(models.Equipamiento, {
+            as: 'equipamientos',
+            foreignKey: 'aclId'
+        });
+    }
+
     return Acl;
 
 }

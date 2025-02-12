@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <link rel="stylesheet" href="/styles/vistaDetalles.css">
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Vista Principal</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header') %>
+
+    </header>
+    <main>
+
+        <%- include ('../partials/accesosRapidos')%>
+
+        <section class="verUsuario-section">
+
+            <h2 class="verUsuario-titulo">INFORMACION DEL USUARIO SELECCIONADO:</h2>
+
+            <article class="verUsuario-article">
+                <div class="article-div">
+                    <p class="article-nombre">CUIL:</p>
+                    <p><%= usuarioEncontrado.cuilUsuarioId %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">NOMBRE: </p>
+                    <p><%= usuarioEncontrado.nombre %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">APELLIDO: </p>
+                    <p><%= usuarioEncontrado.apellido %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">EMAIL: </p>
+                    <p><%= usuarioEncontrado.email %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">TELEFONO: </p>
+                    <p><%= usuarioEncontrado.telefono %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">DEPENDENCIA: </p>
+                    <p><%= usuarioEncontrado.codigoDependenciaId %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">DETALLES: </p>
+                    <% if (usuarioEncontrado.comentario == '') {%>
+                        <p>Sin informacion para mostrar</p>
+                    <% }else { %>
+                        <p><%= usuarioEncontrado.comentario %></p>
+                    <% } %>
+                </div>
+            </article>        
+        </section>
+
+        <a class="verUsuario-regresar" href="/usuarios/listado">Volver al listado anterior</a>
+        
+        
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>

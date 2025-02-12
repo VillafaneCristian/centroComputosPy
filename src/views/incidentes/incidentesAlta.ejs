@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
     
         <%- include ('../partials/scriptsComunes') %>
 
@@ -19,6 +20,72 @@
     <main>
         
         <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo">ALTA DE INCIDENTE</h2>
+            <form action="/incidentes/guardar" method="post" novalidate>
+
+                <div class="formulario_div">
+                    <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
+                    <select class="formulario_input" name="dependencia" id="dependencia">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="f01_sec1" <%= oldData && oldData.dependencia === 'f01_sec1' ? 'selected' : ''%> >Juzgado 1 secretaria 1</option>
+                    </select>
+                    <% if (errors && errors.dependencia){ %>
+                        <p class="error" ><%= errors.dependencia.msg %></p>
+                    <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="usuario">USUARIO:</label>
+                    <select class="formulario_input" name="usuario" id="usuario">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="20318243655" <%= oldData && oldData.usuario === '20318243655' ? 'selected' : ''%> >Cristian</option>
+                    </select>
+                    <% if (errors && errors.usuario){ %>
+                        <p class="error" ><%= errors.usuario.msg %></p>
+                    <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
+                    <select class="formulario_input" name="numeroSerie" id="">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="generico"  <%= oldData && oldData.numeroSerie === 'generico' ? 'selected' : ''%>>Generico</option>
+                    </select>
+                </div>     
+                <div class="formulario_div">
+                    <label class="formulario_label" for="clasificacionIncidente">CLASIFICACION:</label>
+                    <select class="formulario_input" name="clasificacionIncidente" id="clasificacionIncidente">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="creacionCarpetas" <%= oldData && oldData.clasificacionIncidente === 'creacionCarpetas' ? 'selected' : ''%>>
+                            Creacion de carpetas
+                        </option>
+                        <option value="instalacionSoftware" <%= oldData && oldData.clasificacionIncidente === 'instalacionSoftware' ? 'selected' : ''%>>
+                            Instalación de software
+                        </option>
+                    </select>
+                    <% if (errors && errors.clasificacionIncidente){ %>
+                        <p class="error" ><%= errors.clasificacionIncidente.msg %></p>
+                    <% } %>
+                </div>             
+                <div class="formulario_div">
+                    <label class="formulario_label" for="tituloIncidente">TITULO DEL INCIDENTE:</label>
+                    <input class="formulario_input" type="text" name="tituloIncidente" id="tituloIncidente" value="<%= oldData && oldData.tituloIncidente ? oldData.tituloIncidente : ''%>">
+                    <% if (errors && errors.tituloIncidente){ %>
+                        <p class="error" ><%= errors.tituloIncidente.msg %></p>
+                    <% } %>
+                </div> 
+                <div class="formulario_div">
+                    <label class="formulario_label" for="descripcionIncidente">DESCRIPCION DEL INCIDENTE:</label>
+                    <textarea class="formulario_input" name="descripcionIncidente" id="descripcionIncidente"><%= oldData && oldData.descripcionIncidente ? oldData.descripcionIncidente : ''%></textarea>
+                    <% if (errors && errors.descripcionIncidente){ %>
+                        <p class="error" ><%= errors.descripcionIncidente.msg %></p>
+                    <% } %>
+                </div>              
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">GUARDAR</button>
+                </div>
+            </form>
+        </section>
         
     </main>
     <footer>

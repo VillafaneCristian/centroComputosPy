@@ -22,6 +22,10 @@ module.exports = {
 
     obtenerUsuariosAlmacenados: function(){
         return db.Usuario.findAll();
+    },
+
+    obtenerUsuarioPorCuil: function(usuarioCuil){
+        return db.Usuario.findByPk(usuarioCuil);
     }
 
 }

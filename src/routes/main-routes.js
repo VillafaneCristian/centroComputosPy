@@ -1,8 +1,9 @@
 const express = require ('express');
 const router = express.Router();
+const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear-middleware');
 
 const mainController = require ('../controllers/main-controller'); 
-router.get('/', mainController.index);
+router.get('/', operadorSinLoguearMiddleware, mainController.index);
 
 
 

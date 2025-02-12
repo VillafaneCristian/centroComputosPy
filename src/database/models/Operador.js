@@ -28,6 +28,9 @@ module.exports = function (sequelize, dataTypes){
         },
         contrasenia:{
             type: dataTypes.STRING
+        },
+        rol: {
+            type: dataTypes.STRING
         }
     };
 
@@ -43,6 +46,11 @@ module.exports = function (sequelize, dataTypes){
         Operador.belongsTo(models.Area, {
             as: 'Area',
             foreignKey: 'codigoAreaId'
+        });
+
+        Operador.hasMany(models.Incidente,{
+            as: 'incidentes',
+            foreignKey: 'cuilOperadorId'
         });
     };
 

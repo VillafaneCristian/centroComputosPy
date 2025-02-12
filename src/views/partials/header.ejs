@@ -6,9 +6,11 @@
         <article class="header_usuarioLogueado">
             <img src="/images/header/avatarDefault.png" alt="avatar del usuario logueado">
             <div>
-                <p>Nombre y apellido</p>
+                <p> Hola,  <%=locals.operadorLogueado.nombre %> <%=locals.operadorLogueado.apellido %> </p>
                 <a href="/operadores/modificarAvatar">Editar</a>
-                <button>SALIR</button>
+                <form action="/operadores/salir" method="post">
+                    <button>SALIR</button>
+                </form>
             </div>
         </article>
     </section>

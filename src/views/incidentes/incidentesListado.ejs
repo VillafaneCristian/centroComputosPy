@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesTablas') %>
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Vista Principal</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header') %>
+
+    </header>
+    <main>
+        
+        <%- include ('../partials/accesosRapidos')%>
+
+        <section class="listado">
+            <h2 class="listado_titulo">INCIDENTES EN ESTADO ABIERTO</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>N° INCIDENTE</th>
+                        <th>DEPENDENCIA</th>
+                        <th>FECHA ALTA</th>
+                        <th>CLASIFICACION</th>
+                        <th>TITULO</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+        </section>
+        
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>

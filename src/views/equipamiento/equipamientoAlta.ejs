@@ -26,41 +26,55 @@
             <form action="/equipamiento/guardar" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
-                    <input class="formulario_input" type="text" name="numeroSerie" id="numeroSerie">
+                    <input class="formulario_input" type="text" name="numeroSerie" id="numeroSerie" value="<%= oldData && oldData.numeroSerie ? oldData.numeroSerie : ''%>">
+                    <% if (errors && errors.numeroSerie) { %>
+                        <p class="error"><%= errors.numeroSerie.msg %></p>
+                    <% } %>
                 </div>     
                 <div class="formulario_div">
                     <label class="formulario_label" for="tipoEquipamiento">TIPO DE EQUIPAMIENTO:</label>
                     <select class="formulario_input" name="tipoEquipamiento" id="tipoEquipamiento">
                         <option value="">Seleccione una opcion</option>
-                        <option value="desktop">Desktop</option>
+                        <option value="1" <%= oldData && oldData.tipoEquipamiento === "1" ? 'selected' : '' %>>
+                            Desktop
+                        </option>
                     </select>
+                    <% if (errors && errors.tipoEquipamiento) { %>
+                        <p class="error"><%= errors.tipoEquipamiento.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="marca">MARCA:</label>
                     <select class="formulario_input" name="marca" id="marca">
                         <option value="">Seleccione una opcion</option>
-                        <option value="lenovo">Lenovo</option>
-                        <option value="bangho">Bangho</option>
-                        <option value="sansei">Sansei</option>
-                        <option value="hp">Hewlett Packard</option>
-                        <option value="dell">Dell</option>
-                        <option value="lexmark">Lexmark</option>
-                        <option value="brother">Brother</option>
-                        <option value="oki">OKI</option>
-                        <option value="samsung">Samsung</option>
+                        <option value="lenovo" <%= oldData && oldData.marca === "lenovo" ? 'selected' : '' %> >Lenovo</option>
+                        <option value="bangho" <%= oldData && oldData.marca === "bangho" ? 'selected' : '' %>  >Bangho</option>
+                        <option value="sansei" <%= oldData && oldData.marca === "sansei" ? 'selected' : '' %> >Sansei</option>
+                        <option value="hp" <%= oldData && oldData.marca === "hp" ? 'selected' : '' %> >Hewlett Packard</option>
+                        <option value="dell" <%= oldData && oldData.marca === "dell" ? 'selected' : '' %> >Dell</option>
+                        <option value="lexmark" <%= oldData && oldData.marca === "lexmark" ? 'selected' : '' %> >Lexmark</option>
+                        <option value="brother" <%= oldData && oldData.marca === "brother" ? 'selected' : '' %> >Brother</option>
+                        <option value="oki" <%= oldData && oldData.marca === "oki" ? 'selected' : '' %> >OKI</option>
+                        <option value="samsung" <%= oldData && oldData.marca === "samsung" ? 'selected' : '' %> >Samsung</option>
                     </select>
+                    <% if (errors && errors.marca) { %>
+                        <p class="error"><%= errors.marca.msg %></p>
+                    <% } %>
                 </div> 
                 <div class="formulario_div">
                     <label class="formulario_label" for="modelo">MODELO:</label>
                     <select class="formulario_input" name="modelo" id="modelo">
                         <option value="">Seleccione una opcion</option>
-                        <option value="9485-A21">9485-A21</option>
-                        <option value="OPTIMA-1793">OPTIMA 1793</option>
-                        <option value="OPTIMA-T4">OPTIMA T4</option>
-                        <option value="CROSS">CROSS</option>
-                        <option value="MS-421">MS-421</option>
-                        <option value="MS-610">MS-610</option>
+                        <option value="9485-A21" <%= oldData && oldData.modelo === "9485-A21" ? 'selected' : '' %> >9485-A21</option>
+                        <option value="OPTIMA-1793" <%= oldData && oldData.modelo === "OPTIMA-1793" ? 'selected' : '' %> >OPTIMA 1793</option>
+                        <option value="OPTIMA-T4" <%= oldData && oldData.modelo === "OPTIMA-T4" ? 'selected' : '' %>  >OPTIMA T4</option>
+                        <option value="CROSS" <%= oldData && oldData.modelo === "CROSS" ? 'selected' : '' %> >CROSS</option>
+                        <option value="MS-421" <%= oldData && oldData.modelo === "MS-421" ? 'selected' : '' %> >MS-421</option>
+                        <option value="MS-610" <%= oldData && oldData.modelo === "MS-610" ? 'selected' : '' %> >MS-610</option>
                     </select>
+                    <% if (errors && errors.modelo) { %>
+                        <p class="error"><%= errors.modelo.msg %></p>
+                    <% } %>
                 </div>  
                 <div class="formulario_div">
                     <label class="formulario_label" for="hostname">HOSTNAME:</label>
@@ -78,11 +92,14 @@
                     <label class="formulario_label" for="estado">ESTADO: </label>
                     <select class="formulario_input" name="estado" id="estado">
                         <option value="">Seleccione una opcion</option>
-                        <option value="enStock">En stock</option>
-                        <option value="instalado">instalado</option>
-                        <option value="reparacion">Reparacion</option>
-                        <option value="baja">baja</option>
+                        <option value="enStock" <%= oldData && oldData.estado === "enStock" ? 'selected' : '' %> >En stock</option>
+                        <option value="instalado" <%= oldData && oldData.estado === "instalado" ? 'selected' : '' %> >instalado</option>
+                        <option value="reparacion" <%= oldData && oldData.estado === "reparacion" ? 'selected' : '' %> >Reparacion</option>
+                        <option value="baja" <%= oldData && oldData.estado === "baja" ? 'selected' : '' %> >baja</option>
                     </select>
+                    <% if (errors && errors.estado) { %>
+                        <p class="error"><%= errors.estado.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="procesador">PROCESADOR:</label>
@@ -121,8 +138,11 @@
                     <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
                     <select class="formulario_input" name="dependencia" id="dependencia">
                         <option value="">Seleccione una opcion</option>
-                        <option value="juz1_sec01">Juzgado 1 secretaria 1</option>
+                        <option value="f01_sec1" <%= oldData && oldData.dependencia === "f01_sec1" ? 'selected' : '' %> >Juzgado 1 secretaria 1</option>
                     </select>
+                    <% if (errors && errors.dependencia) { %>
+                        <p class="error"><%= errors.dependencia.msg %></p>
+                    <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="usuario">USUARIO:</label>
@@ -132,17 +152,17 @@
                     </select>
                 </div>
                 <div class="formulario_div">
-                    <label class="formulario_label" for="Internet">INTERNET:</label>
+                    <label class="formulario_label" for="internet">INTERNET:</label>
                     <label for="">SI</label>
-                    <input type="radio" name="Internet" id="internet">
+                    <input type="radio" name="internet" id="si" value="si">
                     <label for="">NO</label>
-                    <input type="radio" name="Internet" id="internet">
+                    <input type="radio" name="internet" id="no" value="no">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="aclAsignado">ACL ASIGNADO:</label>
                     <select class="formulario_input" name="aclAsignado" id="aclAsignado">
-                        <option value="">Seleccione una opcion</option>
-                        <option value="prosecretarios">prosecretarios</option>
+                        <option value="1">generico</option>
+                        <option value="2">prosecretarios</option>
                     </select>
                 </div>
                 <div class="formulario_div">

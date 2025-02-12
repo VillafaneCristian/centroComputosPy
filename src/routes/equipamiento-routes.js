@@ -1,8 +1,14 @@
 const express = require ('express');
-const equipamientoController = require('../controllers/equipamiento-controller');
 const router = express.Router();
 
-router.get('/alta', equipamientoController.alta);
+const equipamientoController = require('../controllers/equipamiento-controller');
+const equipamientoValidations = require ('../validations/equipamiento-validations');
+const equipamientoMiddleware = require ('../middlewares/equipamiento-middleware');
+const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear-middleware');
+
+router.get('/alta', operadorSinLoguearMiddleware, equipamientoController.alta);
+
+router.post('/guardar', equipamientoValidations, equipamientoMiddleware, equipamientoController.guardar);
 
 
 

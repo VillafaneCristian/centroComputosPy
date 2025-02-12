@@ -12,7 +12,7 @@ module.exports = {
     },
 
     procesarLogin: function (req,res){
-        res.redirect('/')
+        res.redirect('/incidentes/listado')
     }
 
 };
