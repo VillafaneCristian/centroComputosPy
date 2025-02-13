@@ -17,5 +17,9 @@ module.exports = {
     
     obtenerDependenciasAlmacenadas: function(){
         return db.Dependencia.findAll();
+    },
+
+    obtenerDependenciaPorCodigo: function(dependenciaCodigo){
+        return db.Dependencia.findByPk(dependenciaCodigo);
     }
 }

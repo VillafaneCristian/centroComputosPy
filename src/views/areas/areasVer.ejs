@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <link rel="stylesheet" href="/styles/vistaDetalles.css">
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>DETALLE DE DEPENDENCIA</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header') %>
+
+    </header>
+    <main>
+
+        <%- include ('../partials/accesosRapidos')%>
+
+        <section class="verUsuario-section">
+
+            <h2 class="verUsuario-titulo">INFORMACION DEL AREAS SELECCIONADA:</h2>
+
+            <article class="verUsuario-article">
+                <div class="article-div">
+                    <p class="article-nombre">CODIGO:</p>
+                    <p><%= areaEncontrada.codigoAreaId %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">NOMBRE: </p>
+                    <p><%= areaEncontrada.nombre %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">ENCARGADO: </p>
+                    <p><%= areaEncontrada.encargado %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">EMAIL: </p>
+                    <p><%= areaEncontrada.email %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">TELEFONO: </p>
+                    <p><%= areaEncontrada.telefono %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">EDIFICIO: </p>
+                    <p><%= areaEncontrada.edificioId %></p>
+                </div>
+                <div class="article-div">
+                    <p class="article-nombre">DETALLES: </p>
+                    <% if (areaEncontrada.descripcion == null || areaEncontrada.descripcion == '' ) {%>
+                        <p>Sin informacion para mostrar</p>
+                    <% }else { %>
+                        <p><%= areaEncontrada.descripcion %></p>
+                    <% } %>
+                </div>
+            </article>        
+        </section>
+
+        <a class="verUsuario-regresar" href="/areas/listado">Volver al listado anterior</a>
+        
+        
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>

@@ -33,5 +33,16 @@ module.exports = {
             console.log(e)
         });
         res.redirect('/dependencias/listado'); 
+    },
+
+    ver: function(req,res){
+        const codigoDependencia = req.params.codigoDependencia;
+        dependenciasService.obtenerDependenciaPorCodigo(codigoDependencia)
+            .then((dependenciaEncontrada)=>{
+                res.render('dependencias/dependenciasVer',{dependenciaEncontrada:dependenciaEncontrada});
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
     }
 }

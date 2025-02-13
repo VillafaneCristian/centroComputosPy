@@ -23,6 +23,10 @@ module.exports = {
 
     obtenerAreasAlmacenadas: function(){
         return db.Area.findAll();
+    },
+
+    obtenerAreaPorCodigo: function(codigoArea){
+        return db.Area.findByPk(codigoArea);
     }
 
 };

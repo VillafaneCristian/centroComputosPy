@@ -26,7 +26,7 @@ module.exports = {
         res.render('incidentes/incidentesListado');
         incidentesService.obtenerIncidentesAlmacenados()
             .then((listadoIncidentes) => {
-                res.render('incidentes/incidentesListado');
+                res.render('incidentes/incidentesListado',{listadoIncidentes:listadoIncidentes});
             })
             .catch((e)=>{
                 console.log(e);

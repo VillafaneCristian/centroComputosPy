@@ -7,7 +7,8 @@ const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear
 
 
 router.get('/alta', operadorSinLoguearMiddleware, areasController.alta);
-router.get('/listado', areasController.listado); 
+router.get('/listado', operadorSinLoguearMiddleware, areasController.listado); 
+router.get('/ver/:codigoArea', operadorSinLoguearMiddleware, areasController.ver);
 
 router.post('/guardar', areasValidations, areasMiddleware, areasController.guardar);
 

@@ -6,7 +6,8 @@ const dependenciasMiddleware = require ('../middlewares/dependencias-middleware'
 const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear-middleware');
 
 router.get('/alta', operadorSinLoguearMiddleware, dependenciasController.alta); 
-router.get('/listado',dependenciasController.listado);
+router.get('/listado', operadorSinLoguearMiddleware, dependenciasController.listado);
+router.get('/ver/:codigoDependencia', operadorSinLoguearMiddleware, dependenciasController.ver);
 
 router.post('/guardar', dependenciasValidations, dependenciasMiddleware, dependenciasController.guardar);
 

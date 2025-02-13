@@ -35,6 +35,17 @@ module.exports = {
             .catch((e)=>{
                 console.log(e);
             });
+    },
+
+    ver: function(req,res){
+        const codigoArea = req.params.codigoArea;
+        areasService.obtenerAreaPorCodigo(codigoArea)
+            .then((areaEncontrada)=>{
+                res.render('areas/areasVer',{areaEncontrada: areaEncontrada});
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
     }
 
 };
