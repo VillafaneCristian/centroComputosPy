@@ -43,7 +43,7 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
-        memoriaRAM: {
+        memoriaRam: {
             type: dataTypes.STRING
         },
 

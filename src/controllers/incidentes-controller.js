@@ -23,7 +23,6 @@ module.exports = {
             })
     }, 
     listado: function(req,res){
-        res.render('incidentes/incidentesListado');
         incidentesService.obtenerIncidentesAlmacenados()
             .then((listadoIncidentes) => {
                 res.render('incidentes/incidentesListado',{listadoIncidentes:listadoIncidentes});

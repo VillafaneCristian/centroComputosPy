@@ -35,9 +35,13 @@
                     <label class="formulario_label" for="tipoEquipamiento">TIPO DE EQUIPAMIENTO:</label>
                     <select class="formulario_input" name="tipoEquipamiento" id="tipoEquipamiento">
                         <option value="">Seleccione una opcion</option>
-                        <option value="1" <%= oldData && oldData.tipoEquipamiento === "1" ? 'selected' : '' %>>
-                            Desktop
-                        </option>
+
+                        <%listadoTiposEquipamiento.forEach((unTipoEquipamiento)=>{ %>
+                            <option value="<%=unTipoEquipamiento.tipoEquipamientoId%>">
+                                <%=unTipoEquipamiento.tipo %>
+                            </option>
+                         <% }) %>
+                         
                     </select>
                     <% if (errors && errors.tipoEquipamiento) { %>
                         <p class="error"><%= errors.tipoEquipamiento.msg %></p>
@@ -138,7 +142,12 @@
                     <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
                     <select class="formulario_input" name="dependencia" id="dependencia">
                         <option value="">Seleccione una opcion</option>
-                        <option value="f01_sec1" <%= oldData && oldData.dependencia === "f01_sec1" ? 'selected' : '' %> >Juzgado 1 secretaria 1</option>
+
+                        <% listadoDependencias.forEach((unaDependencia)=>{ %>
+                            <option value="<%=unaDependencia.codigoDependenciaId%>" <%= oldData && oldData.dependencia == unaDependencia.codigoDependenciaId ? 'selected' : '' %> >
+                                <%=unaDependencia.nombre%>
+                            </option>
+                        <% })%>
                     </select>
                     <% if (errors && errors.dependencia) { %>
                         <p class="error"><%= errors.dependencia.msg %></p>
@@ -148,7 +157,11 @@
                     <label class="formulario_label" for="usuario">USUARIO:</label>
                     <select class="formulario_input" name="usuario" id="usuario">
                         <option value="">Seleccione una opcion</option>
-                        <option value="20318243655">Cristian</option>
+                        <% listadoUsuarios.forEach((unUsuario)=>{%>
+                            <option value="<%=unUsuario.cuilUsuarioId%>" <%= oldData && oldData.usuario == unUsuario.cuilUsuarioId ? 'selected' : '' %>>
+                                <%=unUsuario.nombre%> <%=unUsuario.apellido%>
+                            </option>
+                        <%})%>
                     </select>
                 </div>
                 <div class="formulario_div">
@@ -161,8 +174,14 @@
                 <div class="formulario_div">
                     <label class="formulario_label" for="aclAsignado">ACL ASIGNADO:</label>
                     <select class="formulario_input" name="aclAsignado" id="aclAsignado">
-                        <option value="1">generico</option>
-                        <option value="2">prosecretarios</option>
+                        <option value="">Selecciones una opcion</option>
+
+                        <%listadoAcls.forEach((unAcl)=>{ %>
+                            <option value="<%=unAcl.aclId%>" <%= oldData && oldData.aclAsignado == unAcl.aclId ? 'selected' : '' %> >
+                                <%=unAcl.nombre%>
+                            </option>
+                        <% }) %>
+
                     </select>
                 </div>
                 <div class="formulario_div">

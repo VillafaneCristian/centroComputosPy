@@ -1,4 +1,8 @@
 const equipamientoService = require ('../services/equipamiento-service');
+const dependenciasService = require ('../services/dependencias-service');
+const usuariosService = require ('../services/usuarios-service');
+const aclsService = require ('../services/acls-service');
+const tiposEquipamientoService = require ('../services/tiposEquipamiento-service');
 
 module.exports = {
 
@@ -7,10 +11,29 @@ module.exports = {
         const oldData = req.session.oldData;
         req.session.errors = null;
         req.session.oldData = null;
-        res.render('equipamiento/equipamientoAlta',{
-            errors: errors ? errors : '',
-            oldData: oldData ? oldData : ''
-        });
+
+        const obtenerDependenciasAlmacenadas = dependenciasService.obtenerDependenciasAlmacenadas();
+        const obtenerUsuariosAlmacenados = usuariosService.obtenerUsuariosAlmacenados();
+        const obtenerAclsAlmacenados = aclsService.obtenerAclsAlmacenados();
+        const obtenerTiposEquipamiento = tiposEquipamientoService.obtenerTiposEquipamientoAlmacenados();
+
+        Promise.all([obtenerDependenciasAlmacenadas,obtenerUsuariosAlmacenados,obtenerAclsAlmacenados, obtenerTiposEquipamiento])
+            .then(([listadoDependencias, listadoUsuarios, listadoAcls, listadoTiposEquipamiento]) => {
+                res.render('equipamiento/equipamientoAlta',{
+                    errors: errors ? errors : '',
+                    oldData: oldData ? oldData : '',
+                    listadoDependencias: listadoDependencias ? listadoDependencias : '',
+                    listadoUsuarios: listadoUsuarios ?  listadoUsuarios : '',
+                    listadoAcls: listadoAcls ? listadoAcls : '',
+                    listadoTiposEquipamiento: listadoTiposEquipamiento ? listadoTiposEquipamiento : ''
+                });
+
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
+
+        
     },
 
     guardar: function (req,res){
