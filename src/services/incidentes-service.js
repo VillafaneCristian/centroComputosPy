@@ -19,6 +19,24 @@ module.exports = {
     },
     
     obtenerIncidentesAlmacenados: function(){
-        return db.Incidente.findAll();
+        return db.Incidente.findAll({
+            attributes: [
+                "nroIncidenteId",
+                "codigoDependenciaId",
+                "cuilUsuarioId",
+                "fechaAlta",
+                "clasificacionIncidente",
+                "estado",
+                "nroSerieId",
+                "codigoAreaId",
+                "cuilOperadorIdAlta",
+                "cuilOperadorIdAsignado",
+                "tituloIncidente",
+                "descripcionIncidente",
+                "detalles",
+                "descripcionCierre",
+                "fechaCierre"
+            ],
+        });
     }
 };

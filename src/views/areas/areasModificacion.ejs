@@ -4,21 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <%- include ('./partials/stylesComunes') %>
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
     
-        <%- include ('./partials/scriptsComunes') %>
+        <%- include ('../partials/scriptsComunes') %>
 
     <title>Modificacion de area</title>
 </head>
 <body>
     <header>
 
-        <%- include ('./partials/header.ejs') %>
+        <%- include ('../partials/header.ejs') %>
 
     </header>
     <main>
         
-        <%- include ('partials/accesosRapidos.ejs')%>
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo">MODIFICACION DE AREA</h2>
+            <form action="/areas/editar?_method=put" method="post" novalidate>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="codigo">CODIGO:</label>
+                    <input class="formulario_input" type="text" name="codigo" id="codigo" value="<%= oldData ? oldData.codigo : '' %>">
+                    <% if (errors && errors.codigo) { %>
+                        <p class="error"> <%= errors.codigo.msg %> </p>
+                    <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="nombre">NOMBRE:</label>
+                    <input class="formulario_input" type="text" name="nombre" id="nombre" value="<%= oldData ? oldData.nombre : '' %>">
+                    <% if (errors && errors.nombre) { %>
+                        <p class="error"> <%= errors.nombre.msg %> </p>
+                    <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="email">EMAIL:</label>
+                    <input class="formulario_input" type="email" name="email" id="email" value="<%= oldData ? oldData.email : '' %>">
+                    <% if (errors && errors.email) { %>
+                        <p class="error"> <%= errors.email.msg %> </p>
+                    <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="telefono">TELEFONO:</label>
+                    <input class="formulario_input" type="text" name="telefono" id="telefono" value="<%= oldData ? oldData.telefono : '' %>">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="encargado">ENCARGADO:</label>
+                    <input class="formulario_input" type="text" name="encargado" id="encargado" value="<%= oldData ? oldData.encargado : '' %>">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="edificio">EDIFICIO: </label>
+                    <select class="formulario_select" name="edificio" id="edificio">
+                        <option value="">Seleccione una opcion</option>
+
+                        <% listadoEdificios.forEach((unEdificio)=>{ %>
+                            <option value="<%= unEdificio.edificioId %>" <%= oldData && oldData.edificio == unEdificio.edificioId ? 'selected' : '' %>>
+                                <%= unEdificio.ubicacion %>
+                            </option>
+
+                        <% }) %>
+                    </select>
+                    <% if (errors && errors.edificio) { %>
+                        <p class="error"> <%= errors.edificio.msg %> </p>
+                    <% } %>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="comentarios">COMENTARIOS</label>
+                    <textarea class="formulario_input" name="comentarios" id="comentarios"><%= oldData ? oldData.comentarios : '' %></textarea>
+                </div>
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">MODIFICAR</button>
+                </div>
+            </form>
+        </section>
         
     </main>
     <footer>

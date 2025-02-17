@@ -6,6 +6,7 @@
 
         <%- include ('../partials/stylesComunes') %>
         <%- include ('../partials/stylesTablas') %>
+        <link rel="stylesheet" href="/styles/incidentesListado.css">
     
         <%- include ('../partials/scriptsComunes') %>
 
@@ -21,25 +22,62 @@
         
         <%- include ('../partials/accesosRapidos')%>
 
-        <section class="listado">
-            <h2 class="listado_titulo">INCIDENTES EN ESTADO ABIERTO</h2>
+        <section class="listado">   
+            <h2 class="listado_titulo">INCIDENTES EN ESTADO ABIERTO</h2> 
             <table>
-                <thead>
-                    <tr>
-                        <th>N° INCIDENTE</th>
-                        <th>DEPENDENCIA</th>
-                        <th>FECHA ALTA</th>
-                        <th>CLASIFICACION</th>
-                        <th>TITULO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
+                <% if(incidentesOperadorLogueado != ''){ %>
+                    <thead>
+                        <%- include ('../partials/listadoIncidentes-titulosTablas') %>
+                    </thead>
+                    <tbody>
+                        <% incidentesOperadorLogueado.forEach((unIncidente)=>{ %>
+                            <%- include ('../partials/listadoIncidentes',{unIncidente}) %>
+                        <% }) %>
+                    </tbody>
+                <% }else{ %>
+                    <%- include ('../partials/listadoIncidentes-textoAlternativo') %>
+                <% } %>
             </table>
         </section>
-        
+
+        <section class="listado">  
+            <h2 class="listado_titulo">INCIDENTES ASIGNADOS AL TALLER</h2> 
+            <table>
+                <% if(incidentesAsignadosTaller != ''){ %>
+                    <thead>
+                        <%- include ('../partials/listadoIncidentes-titulosTablas') %>
+                    </thead>
+                    <tbody>
+                        <% incidentesAsignadosTaller.forEach((unIncidente)=>{ %>
+                            <%- include ('../partials/listadoIncidentes',{unIncidente}) %>
+                        <% }) %>
+                    </tbody>
+                <% }else{ %>
+                    <%- include ('../partials/listadoIncidentes-textoAlternativo') %>
+                <% } %>
+            </table>
+        </section>
+
+        <section class="listado">  
+            <h2 class="listado_titulo">INCIDENTES EN PRESTAMOS</h2> 
+            <table>
+                <% if(incidentesPrestamos != ''){ %>
+                    <thead>
+                        <%- include ('../partials/listadoIncidentes-titulosTablas') %>
+                    </thead>
+                    <tbody>
+                        <% incidentesPrestamos.forEach((unIncidente)=>{ %>
+                            <%- include ('../partials/listadoIncidentes',{unIncidente}) %>
+                        <% }) %>
+                    </tbody>
+                <% }else{ %>
+                    <%- include ('../partials/listadoIncidentes-textoAlternativo') %>
+                <% } %>
+            </table>
+        </section>
+
     </main>
+  
     <footer>
        
     </footer>

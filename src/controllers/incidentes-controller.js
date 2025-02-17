@@ -1,4 +1,7 @@
 const incidentesService = require ('../services/incidentes-service');
+const dependenciasService = require ('../services/dependencias-service');
+const usuariosService = require ('../services/usuarios-service');
+const equipamientoService = require ('../services/equipamiento-service');
 
 module.exports = {
     alta: function(req,res){
@@ -6,17 +9,30 @@ module.exports = {
         const oldData = req.session.oldData;
         req.session.errors = null;
         req.session.oldData = null;
-        res.render('incidentes/incidentesAlta',{
-            errors: errors ? errors : '',
-            oldData: oldData ? oldData : ''
-        });
+        const obtenerDependenciasAlmacenadas = dependenciasService.obtenerDependenciasAlmacenadas();
+        const obtenerUsuariosAlmacenados = usuariosService.obtenerUsuariosAlmacenados();
+        const obtenerEquipamientoAlmacenados = equipamientoService.obtenerEquipamientoAlmacenado();
+
+        Promise.all([obtenerDependenciasAlmacenadas,obtenerUsuariosAlmacenados,obtenerEquipamientoAlmacenados])
+            .then(([listadoDependencias,listadoUsuarios,listadoEquipos])=>{
+                res.render('incidentes/incidentesAlta',{
+                    errors: errors ? errors : '',
+                    oldData: oldData ? oldData : '',
+                    listadoDependencias: listadoDependencias ? listadoDependencias : '',
+                    listadoUsuarios: listadoUsuarios ? listadoUsuarios : '',
+                    listadoEquipos : listadoEquipos ? listadoEquipos : ''
+                });
+            })
+            .catch((e)=>{
+                console.log(e)
+            });
     },
 
     guardar: function(req,res){
         incidentesService.guardarIncidente(req.body,req.session.operadorLogueado)
             .then((incidenteGuardado) => {
                 console.log (`Se creo el incidente numero: ${incidenteGuardado.nroIncidenteId}`); 
-                res.redirect('/');
+                res.redirect('/incidentes/listado');
             })
             .catch((e) => {
                 console.log(e)
@@ -25,7 +41,20 @@ module.exports = {
     listado: function(req,res){
         incidentesService.obtenerIncidentesAlmacenados()
             .then((listadoIncidentes) => {
-                res.render('incidentes/incidentesListado',{listadoIncidentes:listadoIncidentes});
+                const incidentesOperadorLogueado = listadoIncidentes.filter((unIncidente)=>{
+                    return unIncidente.cuilOperadorIdAsignado == req.session.operadorLogueado.cuilOperadorId
+                });
+                const incidentesAsignadosTaller = listadoIncidentes.filter((unIncidente)=>{
+                    return unIncidente.codigoAreaId == 'dgt-taller'
+                });
+                const incidentesPrestamos = listadoIncidentes.filter((unIncidente)=>{
+                    return unIncidente.estado == 'prestamo'
+                });
+                res.render('incidentes/incidenteslistado',{
+                    incidentesOperadorLogueado: incidentesOperadorLogueado ? incidentesOperadorLogueado : [],
+                    incidentesAsignadosTaller: incidentesAsignadosTaller ? incidentesAsignadosTaller : [],
+                    incidentesPrestamos: incidentesPrestamos ? incidentesPrestamos : []
+                });
             })
             .catch((e)=>{
                 console.log(e);

@@ -2,7 +2,8 @@ const express = require ('express');
 const router = express.Router();
 const areasController = require ('../controllers/areas-controller');
 const areasValidations = require ('../validations/areas-validations');
-const areasMiddleware = require ('../middlewares/areas-middleware');
+const areasAltaMiddleware = require ('../middlewares/areas-alta-middleware');
+const areasModificacionMiddleware = require ('../middlewares/areas-modificacion-middleware');
 const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear-middleware'); 
 
 
@@ -10,7 +11,10 @@ router.get('/alta', operadorSinLoguearMiddleware, areasController.alta);
 router.get('/listado', operadorSinLoguearMiddleware, areasController.listado); 
 router.get('/ver/:codigoArea', operadorSinLoguearMiddleware, areasController.ver);
 
-router.post('/guardar', areasValidations, areasMiddleware, areasController.guardar);
+router.post('/guardar', areasValidations, areasAltaMiddleware, areasController.guardar);
+
+router.get('/editar/:codigoArea', operadorSinLoguearMiddleware, areasController.modificar)
+router.put('/editar', operadorSinLoguearMiddleware, areasValidations, areasModificacionMiddleware, areasController.guardarModificacion); 
 
 
 

@@ -29,7 +29,11 @@
                     <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
                     <select class="formulario_input" name="dependencia" id="dependencia">
                         <option value="">Seleccione una opcion</option>
-                        <option value="f01_sec1" <%= oldData && oldData.dependencia === 'f01_sec1' ? 'selected' : ''%> >Juzgado 1 secretaria 1</option>
+                        <% listadoDependencias.forEach((unaDependencia)=>{ %>
+                            <option value="<%=unaDependencia.codigoDependenciaId%>" <%= oldData && oldData.dependencia === unaDependencia.codigoDependenciaId ? 'selected' : ''%>>
+                                <%=unaDependencia.nombre%>
+                            </option>
+                        <% }) %>
                     </select>
                     <% if (errors && errors.dependencia){ %>
                         <p class="error" ><%= errors.dependencia.msg %></p>
@@ -39,7 +43,11 @@
                     <label class="formulario_label" for="usuario">USUARIO:</label>
                     <select class="formulario_input" name="usuario" id="usuario">
                         <option value="">Seleccione una opcion</option>
-                        <option value="20318243655" <%= oldData && oldData.usuario === '20318243655' ? 'selected' : ''%> >Cristian</option>
+                        <% listadoUsuarios.forEach((unUsuario)=>{ %>
+                            <option value="<%=unUsuario.cuilUsuarioId%>" <%= oldData && oldData.usuario == unUsuario.cuilUsuarioId ? 'selected' : ''%>>
+                                <%= unUsuario.nombre%> <%=unUsuario.apellido%>
+                            </option>
+                        <% }); %>
                     </select>
                     <% if (errors && errors.usuario){ %>
                         <p class="error" ><%= errors.usuario.msg %></p>
@@ -49,7 +57,12 @@
                     <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
                     <select class="formulario_input" name="numeroSerie" id="">
                         <option value="">Seleccione una opcion</option>
-                        <option value="generico"  <%= oldData && oldData.numeroSerie === 'generico' ? 'selected' : ''%>>Generico</option>
+                        
+                        <% listadoEquipos.forEach((unEquipo)=>{ %>
+                            <option value="<%=unEquipo.nroSerieId%>" <%= oldData && oldData.numeroSerie === unEquipo.nroSerieId ? 'selected' : '' %>>
+                                <%= unEquipo.nroSerieId %>
+                            </option>
+                        <% }) %>
                     </select>
                 </div>     
                 <div class="formulario_div">
@@ -61,6 +74,21 @@
                         </option>
                         <option value="instalacionSoftware" <%= oldData && oldData.clasificacionIncidente === 'instalacionSoftware' ? 'selected' : ''%>>
                             Instalación de software
+                        </option>
+                        <option value="entregaInsumos" <%= oldData && oldData.clasificacionIncidente === 'entregaInsumos' ? 'selected' : ''%>>
+                            Entrega de insumos
+                        </option>
+                        <option value="permisosInternet" <%= oldData && oldData.clasificacionIncidente === 'permisosInternet' ? 'selected' : ''%>>
+                            Permisos de internet
+                        </option>
+                        <option value="configuracionImpresora" <%= oldData && oldData.clasificacionIncidente === 'configuracionImpresora' ? 'selected' : ''%>>
+                            Configuracion de impresora
+                        </option>
+                        <option value="reparacionEquipo" <%= oldData && oldData.clasificacionIncidente === 'reparacionEquipo' ? 'selected' : ''%>>
+                            Reparación de equipo
+                        </option>
+                        <option value="entregaInsumos" <%= oldData && oldData.clasificacionIncidente === 'otros' ? 'selected' : ''%>>
+                            Otros
                         </option>
                     </select>
                     <% if (errors && errors.clasificacionIncidente){ %>

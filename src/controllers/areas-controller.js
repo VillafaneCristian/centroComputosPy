@@ -46,6 +46,32 @@ module.exports = {
             .catch((e)=>{
                 console.log(e);
             });
+    },
+
+    modificar: function(req,res){
+        const errors = req.session.errors;
+        const oldData = req.session.oldData;
+        req.session.errors = null;
+        req.session.oldData = null; 
+        const obtenerArea = areasService.obtenerAreaPorCodigo(req.params.codigoArea);
+        const obtenerEdificios = edificiosService.obtenerEdificiosAlmacenados();
+
+        Promise.all([obtenerArea,obtenerEdificios])
+            .then(([areaEncontrada,listadoEdificios])=>{
+                res.render('areas/areasModificacion.ejs',{
+                    errors: errors ? errors : '',
+                    oldData: oldData ? oldData : '',
+                    areaEncontrada: areaEncontrada ? areaEncontrada : '',
+                    listadoEdificios: listadoEdificios ? listadoEdificios : []
+                }); 
+            })           
+            .catch((e)=>{
+                console.log(e);
+            }) 
+    },
+
+    guardarModificacion: function(req,res){
+        res.send(req.body);
     }
 
 };

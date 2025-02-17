@@ -2,8 +2,11 @@ const db = require ('../database/models/index');
 
 module.exports = {
 
+    obtenerEquipamientoAlmacenado: function (){
+        return db.Equipamiento.findAll()
+    },
+
     guardarEquipamiento: function (equipamientoData){
-        console.log(equipamientoData); 
         return db.Equipamiento.create({
             nroSerieId: equipamientoData.numeroSerie,
             tipoEquipamientoId: equipamientoData.tipoEquipamiento,
