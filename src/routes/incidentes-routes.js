@@ -8,6 +8,8 @@ const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear
 router.get('/alta', operadorSinLoguearMiddleware, incidentesController.alta);
 router.get('/listado', operadorSinLoguearMiddleware, incidentesController.listado);
 
+router.get('/editar/:numeroIncidente', operadorSinLoguearMiddleware, incidentesController.editar);
+
 router.post('/guardar', incidentesValidations, incidentesMiddleware, incidentesController.guardar);
 
 module.exports = router; 

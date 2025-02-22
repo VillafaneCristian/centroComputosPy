@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                         <% incidentesOperadorLogueado.forEach((unIncidente)=>{ %>
-                            <%- include ('../partials/listadoIncidentes',{unIncidente}) %>
+                            <%- include ('../partials/listadoIncidentes-datosTablas',{unIncidente}) %>
                         <% }) %>
                     </tbody>
                 <% }else{ %>
@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         <% incidentesAsignadosTaller.forEach((unIncidente)=>{ %>
-                            <%- include ('../partials/listadoIncidentes',{unIncidente}) %>
+                            <%- include ('../partials/listadoIncidentes-datosTablas',{unIncidente}) %>
                         <% }) %>
                     </tbody>
                 <% }else{ %>
@@ -67,7 +67,7 @@
                     </thead>
                     <tbody>
                         <% incidentesPrestamos.forEach((unIncidente)=>{ %>
-                            <%- include ('../partials/listadoIncidentes',{unIncidente}) %>
+                            <%- include ('../partials/listadoIncidentes-datosTablas',{unIncidente}) %>
                         <% }) %>
                     </tbody>
                 <% }else{ %>

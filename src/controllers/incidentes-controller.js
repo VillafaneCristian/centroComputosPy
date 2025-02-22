@@ -59,5 +59,17 @@ module.exports = {
             .catch((e)=>{
                 console.log(e);
             });
+    }, 
+    editar: function (req,res){
+        incidentesService.obtenerIncidentePorId(req.params.numeroIncidente)
+            .then((incidenteEncontrado)=>{
+                console.log(incidenteEncontrado); 
+                res.render('incidentes/incidentesModificacion',{
+                    incidenteEncontrado: incidenteEncontrado ? incidenteEncontrado : ''
+                }); 
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
     }
 }

@@ -38,5 +38,9 @@ module.exports = {
                 "fechaCierre"
             ],
         });
+    },
+
+    obtenerIncidentePorId: function(numeroIncidente){
+        return db.Incidente.findByPk(numeroIncidente); 
     }
 };
