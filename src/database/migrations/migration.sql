@@ -1,6 +1,6 @@
-DROP SCHEMA IF EXISTS dgtApp;
-CREATE SCHEMA dgtApp;
-USE dgtApp;
+DROP SCHEMA IF EXISTS dgtapp;
+CREATE SCHEMA dgtapp;
+USE dgtapp;
 
 DROP TABLE IF EXISTS edificios;
 CREATE TABLE edificios (

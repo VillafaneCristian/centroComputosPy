@@ -50,7 +50,7 @@ module.exports = {
                 const incidentesPrestamos = listadoIncidentes.filter((unIncidente)=>{
                     return unIncidente.estado == 'prestamo'
                 });
-                res.render('incidentes/incidenteslistado',{
+                res.render('incidentes/incidentesListado.ejs',{
                     incidentesOperadorLogueado: incidentesOperadorLogueado ? incidentesOperadorLogueado : [],
                     incidentesAsignadosTaller: incidentesAsignadosTaller ? incidentesAsignadosTaller : [],
                     incidentesPrestamos: incidentesPrestamos ? incidentesPrestamos : []
