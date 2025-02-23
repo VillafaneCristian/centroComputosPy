@@ -1,0 +1,22 @@
+.header_barraNavegacion li{
+    position: relative;
+}
+
+.header_barraNavegacion li:hover > .mostrarAbajo{
+    display: block;
+}
+
+.mostrarAbajo{
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: aqua;
+  min-width: 200px;
+}
+
+.mostrarAbajo li{
+    display: block;
+    margin-bottom: 10px;
+    text-align: left;
+}
