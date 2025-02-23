@@ -7,6 +7,116 @@
     <title>Document</title>
 </head>
 <body>
-    MODIFICACION
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Alta de Incidentes</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header.ejs') %>
+
+    </header>
+    <main>
+        
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo">MODIFICACION DE INCIDENTE </h2>
+            <form action="/incidentes/procesarEditar" method="post" novalidate>
+                <div class="formulario_div">
+                    <Numero for="" class="formulario_label">Numero Incidente:</label>
+                    <input type="text" class="formulario_input" name="numeroIncidente" value="<%=incidenteEncontrado.nroIncidenteId%>" readonly>  
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="clasificacionIncidente">CLASIFICACION:</label>
+                    <select class="formulario_input" name="clasificacionIncidente" id="clasificacionIncidente">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="creacionCarpetas">
+                            Creacion de carpetas
+                        </option>
+                        <option value="instalacionSoftware" >
+                            Instalación de software
+                        </option>
+                        <option value="entregaInsumos">
+                            Entrega de insumos
+                        </option>
+                        <option value="permisosInternet">
+                            Permisos de internet
+                        </option>
+                        <option value="configuracionImpresora">
+                            Configuracion de impresora
+                        </option>
+                        <option value="reparacionEquipo">
+                            Reparación de equipo
+                        </option>
+                        <option value="entregaInsumos">
+                            Otros
+                        </option>
+                    </select>
+                    <% if (errors && errors.estado){ %>
+                        <p class="error"> <%= errors.clasificacionIncidente.msg %> </p>
+                    <% } %>  
+                </div>   
+                <div class="formulario_div">
+                    <label class="formulario_label" for="estado">ESTADO:</label>
+                    <select class="formulario_input" name="estado" id="estado">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="abierto">Abierto</option>
+                        <option value="prestamo">Prestamo</option>
+                    </select>
+                    <% if (errors && errors.estado){ %>
+                        <p class="error"> <%= errors.estado.msg %> </p>
+                    <% } %>  
+                </div>    
+                <div class="formulario_div">
+                    <label class="formulario_label" for="areaAsignada">AREA:</label>
+                    <select class="formulario_input" name="areaAsignada" id="areaAsignada">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="abierto">Abierto</option>
+                        <option value="prestamo">Prestamo</option>
+                    </select>
+                    <% if (errors && errors.estado){ %>
+                        <p class="error"> <%= errors.areaAsignada.msg %> </p>
+                    <% } %>  
+                </div>                
+                <div class="formulario_div">
+                    <label class="formulario_label" for="operador">OPERADOR:</label>
+                    <select class="formulario_input" name="operador" id="operador">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="abierto">Abierto</option>
+                        <option value="prestamo">Prestamo</option>
+                    </select>
+                    <% if (errors && errors.estado){ %>
+                        <p class="error"> <%= errors.operador.msg %> </p>
+                    <% } %>  
+                </div>   
+                <div class="formulario_div">
+                    <label class="formulario_label" for="">DETALLES:</label>
+                    <textarea name="" id="" class="formulario_input">
+
+                    </textarea>
+                </div>             
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">EDITAR</button>
+                </div>
+            </form>
+        </section>
+        
+    </main>
+    <footer>
+       
+    </footer>
+</body>
+</html>
 </body>
 </html>

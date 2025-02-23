@@ -61,15 +61,24 @@ module.exports = {
             });
     }, 
     editar: function (req,res){
+        const errors = req.session.errors;
+        const oldData = req.session.oldData;
+        req.session.errors = null;
+        req.session.oldData = null;
         incidentesService.obtenerIncidentePorId(req.params.numeroIncidente)
             .then((incidenteEncontrado)=>{
-                console.log(incidenteEncontrado); 
                 res.render('incidentes/incidentesModificacion',{
-                    incidenteEncontrado: incidenteEncontrado ? incidenteEncontrado : ''
+                    incidenteEncontrado: incidenteEncontrado ? incidenteEncontrado : '',
+                    errors: errors ? errors : '',
+                    oldData: oldData ? oldData : ''
                 }); 
             })
             .catch((e)=>{
                 console.log(e);
             });
+    },
+
+    procesarEditar: function(req,res){
+        res.send(req.body); 
     }
 }
