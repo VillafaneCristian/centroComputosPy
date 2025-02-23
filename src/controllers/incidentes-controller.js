@@ -2,6 +2,8 @@ const incidentesService = require ('../services/incidentes-service');
 const dependenciasService = require ('../services/dependencias-service');
 const usuariosService = require ('../services/usuarios-service');
 const equipamientoService = require ('../services/equipamiento-service');
+const areasService = require ('../services/areas-service');
+const operadoresService = require ('../services/operadores-service');
 
 module.exports = {
     alta: function(req,res){
@@ -65,9 +67,17 @@ module.exports = {
         const oldData = req.session.oldData;
         req.session.errors = null;
         req.session.oldData = null;
-        incidentesService.obtenerIncidentePorId(req.params.numeroIncidente)
-            .then((incidenteEncontrado)=>{
+        console.log(errors); 
+
+        const obtenerAreasAlmacenadas = areasService.obtenerAreasAlmacenadas();
+        const obtenerOperadoresAlmacenados = operadoresService.obtenerOperadoresAlmacenados();
+        const obtenerIncidentePorId = incidentesService.obtenerIncidentePorId(req.params.numeroIncidente);
+
+        Promise.all([obtenerAreasAlmacenadas,obtenerOperadoresAlmacenados, obtenerIncidentePorId])
+            .then(([listadoAreas, listadoOperadores, incidenteEncontrado])=>{
                 res.render('incidentes/incidentesModificacion',{
+                    listadoAreas: listadoAreas ? listadoAreas : '',
+                    listadoOperadores: listadoOperadores ? listadoOperadores : '',
                     incidenteEncontrado: incidenteEncontrado ? incidenteEncontrado : '',
                     errors: errors ? errors : '',
                     oldData: oldData ? oldData : ''
@@ -79,6 +89,12 @@ module.exports = {
     },
 
     procesarEditar: function(req,res){
-        res.send(req.body); 
+        incidentesService.actualizarDatosIncidente(req.body)
+            .then((fila)=>{
+                res.redirect('/incidentes/listado');
+            })
+            .catch((e)=>{
+                console.log(e);
+            }); 
     }
 }

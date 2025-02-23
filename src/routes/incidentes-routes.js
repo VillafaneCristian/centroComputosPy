@@ -13,6 +13,6 @@ router.get('/editar/:numeroIncidente', operadorSinLoguearMiddleware, incidentesC
 
 router.post('/guardar', incidentesValidations, incidentesMiddleware, incidentesController.guardar);
 
-router.post('/procesarEditar', operadorSinLoguearMiddleware, incidentesEdicionValidations, incidentesEdicionMiddleware, incidentesController.procesarEditar);
+router.put('/procesarEditar', operadorSinLoguearMiddleware, incidentesEdicionValidations, incidentesEdicionMiddleware, incidentesController.procesarEditar);
 
 module.exports = router; 

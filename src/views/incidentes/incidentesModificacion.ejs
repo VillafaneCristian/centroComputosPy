@@ -32,7 +32,7 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">MODIFICACION DE INCIDENTE </h2>
-            <form action="/incidentes/procesarEditar" method="post" novalidate>
+            <form action="/incidentes/procesarEditar?_method=put" method="post" novalidate>
                 <div class="formulario_div">
                     <Numero for="" class="formulario_label">Numero Incidente:</label>
                     <input type="text" class="formulario_input" name="numeroIncidente" value="<%=incidenteEncontrado.nroIncidenteId%>" readonly>  
@@ -41,29 +41,29 @@
                     <label class="formulario_label" for="clasificacionIncidente">CLASIFICACION:</label>
                     <select class="formulario_input" name="clasificacionIncidente" id="clasificacionIncidente">
                         <option value="">Seleccione una opcion</option>
-                        <option value="creacionCarpetas">
+                        <option value="creacionCarpetas" <%= oldData && oldData.clasificacionIncidente == 'creacionCarpetas' ? 'selected' : ''%>>
                             Creacion de carpetas
                         </option>
-                        <option value="instalacionSoftware" >
+                        <option value="instalacionSoftware" <%= oldData && oldData.clasificacionIncidente == 'instalacionSoftware' ? 'selected' : ''%> >
                             Instalación de software
                         </option>
-                        <option value="entregaInsumos">
+                        <option value="entregaInsumos" <%= oldData && oldData.clasificacionIncidente == 'entregaInsumos' ? 'selected' : ''%> >
                             Entrega de insumos
                         </option>
-                        <option value="permisosInternet">
+                        <option value="permisosInternet" <%=oldData && oldData.clasificacionIncidente == 'permisosInternet' ? 'selected' : ''%>>
                             Permisos de internet
                         </option>
-                        <option value="configuracionImpresora">
+                        <option value="configuracionImpresora" <%= oldData && oldData.clasificacionIncidente == 'configuracionImpresora' ? 'selected' : ''%>>
                             Configuracion de impresora
                         </option>
-                        <option value="reparacionEquipo">
+                        <option value="reparacionEquipo" <%= oldData && oldData.clasificacionIncidente == 'reparacionEquipo' ? 'selected' : ''%>>
                             Reparación de equipo
                         </option>
-                        <option value="entregaInsumos">
+                        <option value="otros" <%= oldData && oldData.clasificacionIncidente == 'otros' ? 'selected' : ''%>>
                             Otros
                         </option>
                     </select>
-                    <% if (errors && errors.estado){ %>
+                    <% if (errors && errors.clasificacionIncidente){ %>
                         <p class="error"> <%= errors.clasificacionIncidente.msg %> </p>
                     <% } %>  
                 </div>   
@@ -71,21 +71,25 @@
                     <label class="formulario_label" for="estado">ESTADO:</label>
                     <select class="formulario_input" name="estado" id="estado">
                         <option value="">Seleccione una opcion</option>
-                        <option value="abierto">Abierto</option>
-                        <option value="prestamo">Prestamo</option>
+                        <option value="abierto" <%= oldData && oldData.estado == 'abierto' ? 'selected' : ''%>>Abierto</option>
+                        <option value="prestamo" <%= oldData && oldData.estado == 'prestamo' ? 'selected' : ''%>>Prestamo</option>
                     </select>
                     <% if (errors && errors.estado){ %>
-                        <p class="error"> <%= errors.estado.msg %> </p>
+                        <p class="error"><%= errors.estado.msg %></p>
                     <% } %>  
                 </div>    
                 <div class="formulario_div">
                     <label class="formulario_label" for="areaAsignada">AREA:</label>
                     <select class="formulario_input" name="areaAsignada" id="areaAsignada">
                         <option value="">Seleccione una opcion</option>
-                        <option value="abierto">Abierto</option>
-                        <option value="prestamo">Prestamo</option>
+                        <% listadoAreas.forEach((unArea)=>{ %>
+                            <option value="<%=unArea.codigoAreaId%>" 
+                                <%= oldData && oldData.areaAsignada == unArea.codigoAreaId ? 'selected' : ''  %>>
+                                <%=unArea.nombre%>
+                            </option>
+                        <% }) %>
                     </select>
-                    <% if (errors && errors.estado){ %>
+                    <% if (errors && errors.areaAsignada){ %>
                         <p class="error"> <%= errors.areaAsignada.msg %> </p>
                     <% } %>  
                 </div>                
@@ -93,18 +97,20 @@
                     <label class="formulario_label" for="operador">OPERADOR:</label>
                     <select class="formulario_input" name="operador" id="operador">
                         <option value="">Seleccione una opcion</option>
-                        <option value="abierto">Abierto</option>
-                        <option value="prestamo">Prestamo</option>
+                        <% listadoOperadores.forEach((unOperador)=>{ %>
+                            <option value="<%=unOperador.cuilOperadorId%>"
+                                <%= oldData && oldData.operador == unOperador.cuilOperadorId ? 'selected' : ''  %>>
+                                    <%=unOperador.nombre%> <%=unOperador.apellido%>
+                            </option>
+                        <% }) %>
                     </select>
-                    <% if (errors && errors.estado){ %>
+                    <% if (errors && errors.operador){ %>
                         <p class="error"> <%= errors.operador.msg %> </p>
                     <% } %>  
                 </div>   
                 <div class="formulario_div">
                     <label class="formulario_label" for="">DETALLES:</label>
-                    <textarea name="" id="" class="formulario_input">
-
-                    </textarea>
+                    <textarea name="detalles" id="detalles" class="formulario_input"></textarea>
                 </div>             
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">EDITAR</button>

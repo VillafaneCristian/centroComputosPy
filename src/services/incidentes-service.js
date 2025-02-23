@@ -41,6 +41,7 @@ module.exports = {
     },
 
     obtenerIncidentePorId: function(numeroIncidente){
+        console.log(numeroIncidente);
         return db.Incidente.findByPk(numeroIncidente,{
             attributes: [
                 "nroIncidenteId",
@@ -60,5 +61,18 @@ module.exports = {
                 "fechaCierre"
             ],
         }); 
+    },
+
+    actualizarDatosIncidente: function (incidenteData){
+        return db.Incidente.update({
+            clasificacionIncidente: incidenteData.clasificacionIncidente,
+            estado: incidenteData.estado,
+            codigoAreaId: incidenteData.areaAsignada,
+            cuilOperadorIdAsignado: incidenteData.operador,
+            detalles: incidenteData.detalles
+        },
+        {
+            where:{nroIncidenteId: incidenteData.numeroIncidente}
+        });
     }
 };
