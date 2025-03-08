@@ -48,7 +48,7 @@ module.exports = {
             });
     },
 
-    modificar: function(req,res){
+    editar: function(req,res){
         const errors = req.session.errors;
         const oldData = req.session.oldData;
         req.session.errors = null;
@@ -70,8 +70,24 @@ module.exports = {
             }) 
     },
 
-    guardarModificacion: function(req,res){
-        res.send(req.body);
-    }
+    procesarEditar: function(req,res){
+        areasService.actualizarDatosArea(req.body)
+            .then((filaActualizada)=>{
+                res.redirect('/areas/listado'); 
+            })
+            .catch((e)=>{
+                console.log(e);
+            });
+    },
 
+    eliminar: function(req,res){
+        areasService.eliminarArea(req.params.codigoArea)
+        .then((areaEliminada)=>{
+            console.log(areaEliminada);
+            res.redirect('/areas/listado'); 
+        })
+        .catch((e)=>{
+            console.log(e);
+        })
+    }
 };

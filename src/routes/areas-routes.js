@@ -13,9 +13,9 @@ router.get('/ver/:codigoArea', operadorSinLoguearMiddleware, areasController.ver
 
 router.post('/guardar', areasValidations, areasAltaMiddleware, areasController.guardar);
 
-router.get('/editar/:codigoArea', operadorSinLoguearMiddleware, areasController.modificar)
-router.put('/editar', operadorSinLoguearMiddleware, areasValidations, areasModificacionMiddleware, areasController.guardarModificacion); 
+router.get('/editar/:codigoArea', operadorSinLoguearMiddleware, areasController.editar)
+router.put('/editar', operadorSinLoguearMiddleware, areasValidations, areasModificacionMiddleware, areasController.procesarEditar); 
 
-
+router.delete('/eliminar/:codigoArea',operadorSinLoguearMiddleware, areasController.eliminar);
 
 module.exports = router;

@@ -27,6 +27,25 @@ module.exports = {
 
     obtenerAreaPorCodigo: function(codigoArea){
         return db.Area.findByPk(codigoArea);
-    }
+    },
 
+    actualizarDatosArea: function(areaData){
+        return db.Area.update({
+            nombre: areaData.nombre,
+            encargado: areaData.encargado,
+            email: areaData.email,
+            telefono: areaData.telefono,
+            descripcion: areaData.comentarios,
+            edificioId: areaData.edificio
+        },
+        {
+            where: {codigoAreaId: areaData.codigo}
+        });
+    },
+
+    eliminarArea: function(codigoArea){
+        return db.Area.destroy({
+            where:{codigoAreaId: codigoArea} 
+        });
+    }
 };

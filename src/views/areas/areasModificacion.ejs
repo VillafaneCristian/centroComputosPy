@@ -23,35 +23,33 @@
 
         <section class="formulario">
             <h2 class="formulario_titulo">MODIFICACION DE AREA</h2>
+            
             <form action="/areas/editar?_method=put" method="post" novalidate>
                 <div class="formulario_div">
                     <label class="formulario_label" for="codigo">CODIGO:</label>
-                    <input class="formulario_input" type="text" name="codigo" id="codigo" value="<%= oldData ? oldData.codigo : '' %>">
-                    <% if (errors && errors.codigo) { %>
-                        <p class="error"> <%= errors.codigo.msg %> </p>
-                    <% } %>
+                    <input class="formulario_input" type="text" name="codigo" id="codigo" value="<%= (oldData && oldData.codigo) ? oldData.codigo : areaEncontrada.codigoAreaId %>" readonly>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="nombre">NOMBRE:</label>
-                    <input class="formulario_input" type="text" name="nombre" id="nombre" value="<%= oldData ? oldData.nombre : '' %>">
+                    <input class="formulario_input" type="text" name="nombre" id="nombre" value="<%= (oldData && oldData.nombre) ? oldData.nombre : areaEncontrada.nombre %>">
                     <% if (errors && errors.nombre) { %>
                         <p class="error"> <%= errors.nombre.msg %> </p>
                     <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="email">EMAIL:</label>
-                    <input class="formulario_input" type="email" name="email" id="email" value="<%= oldData ? oldData.email : '' %>">
+                    <input class="formulario_input" type="email" name="email" id="email" value="<%= (oldData && oldData.email) ? oldData.email : areaEncontrada.email %>">
                     <% if (errors && errors.email) { %>
                         <p class="error"> <%= errors.email.msg %> </p>
                     <% } %>
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="telefono">TELEFONO:</label>
-                    <input class="formulario_input" type="text" name="telefono" id="telefono" value="<%= oldData ? oldData.telefono : '' %>">
+                    <input class="formulario_input" type="text" name="telefono" id="telefono" value="<%= (oldData && oldData.telefono) ? oldData.telefono : areaEncontrada.telefono %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="encargado">ENCARGADO:</label>
-                    <input class="formulario_input" type="text" name="encargado" id="encargado" value="<%= oldData ? oldData.encargado : '' %>">
+                    <input class="formulario_input" type="text" name="encargado" id="encargado" value="<%= (oldData && oldData.encargado) ? oldData.encargado : areaEncontrada.encargado %>">
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="edificio">EDIFICIO: </label>
@@ -59,7 +57,8 @@
                         <option value="">Seleccione una opcion</option>
 
                         <% listadoEdificios.forEach((unEdificio)=>{ %>
-                            <option value="<%= unEdificio.edificioId %>" <%= oldData && oldData.edificio == unEdificio.edificioId ? 'selected' : '' %>>
+                            <option value="<%= unEdificio.edificioId %>" 
+                                <%= (oldData && oldData.edificio == unEdificio.edificioId) || (!oldData && areaEncontrada && areaEncontrada.edificioId == unEdificio.edificioId) ? 'selected' : '' %>>
                                 <%= unEdificio.ubicacion %>
                             </option>
 
@@ -71,7 +70,7 @@
                 </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="comentarios">COMENTARIOS</label>
-                    <textarea class="formulario_input" name="comentarios" id="comentarios"><%= oldData ? oldData.comentarios : '' %></textarea>
+                    <textarea class="formulario_input" name="comentarios" id="comentarios"><%= (oldData && oldData.comentarios) ? oldData.comentarios : areaEncontrada.descripcion %></textarea>
                 </div>
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">MODIFICAR</button>

@@ -112,18 +112,18 @@ VALUES
         ('460015652356','4','v10','1','1');
 
     INSERT INTO equiposDetalles  
-        (marca,modelo,tipoEquipamientoId,procesador,memoriaRam,tipoDiscoRigido,capacidadDiscoRigido,foto,detalles)
+        (marca,modelo,tipoEquipamientoId,procesador,memoriaRam,tipoDiscoRigido,capacidadDiscoRigido,lectograbadoraDVD,foto,detalles)
     VALUES
-        ('Lenovo','9485-A21',2,'Pentium','DDR2 4GB', 'HDD', '160 GB','sinImagen.jpg',''),
-        ('Bangho','Optima 1793',2,'AMD APU A8','DDR3 4GB', 'HDD', '500 GB','sinImagen.jpg',''),
-        ('Bangho','Ziva',2,'AMD FX4100','DDR3 4GB', 'HDD', '320 GB','sinImagen.jpg',''),
-        ('Bangho','Optima T4',2,'AMD Ryzen 3','DDR4 8GB', 'SDD', '256 GB','sinImagen.jpg',''),
-        ('Dell','AIO 7100',2,'Intel I5','DDR2 4GB', 'HDD', '160 GB','sinImagen.jpg',''),
-        ('SANSEI','AIO',2,'Intel I5','DDR4 8GB', 'HDD', '1 TB','sinImagen.jpg',''),
-        ('Lexmark','421DN',4,'','','','','sinImagen.jpg',''),
-        ('Lexmark','610DN',4,'','','','','sinImagen.jpg',''),
-        ('Lexmark','432DN',4,'','','','','sinImagen.jpg',''),
-        ('Samsung','X464',4,'','','','','sinImagen.jpg',''),
-        ('Samsung','4020DN',4,'','','','','sinImagen.jpg',''),
-        ('Canon','CR-240',5,'','','','','sinImagen.jpg',''),
-        ('Alaris','S2040',5,'','','','','sinImagen.jpg','');
+        ('Lenovo','9485-A21',2,'Pentium','DDR2 4GB', 'HDD', '160 GB','si','sinImagen.jpg',''),
+        ('Bangho','Optima 1793',2,'AMD APU A8','DDR3 4GB', 'HDD', '500 GB','si','sinImagen.jpg',''),
+        ('Bangho','Ziva',2,'AMD FX4100','DDR3 4GB', 'HDD', '320 GB','si','sinImagen.jpg',''),
+        ('Bangho','Optima T4',2,'AMD Ryzen 3','DDR4 8GB', 'SDD', '256 GB','no','sinImagen.jpg',''),
+        ('Dell','AIO 7100',2,'Intel I5','DDR2 8GB', 'HDD', '1 TB','si','sinImagen.jpg',''),
+        ('SANSEI','AIO',2,'Intel I5','DDR4 8GB', 'HDD', '1 TB','si','sinImagen.jpg',''),
+        ('Lexmark','421DN',4,'','','','','','sinImagen.jpg',''),
+        ('Lexmark','610DN',4,'','','','','','sinImagen.jpg',''),
+        ('Lexmark','432DN',4,'','','','','','sinImagen.jpg',''),
+        ('Samsung','X464',4,'','','','','','sinImagen.jpg',''),
+        ('Samsung','4020DN',4,'','','','','','sinImagen.jpg',''),
+        ('Canon','CR-240',5,'','','','','','sinImagen.jpg',''),
+        ('Alaris','S2040',5,'','','','','','sinImagen.jpg','');

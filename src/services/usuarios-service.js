@@ -26,6 +26,12 @@ module.exports = {
 
     obtenerUsuarioPorCuil: function(usuarioCuil){
         return db.Usuario.findByPk(usuarioCuil);
+    },
+
+    obtenerPorDependencia: function (codigoDependencia){
+        return db.Usuario.findAll({
+            where:{codigoDependenciaId: codigoDependencia}
+        })
     }
 
 }

@@ -22,7 +22,7 @@
         <%- include ('../partials/accesosRapidos.ejs')%>
 
         <section class="formulario">
-            <h2 class="formulario_titulo">ALTA DE INCIDENTE</h2>
+            <h2 class="formulario_titulo" id="formulario_titulo">ALTA DE INCIDENTE</h2>
             <form action="/incidentes/guardar" method="post" novalidate>
 
                 <div class="formulario_div">
@@ -119,5 +119,8 @@
     <footer>
        
     </footer>
+
+    <script src="/js/incidentes/obtenerUsuariosPorDependencia.js"></script>
+
 </body>
 </html>

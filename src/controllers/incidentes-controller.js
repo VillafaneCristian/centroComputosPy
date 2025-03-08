@@ -91,7 +91,7 @@ module.exports = {
 
     procesarEditar: function(req,res){
         incidentesService.actualizarDatosIncidente(req.body)
-            .then((fila)=>{
+            .then((filaActualizada)=>{
                 res.redirect('/incidentes/listado');
             })
             .catch((e)=>{

@@ -55,6 +55,10 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
+        lectograbadoraDVD:{
+            type: dataTypes.STRING
+        },
+
         codigoDependenciaID: {
             type: dataTypes.STRING
         },

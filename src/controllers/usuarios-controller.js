@@ -45,6 +45,19 @@ module.exports = {
             .catch((e)=>{
                 console.log(e);
             });
+    }, 
+
+    obtenerPorDependencia: function (req,res){
+        
+        const dependenciaId = req.params.codigoDependencia;
+        
+        usuariosService.obtenerPorDependencia(dependenciaId)
+            .then((usuarios)=>{ 
+                res.json(usuarios);
+            })
+            .catch((e)=>{
+                console.log(e)
+            })    
     }
 
 }
