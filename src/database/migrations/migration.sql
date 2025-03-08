@@ -22,7 +22,7 @@ CREATE TABLE tiposEquipamiento (
 
 DROP TABLE IF EXISTS dependencias;
 CREATE TABLE dependencias (
-	codigoDependenciaId VARCHAR(10),
+	codigoDependenciaId VARCHAR(20),
     nombre VARCHAR(100) NOT NULL UNIQUE,
     email VARCHAR(100) UNIQUE,
     telefono VARCHAR(100),
@@ -76,7 +76,7 @@ CREATE TABLE usuarios(
     email VARCHAR(100),
     telefono VARCHAR(100),
     comentario VARCHAR(300),
-    codigoDependenciaId VARCHAR(10),
+    codigoDependenciaId VARCHAR(20),
     PRIMARY KEY (cuilUsuarioId),
     FOREIGN KEY (codigoDependenciaId) REFERENCES dependencias (codigoDependenciaId)
 );
@@ -95,7 +95,7 @@ CREATE TABLE equipos (
     memoriaRam VARCHAR(50),
     tipoDiscoRigido VARCHAR(10),
     capacidadDiscoRigido VARCHAR(10),
-    codigoDependenciaId VARCHAR(10),
+    codigoDependenciaId VARCHAR(20),
     cuilUsuarioId BIGINT,
     internetHabilitado VARCHAR(5),
     aclId TINYINT,    
@@ -110,7 +110,7 @@ CREATE TABLE equipos (
 DROP TABLE IF EXISTS incidentes;
 CREATE TABLE incidentes (
 	nroIncidenteId INT AUTO_INCREMENT,
-    codigoDependenciaId VARCHAR(10),
+    codigoDependenciaId VARCHAR(20),
     cuilUsuarioId BIGINT,
     fechaAlta DATETIME,
     clasificacionIncidente VARCHAR(100),
@@ -132,3 +132,19 @@ CREATE TABLE incidentes (
     FOREIGN KEY (cuilOperadorIdAlta) REFERENCES operadores (cuilOperadorId),
     FOREIGN KEY (cuilOperadorIdAsignado) REFERENCES operadores (cuilOperadorId)
 );
+
+DROP TABLE IF EXISTS equiposDetalles;
+CREATE TABLE equiposDetalles (
+	equiposDetallesId SMALLINT AUTO_INCREMENT,
+    marca VARCHAR(300), 
+    modelo VARCHAR(100),
+    tipoEquipamientoId TINYINT,
+    procesador VARCHAR(50),
+    memoriaRam VARCHAR(50),
+    tipoDiscoRigido VARCHAR(10),
+    capacidadDiscoRigido VARCHAR(10),
+    foto VARCHAR(100),
+    detalles TEXT,
+    PRIMARY KEY (equiposDetallesId),
+    FOREIGN KEY (tipoEquipamientoId) REFERENCES tiposEquipamiento (tipoEquipamientoId)
+); 

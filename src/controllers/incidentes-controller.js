@@ -46,6 +46,7 @@ module.exports = {
                 const incidentesOperadorLogueado = listadoIncidentes.filter((unIncidente)=>{
                     return unIncidente.cuilOperadorIdAsignado == req.session.operadorLogueado.cuilOperadorId
                 });
+                console.log(incidentesOperadorLogueado);
                 const incidentesAsignadosTaller = listadoIncidentes.filter((unIncidente)=>{
                     return unIncidente.codigoAreaId == 'dgt-taller'
                 });

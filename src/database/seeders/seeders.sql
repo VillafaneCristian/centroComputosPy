@@ -1,17 +1,18 @@
+USE dgtapp;
 INSERT INTO tiposEquipamiento 
-	(tipo)
+	(tipo, descripcion)
 VALUES
-    ('generico'),
-	('desktop'),
-    ('laptop'),
-    ('impresora'),
-    ('escaner'),
-    ('monitor');
+    ('sin_especificar', 'valor de tipos generico que se usa cuando no aplica ninguno de las opcionesd de la tabla'),
+	('desktop', 'Equipos de escritorios diseñados para instalarse en una ubicación fija, incluye los equipos AIO'),
+    ('laptop', 'Equipo informático portatil, también conocido como notebook'),
+    ('impresora','Periféricos utilizados para imprimir información, incluye los equipos multifunción'),
+    ('escaner', 'Periféricos que captura imagenes, los procesa y muestra en pantalla, no incluye los equipos multifunción'),
+    ('monitor', 'Periféricos que muestran información que procesa una computadora');
 
 INSERT INTO acls 
 	(nombre, descripcion)
 VALUES
-    ('generico', 'generico'),
+    ('sin_especificar', 'Valor que se usa cuando no aplica ninguna de las otras opciones'),
 	('prosecretarios','Acceso cortado entre las 11 y las 14 hs'),
     ('ilimitado', 'sin limitaciones de acceso'),
     ('whatsappWeb','solo acceso a la plataforma de chat'),
@@ -20,18 +21,18 @@ VALUES
 INSERT INTO edificios
 	(ubicacion,localidad,codigoPostal,descripcion)
 VALUES
-    ('generico','genercio','generico','generico'),
-	('Av. Comodoro Py 2002','CABA','',''),
-    ('Libertad 731','CABA','',''),
-    ('Lavalle 1240','CABA','',''),
-    ('Av. De LosInmigrantes 1950','CABA','',''),
-    ('Cerrito 536','CABA','',''),
-    ('Viamonte 1147','CABA','','');
+    ('sin_especificar','sin especificar','sin especificar','Valor que se usa cuando no aplica ninguna de las otras opciones'),
+	('Av. Comodoro Py 2002','CABA','C1104BEN','Tribunales de Comodoro Py'),
+    ('Libertad 731','CABA','C1012AAO','Edificio del consejo de la Magistratura (en el 8vo piso esta la DGT)'),
+    ('Lavalle 1240','CABA','C1048AAF','Edificio donde se encuentra el DataCenter'),
+    ('Av. De LosInmigrantes 1950','CABA','C1104ADO','Tribunales de Inmigrantes'),
+    ('Cerrito 536','CABA','C1010AAL','Edificio donde esta el área de insumos y el taller'),
+    ('Viamonte 1147','CABA','C1053ABW','Edificio donde esta la jefatura de comunicaciones y el área de cableado');
     
 INSERT INTO areas
 	(codigoAreaId, nombre, encargado, email, telefono, edificioId)
 VALUES
-    ('generico', 'generico','','','',1),
+    ('sin_especificar', 'sin especificar','sin especificar','sinEspecificar@pjn.gov.ar','',1),
 	('dgt-c2', 'Centro de computos de Comodoro Py', 'Hernan Garay', 'dgt.cc-comodoropy@pjn.gov.ar', '4032-7480', 1),
     ('dgt-taller', 'Taller', 'Guillermo Iglesias', 'dgt.taller@pjn.gov.ar', '4124-4444', 5),
     ('dgt-redes', 'Redes', 'Pablo Rossi', 'dgt.redes@pjn.gov.ar', '4124-8888', 3),
@@ -41,6 +42,7 @@ VALUES
 INSERT INTO operadores
     (cuilOperadorId, nombre, apellido, email, telefono, codigoAreaId, avatar, contrasenia, rol)
 VALUES  
+    ('1', 'Sin', 'especificar', 'sinEspecificar@pjn.gov.ar', '', 'sin_especificar', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',''),
     ('20318243655', 'Cristian', 'Villafañe', 'cristian.villafane@pjn.gov.ar', '4032-7479', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',''),
     ('27181628419', 'Graciela', 'Olivera', 'graciela.olivera@pjn.gov.ar', '4032-7479', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',''),
     ('20146363483', 'Hernan', 'Garay', 'hernan.garay@pjn.gov.ar', '4032-7479', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC','');
@@ -49,7 +51,7 @@ VALUES
 INSERT INTO dependencias
 	(codigoDependenciaId, nombre, email, telefono, piso, lado, descripcion)
 VALUES
-    ('generico','generico','','',1,'',''),
+    ('sin_especificar','sin especificar','sinEspecificar@pjn.gov.ar','',1,'',''),
 	('f01_sec1','Juzgado nacional criminal y correccional federal Nº1 Secretaría Nº1', 'jncrimcorrfed1.sec1@pjn.gov.ar','4032-7499', 3, 'rio', ''),
     ('f01_sec2','Juzgado nacional criminal y correccional federal Nº1 Secretaría Nº2', 'jncrimcorrfed1.sec2@pjn.gov.ar','4032-7411', 3, 'rio', ''),
     ('f01_priv','Juzgado nacional criminal y correccional federal Nº1 Secretaría privada', 'jncrimcorrfed1@pjn.gov.ar','4032-7499', 3, 'rio', ''),
@@ -90,7 +92,7 @@ VALUES
 INSERT INTO usuarios 
 	(cuilUsuarioId, nombre, apellido, email, telefono, comentario, codigoDependenciaId)
 VALUES
-    (1,'generico','generico','','','','generico'),
+    (1,'sin','especificar','sinEspecificar@pjn.gov.ar','','','sin_especificar'),
 	(20318243655, 'Cristian', 'Villafañe', 'cristian.villafane@pjn.gov.ar', '4032-7479', '', 'dgt-c2'),
     (27181628419, 'Lucas', 'Colombres', 'lucas.colombres@pjn.gov.ar', '4032-7894', '','ks3'),
     (27487894564, 'Marcos', 'Tedin', 'marcos.tedin@pjn.gov.ar', '4032-8965', '','v07'),
@@ -104,4 +106,24 @@ VALUES
     INSERT INTO equipos 
         (nroSerieId,tipoEquipamientoId,codigoDependenciaId,cuilUsuarioId,aclId) 
     VALUES
-        ('generico','1','generico','1','1');
+        ('sin_especificar','1','sin_especificar','1','1'),
+        ('LKPCAKX','2','f01_sec2','1','1'),
+        ('ANCI400250124','2','f03_sec5','1','1'),
+        ('460015652356','4','v10','1','1');
+
+    INSERT INTO equiposDetalles  
+        (marca,modelo,tipoEquipamientoId,procesador,memoriaRam,tipoDiscoRigido,capacidadDiscoRigido,foto,detalles)
+    VALUES
+        ('Lenovo','9485-A21',2,'Pentium','DDR2 4GB', 'HDD', '160 GB','sinImagen.jpg',''),
+        ('Bangho','Optima 1793',2,'AMD APU A8','DDR3 4GB', 'HDD', '500 GB','sinImagen.jpg',''),
+        ('Bangho','Ziva',2,'AMD FX4100','DDR3 4GB', 'HDD', '320 GB','sinImagen.jpg',''),
+        ('Bangho','Optima T4',2,'AMD Ryzen 3','DDR4 8GB', 'SDD', '256 GB','sinImagen.jpg',''),
+        ('Dell','AIO 7100',2,'Intel I5','DDR2 4GB', 'HDD', '160 GB','sinImagen.jpg',''),
+        ('SANSEI','AIO',2,'Intel I5','DDR4 8GB', 'HDD', '1 TB','sinImagen.jpg',''),
+        ('Lexmark','421DN',4,'','','','','sinImagen.jpg',''),
+        ('Lexmark','610DN',4,'','','','','sinImagen.jpg',''),
+        ('Lexmark','432DN',4,'','','','','sinImagen.jpg',''),
+        ('Samsung','X464',4,'','','','','sinImagen.jpg',''),
+        ('Samsung','4020DN',4,'','','','','sinImagen.jpg',''),
+        ('Canon','CR-240',5,'','','','','sinImagen.jpg',''),
+        ('Alaris','S2040',5,'','','','','sinImagen.jpg','');

@@ -41,25 +41,25 @@
                     <label class="formulario_label" for="clasificacionIncidente">CLASIFICACION:</label>
                     <select class="formulario_input" name="clasificacionIncidente" id="clasificacionIncidente">
                         <option value="">Seleccione una opcion</option>
-                        <option value="creacionCarpetas" <%= oldData && oldData.clasificacionIncidente == 'creacionCarpetas' ? 'selected' : ''%>>
+                        <option value="Creacion carpetas" <%=(oldData && oldData.clasificacionIncidente == "Creacion carpetas") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "Creacion carpetas" ) ? 'selected' : '' %> >
                             Creacion de carpetas
                         </option>
-                        <option value="instalacionSoftware" <%= oldData && oldData.clasificacionIncidente == 'instalacionSoftware' ? 'selected' : ''%> >
+                        <option value="Instalacion software" <%=(oldData && oldData.clasificacionIncidente == "Instalacion software") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "Instalacion software" ) ? 'selected' : '' %> >
                             Instalación de software
                         </option>
-                        <option value="entregaInsumos" <%= oldData && oldData.clasificacionIncidente == 'entregaInsumos' ? 'selected' : ''%> >
+                        <option value="Entrega insumos" <%=(oldData && oldData.clasificacionIncidente == "Entrega insumos") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "Entrega insumos" ) ? 'selected' : '' %> >
                             Entrega de insumos
                         </option>
-                        <option value="permisosInternet" <%=oldData && oldData.clasificacionIncidente == 'permisosInternet' ? 'selected' : ''%>>
+                        <option value="Permisos internet" <%=(oldData && oldData.clasificacionIncidente == "Permisos internet") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "Permisos internet" ) ? 'selected' : '' %>>
                             Permisos de internet
                         </option>
-                        <option value="configuracionImpresora" <%= oldData && oldData.clasificacionIncidente == 'configuracionImpresora' ? 'selected' : ''%>>
+                        <option value="Configuracion impresora" <%=(oldData && oldData.clasificacionIncidente == "Configuracion impresora") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "configuracionImpresora" ) ? 'selected' : '' %>>
                             Configuracion de impresora
                         </option>
-                        <option value="reparacionEquipo" <%= oldData && oldData.clasificacionIncidente == 'reparacionEquipo' ? 'selected' : ''%>>
+                        <option value="Reparacion equipo" <%=(oldData && oldData.clasificacionIncidente == "Reparacion equipo") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "Reparacion equipo" ) ? 'selected' : '' %>>
                             Reparación de equipo
                         </option>
-                        <option value="otros" <%= oldData && oldData.clasificacionIncidente == 'otros' ? 'selected' : ''%>>
+                        <option value="Otros" <%=(oldData && oldData.clasificacionIncidente == "Otros") || (!oldData && incidenteEncontrado && incidenteEncontrado.clasificacionIncidente == "Otros" ) ? 'selected' : '' %>>
                             Otros
                         </option>
                     </select>
@@ -71,8 +71,12 @@
                     <label class="formulario_label" for="estado">ESTADO:</label>
                     <select class="formulario_input" name="estado" id="estado">
                         <option value="">Seleccione una opcion</option>
-                        <option value="abierto" <%= oldData && oldData.estado == 'abierto' ? 'selected' : ''%>>Abierto</option>
-                        <option value="prestamo" <%= oldData && oldData.estado == 'prestamo' ? 'selected' : ''%>>Prestamo</option>
+                        <option value="abierto" <%= (oldData && oldData.estado == 'abierto') || (!oldData && incidenteEncontrado && incidenteEncontrado.estado == 'abierto') ? 'selected' : '' %>>
+                            Abierto
+                        </option>
+                        <option value="prestamo" <%= (oldData && oldData.estado == 'prestamo') || (!oldData && incidenteEncontrado && incidenteEncontrado.estado == 'prestamo') ? 'selected' : '' %>>
+                            Prestamo
+                        </option>
                     </select>
                     <% if (errors && errors.estado){ %>
                         <p class="error"><%= errors.estado.msg %></p>
@@ -83,8 +87,7 @@
                     <select class="formulario_input" name="areaAsignada" id="areaAsignada">
                         <option value="">Seleccione una opcion</option>
                         <% listadoAreas.forEach((unArea)=>{ %>
-                            <option value="<%=unArea.codigoAreaId%>" 
-                                <%= oldData && oldData.areaAsignada == unArea.codigoAreaId ? 'selected' : ''  %>>
+                            <option value="<%=unArea.codigoAreaId%>" <%=(oldData && oldData.areaAsignada == unArea.codigoAreaId) || (!oldData && incidenteEncontrado && incidenteEncontrado.codigoAreaId == unArea.codigoAreaId) ? 'selected' : '' %>>
                                 <%=unArea.nombre%>
                             </option>
                         <% }) %>
@@ -98,8 +101,7 @@
                     <select class="formulario_input" name="operador" id="operador">
                         <option value="">Seleccione una opcion</option>
                         <% listadoOperadores.forEach((unOperador)=>{ %>
-                            <option value="<%=unOperador.cuilOperadorId%>"
-                                <%= oldData && oldData.operador == unOperador.cuilOperadorId ? 'selected' : ''  %>>
+                            <option value="<%=unOperador.cuilOperadorId%>" <%= (oldData && oldData.operador == unOperador.cuilOperadorId) || (!oldData && incidenteEncontrado && incidenteEncontrado.cuilOperadorIdAsignado == unOperador.cuilOperadorId) ? 'selected' : ''%>>
                                     <%=unOperador.nombre%> <%=unOperador.apellido%>
                             </option>
                         <% }) %>
@@ -110,7 +112,8 @@
                 </div>   
                 <div class="formulario_div">
                     <label class="formulario_label" for="">DETALLES:</label>
-                    <textarea name="detalles" id="detalles" class="formulario_input"></textarea>
+                    <textarea name="detalles" id="detalles" class="formulario_input"><%=incidenteEncontrado.detalles %>
+                    </textarea>
                 </div>             
                 <div class="formulario_div">
                     <button class="formulario_boton" type="submit">EDITAR</button>
