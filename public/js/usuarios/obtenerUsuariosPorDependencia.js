@@ -3,7 +3,8 @@ document.getElementById('dependencia').addEventListener('change',function(){
     const dependenciaId = this.value;  
     const usuarioSelect = document.getElementById('usuario'); 
     
-    usuarioSelect.innerHTML = '<option value="">Seleccione una opcion </option>';
+    
+    usuarioSelect.innerHTML = '<option value="1">Sin especificar </option>';
 
     if(dependenciaId){
         fetch(`/usuarios/obtenerPorDependencia/${dependenciaId}`)

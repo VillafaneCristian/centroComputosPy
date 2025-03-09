@@ -99,7 +99,9 @@
                         <option value="enStock" <%= oldData && oldData.estado === "enStock" ? 'selected' : '' %> >En stock</option>
                         <option value="instalado" <%= oldData && oldData.estado === "instalado" ? 'selected' : '' %> >instalado</option>
                         <option value="reparacion" <%= oldData && oldData.estado === "reparacion" ? 'selected' : '' %> >Reparacion</option>
-                        <option value="baja" <%= oldData && oldData.estado === "baja" ? 'selected' : '' %> >baja</option>
+                        <option value="paraPrestamo" <%= oldData && oldData.estado === "paraPrestamo" ? 'selected' : '' %> >Para prestamo</option>
+                        <option value="prestado" <%= oldData && oldData.estado === "prestado" ? 'selected' : '' %> >Prestado</option>
+                        <option value="baja" <%= oldData && oldData.estado === "baja" ? 'selected' : '' %> >Baja</option>
                     </select>
                     <% if (errors && errors.estado) { %>
                         <p class="error"><%= errors.estado.msg %></p>
@@ -136,6 +138,24 @@
                         <option value="256GB">256 GB</option>
                         <option value="500GB">500 GB</option>
                         <option value="1TB">1 TB</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="lectograbadoraDVD">LECTOGRABADORA DVD:</label>
+                    <label for="">SI</label>
+                    <input type="radio" name="lectograbadoraDVD" id="si" value="si">
+                    <label for="">NO</label>
+                    <input type="radio" name="lectograbadoraDVD" id="no" value="no">
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="sistemaOperativo">SISTEMA OPERATIVO:</label>
+                    <select class="formulario_input" name="sistemaOperativo" id="sistemaOperativo">
+                        <option value="">Seleccione una opcion</option>
+                        <option value="win11-64">Windows 11 64bits</option>
+                        <option value="win10-64">Windows 10 64bits</option>
+                        <option value="win7-32">Windows 7 32bits</option>
+                        <option value="win7-64">Windows 7 64bits</option>
+                        <option value="winxp-32">Windows XP 32bits</option>
                     </select>
                 </div>
                 <div class="formulario_div">

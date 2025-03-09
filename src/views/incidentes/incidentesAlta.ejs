@@ -43,19 +43,28 @@
                     <label class="formulario_label" for="usuario">USUARIO:</label>
                     <select class="formulario_input" name="usuario" id="usuario">
                         <option value="">Seleccione una opcion</option>
-                        <% listadoUsuarios.forEach((unUsuario)=>{ %>
-                            <option value="<%=unUsuario.cuilUsuarioId%>" <%= oldData && oldData.usuario == unUsuario.cuilUsuarioId ? 'selected' : ''%>>
-                                <%= unUsuario.nombre%> <%=unUsuario.apellido%>
-                            </option>
-                        <% }); %>
                     </select>
                     <% if (errors && errors.usuario){ %>
                         <p class="error" ><%= errors.usuario.msg %></p>
                     <% } %>
                 </div>
                 <div class="formulario_div">
+                    <label class="formulario_label" for="tipoEquipo">TIPO EQUIPAMIENTO:</label>
+                    <select class="formulario_input" name="tipoEquipo" id="tipoEquipo">
+                        <option value="">Seleccione una opcion</option>
+                        <% listadoTiposEquipamiento.forEach((unTipoEquipo)=>{ %>
+                            <option value="<%=unTipoEquipo.tipoEquipamientoId%>" <%= oldData && oldData.tipoEquipo == unTipoEquipo.tipoEquipamientoId ? 'selected' : '' %>>
+                                <%= unTipoEquipo.tipo %>
+                            </option>
+                        <% }) %>
+                    </select>
+                    <% if (errors && errors.tipoEquipo){ %>
+                        <p class="error" ><%= errors.tipoEquipo.msg %></p>
+                    <% } %>
+                </div>     
+                <div class="formulario_div">
                     <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
-                    <select class="formulario_input" name="numeroSerie" id="">
+                    <select class="formulario_input" name="numeroSerie" id="numeroSerie">
                         <option value="">Seleccione una opcion</option>
                         
                         <% listadoEquipos.forEach((unEquipo)=>{ %>
@@ -120,7 +129,8 @@
        
     </footer>
 
-    <script src="/js/incidentes/obtenerUsuariosPorDependencia.js"></script>
+    <script src="/js/usuarios/obtenerUsuariosPorDependencia.js"></script>
+    <script src="/js/equipamiento/obtenerEquiposPorTipo.js"></script>
 
 </body>
 </html>

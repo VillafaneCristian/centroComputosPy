@@ -45,5 +45,16 @@ module.exports = {
             .catch((e)=>{
                 console.log(e);
             });
+    },
+
+    obtenerPorTipo: function(req,res){ 
+        equipamientoService.obtenerPorTipo(req.params.tipoEquipo)
+            .then((listadoEquipos)=>{
+                res.json(listadoEquipos); 
+            })
+            .catch((e)=>{
+                console.log(e)
+            })
+        
     }
 }

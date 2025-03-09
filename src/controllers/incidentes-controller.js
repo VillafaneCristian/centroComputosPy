@@ -4,6 +4,7 @@ const usuariosService = require ('../services/usuarios-service');
 const equipamientoService = require ('../services/equipamiento-service');
 const areasService = require ('../services/areas-service');
 const operadoresService = require ('../services/operadores-service');
+const tiposEquipamiento = require ('../services/tiposEquipamiento-service');
 
 module.exports = {
     alta: function(req,res){
@@ -14,15 +15,17 @@ module.exports = {
         const obtenerDependenciasAlmacenadas = dependenciasService.obtenerDependenciasAlmacenadas();
         const obtenerUsuariosAlmacenados = usuariosService.obtenerUsuariosAlmacenados();
         const obtenerEquipamientoAlmacenados = equipamientoService.obtenerEquipamientoAlmacenado();
+        const obtenerTiposEquipamiento = tiposEquipamiento.obtenerTiposEquipamientoAlmacenados();
 
-        Promise.all([obtenerDependenciasAlmacenadas,obtenerUsuariosAlmacenados,obtenerEquipamientoAlmacenados])
-            .then(([listadoDependencias,listadoUsuarios,listadoEquipos])=>{
+        Promise.all([obtenerDependenciasAlmacenadas,obtenerUsuariosAlmacenados,obtenerEquipamientoAlmacenados,obtenerTiposEquipamiento])
+            .then(([listadoDependencias,listadoUsuarios,listadoEquipos,listadoTiposEquipamiento])=>{
                 res.render('incidentes/incidentesAlta',{
                     errors: errors ? errors : '',
                     oldData: oldData ? oldData : '',
                     listadoDependencias: listadoDependencias ? listadoDependencias : '',
                     listadoUsuarios: listadoUsuarios ? listadoUsuarios : '',
-                    listadoEquipos : listadoEquipos ? listadoEquipos : ''
+                    listadoEquipos : listadoEquipos ? listadoEquipos : '',
+                    listadoTiposEquipamiento: listadoTiposEquipamiento ? listadoTiposEquipamiento : ''
                 });
             })
             .catch((e)=>{
@@ -44,14 +47,14 @@ module.exports = {
         incidentesService.obtenerIncidentesAlmacenados()
             .then((listadoIncidentes) => {
                 const incidentesOperadorLogueado = listadoIncidentes.filter((unIncidente)=>{
-                    return unIncidente.cuilOperadorIdAsignado == req.session.operadorLogueado.cuilOperadorId
+                    return (unIncidente.cuilOperadorIdAsignado == req.session.operadorLogueado.cuilOperadorId) && (unIncidente.estado == 'abierto')
                 });
                 console.log(incidentesOperadorLogueado);
                 const incidentesAsignadosTaller = listadoIncidentes.filter((unIncidente)=>{
-                    return unIncidente.codigoAreaId == 'dgt-taller'
+                    return (unIncidente.codigoAreaId == 'dgt-taller') && (unIncidente.estado == 'abierto')
                 });
                 const incidentesPrestamos = listadoIncidentes.filter((unIncidente)=>{
-                    return unIncidente.estado == 'prestamo'
+                    return (unIncidente.clasificacionIncidente == 'prestamo') && (unIncidente.estado == 'abierto')
                 });
                 res.render('incidentes/incidentesListado.ejs',{
                     incidentesOperadorLogueado: incidentesOperadorLogueado ? incidentesOperadorLogueado : [],
@@ -97,5 +100,32 @@ module.exports = {
             .catch((e)=>{
                 console.log(e);
             }); 
+    },
+
+    cerrar: function(req,res){
+        incidentesService.obtenerIncidentePorId(req.params.numeroIncidente)
+            .then((incidenteEncontrado)=>{
+                console.log(incidenteEncontrado); 
+                res.render('incidentes/incidentesCerrar',{
+                    incidenteEncontrado: incidenteEncontrado ? incidenteEncontrado : ''
+                });
+            })
+            .catch((e)=>{
+                console.log(e)
+            })
+    },
+
+    procesarCierre: function(req,res){
+        incidentesService.cerrarIncidente(req.body)
+            .then((incidenteCerrado)=>{
+                res.redirect('/incidentes/listado');
+            })
+            .catch((e)=>{
+                console.log(e)
+            }) 
+    }, 
+
+    prestamoAlta: function(req,res){
+        res.render('incidentes/incidentePrestamoAlta'); 
     }
 }

@@ -24,12 +24,14 @@ DROP TABLE IF EXISTS dependencias;
 CREATE TABLE dependencias (
 	codigoDependenciaId VARCHAR(20),
     nombre VARCHAR(100) NOT NULL UNIQUE,
-    email VARCHAR(100) UNIQUE,
+    email VARCHAR(100),
     telefono VARCHAR(100),
     piso TINYINT,
     lado VARCHAR(10),
+    edificioId SMALLINT,
     descripcion VARCHAR(200),
-    PRIMARY KEY (codigoDependenciaId)    
+    PRIMARY KEY (codigoDependenciaId),
+    FOREIGN KEY (edificioId) REFERENCES edificios (edificioId)    
 );
 
 DROP TABLE IF EXISTS areas;
@@ -87,8 +89,8 @@ CREATE TABLE equipos (
     tipoEquipamientoId TINYINT,
     marca VARCHAR(50),
     modelo VARCHAR(50),
-    hostname VARCHAR(50) UNIQUE,
-    nroIp VARCHAR(20) UNIQUE,
+    hostname VARCHAR(50),
+    nroIp VARCHAR(20),
     estado VARCHAR(15),
     foto VARCHAR(100),
     procesador VARCHAR(50),
@@ -96,6 +98,7 @@ CREATE TABLE equipos (
     tipoDiscoRigido VARCHAR(10),
     capacidadDiscoRigido VARCHAR(10),
     lectograbadoraDVD VARCHAR(5),
+    sistemaOperativo VARCHAR(30),
     codigoDependenciaId VARCHAR(20),
     cuilUsuarioId BIGINT,
     internetHabilitado VARCHAR(5),

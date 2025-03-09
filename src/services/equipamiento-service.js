@@ -20,13 +20,20 @@ module.exports = {
             memoriaRam: equipamientoData.memoriaRam,
             tipoDiscoRigido: equipamientoData.tipoDisco,
             capacidadDiscoRigido: equipamientoData.capacidadDisco,
+            lectograbadoraDVD: equipamientoData.lectograbadoraDVD,
+            sistemaOperativo: equipamientoData.sistemaOperativo,
             codigoDependenciaId: equipamientoData.dependencia,
             cuilUsuarioId: equipamientoData.usuario,
             internetHabilitado: equipamientoData.internet,
             aclId: equipamientoData.aclAsignado,
             comentarios: equipamientoData.detalles 
         });
-    }
+    },
 
+    obtenerPorTipo: function(tipoEquipo){
+        return db.Equipamiento.findAll({
+            where:{tipoEquipamientoId: tipoEquipo}
+        });
+    }    
 
 }

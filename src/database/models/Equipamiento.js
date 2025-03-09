@@ -59,6 +59,10 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
+        sistemaOperativo:{
+            type: dataTypes.STRING
+        },
+
         codigoDependenciaID: {
             type: dataTypes.STRING
         },

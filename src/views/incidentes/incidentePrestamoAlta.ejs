@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <%- include ('../partials/stylesComunes') %>
+    <%- include ('../partials/stylesFormularios') %>
+    
+    <%- include ('../partials/scriptsComunes') %>
+
+    <title>Alta de un prestamo</title>
+</head>
+<body>
+
+    <header>
+
+        <%- include ('../partials/header.ejs') %>
+
+    </header>
+
+    <main>
+
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo" id="formulario_titulo">PRESTAMO DE EQUIPAMIENTO</h2>
+            <form action="/incidentes/guardar" method="post" novalidate>
+            
+                <div class="formulario_div">
+                    <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
+                    <select class="formulario_input" name="dependencia" id="dependencia">
+                        <option value="">Seleccione una opcion</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="usuario">USUARIO:</label>
+                    <select class="formulario_input" name="usuario" id="usuario">
+                        <option value="">Seleccione una opcion</option>
+                    </select>
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="tipoEquipo">TIPO EQUIPAMIENTO:</label>
+                    <select class="formulario_input" name="tipoEquipo" id="tipoEquipo">
+                        <option value="">Seleccione una opcion</option>
+                    </select>
+                </div>  
+                <div class="formulario_div">
+                    <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
+                    <select class="formulario_input" name="numeroSerie" id="numeroSerie">
+                        <option value="">Seleccione una opcion</option>
+                    </select>
+                </div>       
+                <div class="formulario_div">
+                    <label class="formulario_label" for="detalles">DETALLES</label>
+                    <textarea class="formulario_input" name="detalles" id="detalles"></textarea>
+                </div>    
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">GENERAR PRESTAMO</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+       
+    </footer>
+
+</body>
+</html>

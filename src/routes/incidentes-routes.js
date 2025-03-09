@@ -10,9 +10,12 @@ const incidentesEdicionMiddleware = require ('../middlewares/incidentesEdicion-m
 router.get('/alta', operadorSinLoguearMiddleware, incidentesController.alta);
 router.get('/listado', operadorSinLoguearMiddleware, incidentesController.listado);
 router.get('/editar/:numeroIncidente', operadorSinLoguearMiddleware, incidentesController.editar);
+router.get('/cerrar/:numeroIncidente',operadorSinLoguearMiddleware,incidentesController.cerrar);
+router.get('/prestamoAlta',operadorSinLoguearMiddleware,incidentesController.prestamoAlta);
 
 router.post('/guardar', incidentesValidations, incidentesMiddleware, incidentesController.guardar);
 
 router.put('/procesarEditar', operadorSinLoguearMiddleware, incidentesEdicionValidations, incidentesEdicionMiddleware, incidentesController.procesarEditar);
+router.put('/procesarCierre/:numeroIncidente', operadorSinLoguearMiddleware,incidentesController.procesarCierre);
 
 module.exports = router; 

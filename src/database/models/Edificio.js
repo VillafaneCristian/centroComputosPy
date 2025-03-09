@@ -35,7 +35,11 @@ module.exports = function (sequelize , dataTypes) {
         Edificio.hasMany (models.Area, {
             as: 'areas',
             foreignKey: 'edificioId'
-        })
+        });
+        Edificio.hasMany (models.Dependencia, {
+            as: 'dependencias',
+            foreignKey: 'edificioId'
+        });
     }
     
 

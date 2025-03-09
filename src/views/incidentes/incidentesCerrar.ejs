@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <%- include ('../partials/stylesComunes') %>
+        <%- include ('../partials/stylesFormularios') %>
+    
+        <%- include ('../partials/scriptsComunes') %>
+
+    <title>Cierre de Incidente</title>
+</head>
+<body>
+    <header>
+
+        <%- include ('../partials/header.ejs') %>
+
+    </header>
+    <main>
+        
+        <%- include ('../partials/accesosRapidos.ejs')%>
+
+        <section class="formulario">
+            <h2 class="formulario_titulo" id="formulario_titulo">CIERRE DE INCIDENTE</h2>
+            
+            <form action="/incidentes/procesarCierre/<%=incidenteEncontrado.nroIncidenteId %>?_method=put" method="post" novalidate>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="numeroIncidente">NUMERO DE INCIDENTE: </label>
+                    <input class="formulario_input" type="text" name="numeroIncidente" value="<%=incidenteEncontrado.nroIncidenteId %>" readonly>
+                </div>
+
+                <div class="formulario_div">
+                    <label class="formulario_label" for="dependencia">DEPENDENCIA:</label>
+                    <input class="formulario_input" type="text" name="dependencia" id="dependencia" value="<%=incidenteEncontrado.codigoDependenciaId %>" readonly>
+                </div> 
+
+                <div class="formulario_div">
+                    <label class="formulario_label" for="tituloIncidente">TITULO DEL INCIDENTE:</label>
+                    <input class="formulario_input" type="text" name="tituloIncidente" id="tituloIncidente" value="<%=incidenteEncontrado.tituloIncidente %>" readonly>
+                </div> 
+                <div class="formulario_div">
+                    <label class="formulario_label" for="descripcionIncidente">DESCRIPCION DEL INCIDENTE:</label>
+                    <textarea class="formulario_input" name="descripcionIncidente" id="descripcionIncidente" readonly><%=incidenteEncontrado.descripcionIncidente%></textarea>
+                </div>     
+                
+                <div class="formulario_div">
+                    <label class="formulario_label" for="detalleCierre">DETALLE DEL CIERRE:</label>
+                    <textarea class="formulario_input" name="detalleCierre" id="detalleCierre"></textarea>
+                </div>    
+                             
+                <div class="formulario_div">
+                    <button class="formulario_boton" type="submit">CERRAR</button>
+                </div>
+            </form>
+        </section>
+        
+    </main>
+    <footer>
+       
+    </footer>
+
+</body>
+</html>

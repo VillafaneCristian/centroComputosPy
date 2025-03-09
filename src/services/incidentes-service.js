@@ -66,7 +66,6 @@ module.exports = {
     actualizarDatosIncidente: function (incidenteData){
         return db.Incidente.update({
             clasificacionIncidente: incidenteData.clasificacionIncidente,
-            estado: incidenteData.estado,
             codigoAreaId: incidenteData.areaAsignada,
             cuilOperadorIdAsignado: incidenteData.operador,
             detalles: incidenteData.detalles
@@ -74,5 +73,16 @@ module.exports = {
         {
             where:{nroIncidenteId: incidenteData.numeroIncidente}
         });
+    },
+
+    cerrarIncidente: function(incidenteData){
+        return db.Incidente.update({
+            estado: 'cerrado',
+            descripcionCierre: incidenteData.detalleCierre,
+            fechaCierre: Date.now()
+        },
+        {
+            where: {nroIncidenteId: incidenteData.numeroIncidente}
+        }); 
     }
 };

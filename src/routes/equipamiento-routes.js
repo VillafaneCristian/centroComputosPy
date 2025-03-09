@@ -7,6 +7,7 @@ const equipamientoMiddleware = require ('../middlewares/equipamiento-middleware'
 const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear-middleware');
 
 router.get('/alta', operadorSinLoguearMiddleware, equipamientoController.alta);
+router.get('/obtenerPorTipo/:tipoEquipo',operadorSinLoguearMiddleware, equipamientoController.obtenerPorTipo);
 
 router.post('/guardar', equipamientoValidations, equipamientoMiddleware, equipamientoController.guardar);
 

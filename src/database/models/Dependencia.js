@@ -29,6 +29,10 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING
         },
 
+        edificioId: {
+            type: dataTypes.INTEGER
+        },
+
         descripcion: {
             type: dataTypes.STRING
         }
@@ -54,6 +58,10 @@ module.exports = (sequelize, dataTypes) => {
         Dependencia.hasMany(models.Incidente,{
             as: 'incidentes',
             foreignKey: 'codigoDependenciaId'
+        });
+        Dependencia.belongsTo(models.Edificio,{
+            as: 'edificio',
+            foreignKey: 'edificioId'
         });
     };
 
