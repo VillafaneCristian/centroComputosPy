@@ -8,7 +8,8 @@ const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear
 
 router.get('/alta', operadorSinLoguearMiddleware, operadoresController.alta); 
 router.get('/listado', operadorSinLoguearMiddleware, operadoresController.listado);
-router.get('/modificarAvatar', operadorSinLoguearMiddleware, operadoresController.modificarAvatar); 
+router.get('/modificarAvatar', operadorSinLoguearMiddleware, operadoresController.modificarAvatar);
+router.get('/obtenerPorArea/:areaId', operadorSinLoguearMiddleware, operadoresController.obtenerPorArea); 
 
 
 router.post('/guardar', operadoresValidations, operadoresMiddleware, operadoresController.guardar);

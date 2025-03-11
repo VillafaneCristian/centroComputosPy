@@ -31,7 +31,7 @@
         <%- include ('../partials/accesosRapidos.ejs')%>
 
         <section class="formulario">
-            <h2 class="formulario_titulo">MODIFICACION DE INCIDENTE </h2>
+            <h2 class="formulario_titulo" id="formulario_titulo">MODIFICACION DE INCIDENTE </h2>
             <form action="/incidentes/procesarEditar?_method=put" method="post" novalidate>
                 <div class="formulario_div">
                     <Numero for="" class="formulario_label">Numero Incidente:</label>
@@ -109,6 +109,9 @@
     <footer>
        
     </footer>
+
+    <script src="/js/operadores/obtenerOperadorPorArea.js"></script>
+
 </body>
 </html>
 </body>

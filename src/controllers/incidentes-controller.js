@@ -5,6 +5,7 @@ const equipamientoService = require ('../services/equipamiento-service');
 const areasService = require ('../services/areas-service');
 const operadoresService = require ('../services/operadores-service');
 const tiposEquipamiento = require ('../services/tiposEquipamiento-service');
+const tiposEquipamientoService = require('../services/tiposEquipamiento-service');
 
 module.exports = {
     alta: function(req,res){
@@ -71,7 +72,6 @@ module.exports = {
         const oldData = req.session.oldData;
         req.session.errors = null;
         req.session.oldData = null;
-        console.log(errors); 
 
         const obtenerAreasAlmacenadas = areasService.obtenerAreasAlmacenadas();
         const obtenerOperadoresAlmacenados = operadoresService.obtenerOperadoresAlmacenados();
@@ -126,6 +126,29 @@ module.exports = {
     }, 
 
     prestamoAlta: function(req,res){
-        res.render('incidentes/incidentePrestamoAlta'); 
+        const errors = req.session.errors;
+        const oldData = req.session.oldData;
+        req.session.errors = null;
+        req.session.oldData = null;
+
+        const obtenerDependenciasAlmacenadas = dependenciasService.obtenerDependenciasAlmacenadas();
+        const obtenerTiposEquipamientoAlmacenados = tiposEquipamientoService.obtenerTiposEquipamientoAlmacenados();
+
+        Promise.all([obtenerDependenciasAlmacenadas,obtenerTiposEquipamientoAlmacenados])
+            .then(([listadoDependencias,listadoTiposEquipamiento])=>{
+                res.render('incidentes/incidentePrestamoAlta',{
+                    errors: errors ? errors : '',
+                    oldData: oldData ? oldData : '',
+                    listadoDependencias: listadoDependencias ? listadoDependencias : '',
+                    listadoTiposEquipamiento: listadoTiposEquipamiento ? listadoTiposEquipamiento : ''
+                }); 
+            })
+            .catch((e)=>{
+                console.log(e);
+            })
+    },
+
+    guardarPrestamo: function(req,res){
+        res.send(req.body);
     }
 }

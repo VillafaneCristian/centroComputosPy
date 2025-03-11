@@ -26,6 +26,4 @@ document.getElementById('tipoEquipo').addEventListener('change',function(){
                 console.log(e);
             });
     }
-
-
 });

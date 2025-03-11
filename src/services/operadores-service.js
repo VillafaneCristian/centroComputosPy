@@ -22,6 +22,12 @@ module.exports = {
 
     obtenerOperadorPorCuil: function(operadorCuil) {
         return db.Operador.findByPk(operadorCuil); 
+    },
+
+    obtenerPorArea: function(areaId){
+        return db.Operador.findAll({
+            where:{codigoAreaId: areaId}
+        })
     }
 
 };

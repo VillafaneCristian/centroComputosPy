@@ -44,6 +44,17 @@ module.exports = {
     salir: function(req,res){
         req.session.destroy();
         res.redirect('/login');
+    },
+
+    obtenerPorArea: function(req,res){
+        operadoresService.obtenerPorArea(req.params.areaId)
+            .then((listadoAreas)=>{
+                res.json(listadoAreas);
+            })
+            .catch((e)=>{
+                console.log(e);
+            })
+
     }
 
 }

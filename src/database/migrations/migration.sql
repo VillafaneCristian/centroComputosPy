@@ -87,18 +87,17 @@ DROP TABLE IF EXISTS equipos;
 CREATE TABLE equipos (
 	nroSerieId VARCHAR(100),
     tipoEquipamientoId TINYINT,
-    marca VARCHAR(50),
-    modelo VARCHAR(50),
+    marcasModelosId INT,
     hostname VARCHAR(50),
     nroIp VARCHAR(20),
     estado VARCHAR(15),
-    foto VARCHAR(100),
-    procesador VARCHAR(50),
-    memoriaRam VARCHAR(50),
-    tipoDiscoRigido VARCHAR(10),
-    capacidadDiscoRigido VARCHAR(10),
+    procesador VARCHAR(100),
+    memoriaRam VARCHAR(100),
+    tipoDiscoRigido VARCHAR(20),
+    capacidadDiscoRigido VARCHAR(20),
     lectograbadoraDVD VARCHAR(5),
-    sistemaOperativo VARCHAR(30),
+    sistemaOperativo VARCHAR(200),
+    foto VARCHAR(100),
     codigoDependenciaId VARCHAR(20),
     cuilUsuarioId BIGINT,
     internetHabilitado VARCHAR(5),
@@ -106,6 +105,7 @@ CREATE TABLE equipos (
     comentarios VARCHAR (300),
     PRIMARY KEY (nroSerieId),
     FOREIGN KEY (tipoEquipamientoId) REFERENCES tiposEquipamiento (tipoEquipamientoId),
+    FOREIGN KEY (marcasModelosId) REFERENCES marcasModelos (marcasModelosId),
     FOREIGN KEY (codigoDependenciaId) REFERENCES dependencias (codigoDependenciaId),
     FOREIGN KEY (cuilUsuarioId) REFERENCES usuarios (cuilUsuarioId),
     FOREIGN KEY (aclId) REFERENCES acls (aclId)
@@ -137,19 +137,19 @@ CREATE TABLE incidentes (
     FOREIGN KEY (cuilOperadorIdAsignado) REFERENCES operadores (cuilOperadorId)
 );
 
-DROP TABLE IF EXISTS equiposDetalles;
-CREATE TABLE equiposDetalles (
-	equiposDetallesId SMALLINT AUTO_INCREMENT,
-    marca VARCHAR(300), 
-    modelo VARCHAR(100),
+DROP TABLE IF EXISTS marcasModelos;
+CREATE TABLE marcasModelos (
+	marcasModelosId INT AUTO_INCREMENT,
+    marcaModelo VARCHAR(400), 
     tipoEquipamientoId TINYINT,
-    procesador VARCHAR(50),
-    memoriaRam VARCHAR(50),
-    tipoDiscoRigido VARCHAR(10),
-    capacidadDiscoRigido VARCHAR(10),
+    procesador VARCHAR(100),
+    memoriaRam VARCHAR(100),
+    tipoDiscoRigido VARCHAR(20),
+    capacidadDiscoRigido VARCHAR(20),
     lectograbadoraDVD VARCHAR(5),
-    foto VARCHAR(100),
+    sistemaOperativo VARCHAR(200),
+    foto VARCHAR(200),
     detalles TEXT,
-    PRIMARY KEY (equiposDetallesId),
+    PRIMARY KEY (marcasModelosId),
     FOREIGN KEY (tipoEquipamientoId) REFERENCES tiposEquipamiento (tipoEquipamientoId)
 ); 
