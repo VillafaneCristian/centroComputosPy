@@ -59,7 +59,7 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
-        codigoDependenciaID: {
+        codigoDependenciaId: {
             type: dataTypes.STRING
         },
 
@@ -95,7 +95,7 @@ module.exports = function (sequelize, dataTypes){
         }); 
         Equipamiento.belongsTo(models.marcaModelo,{
             as:'marcaModelo',
-            foreignKey: 'marcaModeloId'
+            foreignKey: 'marcasModelosId'
         }); 
         Equipamiento.belongsTo(models.Dependencia,{
             as: 'dependencia',

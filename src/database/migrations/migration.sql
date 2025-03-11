@@ -83,6 +83,23 @@ CREATE TABLE usuarios(
     FOREIGN KEY (codigoDependenciaId) REFERENCES dependencias (codigoDependenciaId)
 );
 
+DROP TABLE IF EXISTS marcasModelos;
+CREATE TABLE marcasModelos (
+	marcasModelosId INT AUTO_INCREMENT,
+    marcaModelo VARCHAR(400), 
+    tipoEquipamientoId TINYINT,
+    procesador VARCHAR(100),
+    memoriaRam VARCHAR(100),
+    tipoDiscoRigido VARCHAR(20),
+    capacidadDiscoRigido VARCHAR(20),
+    lectograbadoraDVD VARCHAR(5),
+    sistemaOperativo VARCHAR(200),
+    foto VARCHAR(200),
+    detalles TEXT,
+    PRIMARY KEY (marcasModelosId),
+    FOREIGN KEY (tipoEquipamientoId) REFERENCES tiposEquipamiento (tipoEquipamientoId)
+); 
+
 DROP TABLE IF EXISTS equipos;
 CREATE TABLE equipos (
 	nroSerieId VARCHAR(100),
@@ -103,6 +120,8 @@ CREATE TABLE equipos (
     internetHabilitado VARCHAR(5),
     aclId TINYINT,    
     comentarios VARCHAR (300),
+    ordenCompra VARCHAR(30),
+    inventario VARCHAR(30),
     PRIMARY KEY (nroSerieId),
     FOREIGN KEY (tipoEquipamientoId) REFERENCES tiposEquipamiento (tipoEquipamientoId),
     FOREIGN KEY (marcasModelosId) REFERENCES marcasModelos (marcasModelosId),
@@ -137,19 +156,3 @@ CREATE TABLE incidentes (
     FOREIGN KEY (cuilOperadorIdAsignado) REFERENCES operadores (cuilOperadorId)
 );
 
-DROP TABLE IF EXISTS marcasModelos;
-CREATE TABLE marcasModelos (
-	marcasModelosId INT AUTO_INCREMENT,
-    marcaModelo VARCHAR(400), 
-    tipoEquipamientoId TINYINT,
-    procesador VARCHAR(100),
-    memoriaRam VARCHAR(100),
-    tipoDiscoRigido VARCHAR(20),
-    capacidadDiscoRigido VARCHAR(20),
-    lectograbadoraDVD VARCHAR(5),
-    sistemaOperativo VARCHAR(200),
-    foto VARCHAR(200),
-    detalles TEXT,
-    PRIMARY KEY (marcasModelosId),
-    FOREIGN KEY (tipoEquipamientoId) REFERENCES tiposEquipamiento (tipoEquipamientoId)
-); 

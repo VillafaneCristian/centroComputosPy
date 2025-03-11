@@ -2,7 +2,7 @@ document.getElementById('tipoEquipo').addEventListener('change',function(){
     const tipoEquipo = this.value;
     const numeroSerieSelect = document.getElementById('numeroSerie');
 
-    numeroSerieSelect.innerHTML = '<option value="sin_especificar">Sin especificar</option>'
+    numeroSerieSelect.innerHTML = '<option value="sin-especificar">Sin especificar</option>'
 
     if (tipoEquipo){
         fetch(`/equipamiento/obtenerPorTipo/${tipoEquipo}`)
