@@ -55,10 +55,6 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
-        foto: {
-            type: dataTypes.STRING
-        },
-
         codigoDependenciaId: {
             type: dataTypes.STRING
         },
@@ -73,6 +69,18 @@ module.exports = function (sequelize, dataTypes){
 
         aclId: {
             type: dataTypes.INTEGER
+        },
+
+        inventario: {
+            type: dataTypes.STRING
+        },
+
+        ordenCompra: {
+            type: dataTypes.STRING
+        },
+
+        detalleOrdenCompra: {
+            type: dataTypes.STRING
         },
 
         comentarios: {
@@ -93,7 +101,7 @@ module.exports = function (sequelize, dataTypes){
             as:'tipoEquipamiento',
             foreignKey: 'tipoEquipamientoId'
         }); 
-        Equipamiento.belongsTo(models.marcaModelo,{
+        Equipamiento.belongsTo(models.MarcaModelo,{
             as:'marcaModelo',
             foreignKey: 'marcasModelosId'
         }); 

@@ -18,6 +18,7 @@ const edificiosRoutes = require ('./edificios-routes');
 const equipamientoRoutes = require ('./equipamiento-routes');
 const incidentesRoutes = require ('./incidentes-routes');
 const loginRoutes = require ('./login-routes');
+const marcasModelosRoutes = require ('./marcasModelos-routes');
 
 
 /*************rutas principales de cada seccion de la aplicacion ********/
@@ -31,6 +32,7 @@ router.use('/edificios', edificiosRoutes);
 router.use('/equipamiento', equipamientoRoutes);
 router.use('/incidentes', incidentesRoutes);
 router.use('/login',loginRoutes);
+router.use('/marcasModelos', marcasModelosRoutes);
 
 
 module.exports = router; 

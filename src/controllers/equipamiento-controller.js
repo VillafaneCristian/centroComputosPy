@@ -54,7 +54,16 @@ module.exports = {
             })
             .catch((e)=>{
                 console.log(e)
+            })   
+    },
+
+    obtenerPorMarcaModelo: function(req,res){
+        equipamientoService.obtenerPorMarcaModelo(req.params.marcaModeloId)
+            .then((listadoPorMarcaModelo)=>{
+                res.json(listadoPorMarcaModelo);
             })
-        
+            .catch((e)=>{
+                console.log(e)
+            })
     }
 }

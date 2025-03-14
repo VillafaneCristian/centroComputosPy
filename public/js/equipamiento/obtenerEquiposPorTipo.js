@@ -10,11 +10,10 @@ document.getElementById('tipoEquipo').addEventListener('change',function(){
                 return response.json();
             })
             .then((data)=>{
+                const codigoDependencia = document.getElementById('dependencia').value;
                 data.forEach((unEquipo)=>{
-
-                    const codigoDependencia = document.getElementById('dependencia').value;
                     
-                    if (codigoDependencia && codigoDependencia == unEquipo.codigoDependenciaId){
+                    if (codigoDependencia && (unEquipo.codigoDependenciaId == codigoDependencia)){
                         const option = document.createElement('option');
                         option.value = unEquipo.nroSerieId;
                         option.textContent = unEquipo.nroSerieId;

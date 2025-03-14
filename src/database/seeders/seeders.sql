@@ -2,26 +2,26 @@ USE dgtapp;
 INSERT INTO tiposEquipamiento 
 	(tipo, descripcion)
 VALUES
-    ('sin especificar', 'valor de tipos generico que se usa cuando no aplica ninguno de las opcionesd de la tabla'),
-	('desktop', 'Equipos de escritorios diseñados para instalarse en una ubicación fija, incluye los equipos AIO'),
-    ('laptop', 'Equipo informático portatil, también conocido como notebook'),
-    ('impresora','Periféricos utilizados para imprimir información, incluye los equipos multifunción'),
-    ('escaner', 'Periféricos que captura imagenes, los procesa y muestra en pantalla, no incluye los equipos multifunción'),
-    ('monitor', 'Periféricos que muestran información que procesa una computadora');
+    ('Sin especificar', 'valor de tipos generico que se usa cuando no aplica ninguno de las opcionesd de la tabla'),
+	('Desktop', 'Equipos de escritorios diseñados para instalarse en una ubicación fija, incluye los equipos AIO'),
+    ('Laptop', 'Equipo informático portatil, también conocido como notebook'),
+    ('Impresora','Periféricos utilizados para imprimir información, incluye los equipos multifunción'),
+    ('Escaner', 'Periféricos que captura imagenes, los procesa y muestra en pantalla, no incluye los equipos multifunción'),
+    ('Monitor', 'Periféricos que muestran información que procesa una computadora');
 
 INSERT INTO acls 
 	(nombre, descripcion)
 VALUES
-    ('sin_especificar', 'Valor que se usa cuando no aplica ninguna de las otras opciones'),
-	('prosecretarios','Acceso cortado entre las 11 y las 14 hs'),
-    ('ilimitado', 'sin limitaciones de acceso'),
-    ('whatsappWeb','solo acceso a la plataforma de chat'),
-    ('redes', 'acceso a redes sociales');
+    ('Sin especificar', 'Valor que se usa cuando no aplica ninguna de las otras opciones'),
+	('Prosecretarios','Acceso cortado entre las 11 y las 14 hs'),
+    ('Ilimitado', 'sin limitaciones de acceso'),
+    ('WhatsappWeb','solo acceso a la plataforma de chat'),
+    ('Redes', 'acceso a redes sociales');
     
 INSERT INTO edificios
 	(ubicacion,localidad,codigoPostal,descripcion)
 VALUES
-    ('sin_especificar','sin especificar','sin especificar','Valor que se usa cuando no aplica ninguna de las otras opciones'),
+    ('Sin especificar','sin especificar','sin especificar','Valor que se usa cuando no aplica ninguna de las otras opciones'),
 	('Av. Comodoro Py 2002','CABA','C1104BEN','Tribunales de Comodoro Py'),
     ('Libertad 731','CABA','C1012AAO','Edificio del consejo de la Magistratura (en el 8vo piso esta la DGT)'),
     ('Lavalle 1240','CABA','C1048AAF','Edificio donde se encuentra el DataCenter'),
@@ -32,12 +32,12 @@ VALUES
 INSERT INTO areas
 	(codigoAreaId, nombre, encargado, email, telefono, edificioId)
 VALUES
-    ('sin-especificar', 'sin especificar','sin especificar','sinEspecificar@pjn.gov.ar','',1),
-	('dgt-c2', 'Centro de computos de Comodoro Py', 'Hernan Garay', 'dgt.cc-comodoropy@pjn.gov.ar', '4032-7480', 1),
-    ('dgt-taller', 'Taller', 'Guillermo Iglesias', 'dgt.taller@pjn.gov.ar', '4124-4444', 5),
-    ('dgt-redes', 'Redes', 'Pablo Rossi', 'dgt.redes@pjn.gov.ar', '4124-8888', 3),
-    ('dgt-servidores', 'Servidores', 'Diego Charek', 'dgt.servidores@pjn.gov.ar', '4124-3333', 3),
-    ('dgt-cableado', 'Cableado', 'Raul Zelaya', 'dgt.cableado@pjn.gov.ar', '4124-1111', 6);
+    ('SIN-ESPECIFICAR', 'sin especificar','sin especificar','sinEspecificar@pjn.gov.ar','',1),
+	('DGT-C2', 'Centro de computos de Comodoro Py', 'Hernan Garay', 'dgt.cc-comodoropy@pjn.gov.ar', '4032-7480', 1),
+    ('DGT-TALLER', 'Taller', 'Guillermo Iglesias', 'dgt.taller@pjn.gov.ar', '4124-4444', 5),
+    ('DGT-REDES', 'Redes', 'Pablo Rossi', 'dgt.redes@pjn.gov.ar', '4124-8888', 3),
+    ('DGT-SERVIDORES', 'Servidores', 'Diego Charek', 'dgt.servidores@pjn.gov.ar', '4124-3333', 3),
+    ('DGT-CABLEADO', 'Cableado', 'Raul Zelaya', 'dgt.cableado@pjn.gov.ar', '4124-1111', 6);
 
 INSERT INTO operadores
     (cuilOperadorId, nombre, apellido, email, telefono, codigoAreaId, avatar, contrasenia, rol)
@@ -51,10 +51,11 @@ VALUES
     INSERT INTO equipos 
         (nroSerieId,tipoEquipamientoId,codigoDependenciaId,cuilUsuarioId,aclId) 
     VALUES
-        ('sin_especificar','1','sin_especificar','1','1'),
-        ('LKPCAKX','2','f01_sec2','1','1'),
-        ('ANCI400250124','2','f03_sec5','1','1'),
-        ('460015652356','4','v10','1','1');
+        ('SIN-ESPECIFICAR','1','SIN-ESPECIFICAR','1','1');
 
+    INSERT INTO usuarios 
+        (cuilUsuarioId,nombre,apellido,codigoDependenciaId) 
+    VALUES
+        (1,'Sin','especificar','SIN-ESPECIFICAR');
     
     

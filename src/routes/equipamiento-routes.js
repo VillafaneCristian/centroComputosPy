@@ -8,6 +8,7 @@ const operadorSinLoguearMiddleware = require ('../middlewares/operadorSinLoguear
 
 router.get('/alta', operadorSinLoguearMiddleware, equipamientoController.alta);
 router.get('/obtenerPorTipo/:tipoEquipo',operadorSinLoguearMiddleware, equipamientoController.obtenerPorTipo);
+router.get('/obtenerPorMarcaModelo/:marcaModeloId',operadorSinLoguearMiddleware,equipamientoController.obtenerPorMarcaModelo);
 
 router.post('/guardar', equipamientoValidations, equipamientoMiddleware, equipamientoController.guardar);
 

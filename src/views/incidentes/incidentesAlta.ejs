@@ -61,7 +61,13 @@
                     <% if (errors && errors.tipoEquipo){ %>
                         <p class="error" ><%= errors.tipoEquipo.msg %></p>
                     <% } %>
-                </div>     
+                </div>
+                <div class="formulario_div">
+                    <label class="formulario_label" for="marcasModelos">MARCAS Y MODELOS:</label>
+                    <select class="formulario_input" name="marcasModelos" id="marcasModelos">
+                        <option value="">Seleccione una opcion</option>
+                    </select>
+                </div>
                 <div class="formulario_div">
                     <label class="formulario_label" for="numeroSerie">NUMERO DE SERIE:</label>
                     <select class="formulario_input" name="numeroSerie" id="numeroSerie">
@@ -131,6 +137,8 @@
 
     <script src="/js/usuarios/obtenerUsuariosPorDependencia.js"></script>
     <script src="/js/equipamiento/obtenerEquiposPorTipo.js"></script>
+    <script src="/js/marcasModelos/obtenerMarcasModelosPorTipoEquipamiento.js"></script>
+    <script src="/js/equipamiento/obtenerEquiposPorMarcaModelo.js"></script>
 
 </body>
 </html>

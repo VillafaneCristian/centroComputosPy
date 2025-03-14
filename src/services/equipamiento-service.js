@@ -15,7 +15,6 @@ module.exports = {
             hostname: equipamientoData.hostname,
             nroIp: equipamientoData.numeroIp,
             estado: equipamientoData.estado,
-            foto: equipamientoData.foto,
             procesador: equipamientoData.procesador,
             memoriaRam: equipamientoData.memoriaRam,
             tipoDiscoRigido: equipamientoData.tipoDisco,
@@ -34,6 +33,12 @@ module.exports = {
         return db.Equipamiento.findAll({
             where:{tipoEquipamientoId: tipoEquipo}
         });
-    }    
+    },
+    
+    obtenerPorMarcaModelo: function(marcaModeloId){
+        return db.Equipamiento.findAll({
+            where:{marcasModelosId: marcaModeloId}
+        })
+    }
 
 }

@@ -1,6 +1,6 @@
 module.exports = function (sequelize, dataTypes){
 
-    const alias = 'marcaModelo';
+    const alias = 'MarcaModelo';
 
     cols = {
 
@@ -54,7 +54,7 @@ module.exports = function (sequelize, dataTypes){
     };
 
     config = {
-        tableName: 'MarcaModelo',
+        tableName: 'MarcasModelos',
         timestamps: false,
         underscored: false
     }

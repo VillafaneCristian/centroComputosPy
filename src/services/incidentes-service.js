@@ -41,7 +41,6 @@ module.exports = {
     },
 
     obtenerIncidentePorId: function(numeroIncidente){
-        console.log(numeroIncidente);
         return db.Incidente.findByPk(numeroIncidente,{
             attributes: [
                 "nroIncidenteId",
