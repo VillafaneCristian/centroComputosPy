@@ -46,6 +46,10 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
+        teclaBiosTeclaMenuBooteo: {
+            type: dataTypes.STRING
+        },
+
         detalles: {
             type: dataTypes.STRING
         }

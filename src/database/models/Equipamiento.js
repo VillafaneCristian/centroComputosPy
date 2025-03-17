@@ -27,6 +27,10 @@ module.exports = function (sequelize, dataTypes){
             type: dataTypes.STRING
         },
 
+        ipFija: {
+            type: dataTypes.STRING
+        },
+
         estado: {
             type: dataTypes.STRING
         },
@@ -105,6 +109,12 @@ module.exports = function (sequelize, dataTypes){
             as:'marcaModelo',
             foreignKey: 'marcasModelosId'
         }); 
+
+        Equipamiento.belongsTo(models.Estado,{
+            as: 'estado',
+            foreignKey: 'estadoId'
+        });
+
         Equipamiento.belongsTo(models.Dependencia,{
             as: 'dependencia',
             foreignKey: 'codigoDependenciaId'

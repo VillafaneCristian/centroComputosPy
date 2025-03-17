@@ -16,8 +16,8 @@ module.exports = function (sequelize, dataTypes){
         fechaAlta: {
             type: dataTypes.DATE
         },
-        clasificacionIncidente: {
-            type: dataTypes.STRING
+        clasificacionIncidenteId: {
+            type: dataTypes.INTEGER
         },
         estado: {
             type: dataTypes.STRING
@@ -68,6 +68,10 @@ module.exports = function (sequelize, dataTypes){
         Incidente.belongsTo(models.Usuario,{
             as: 'usuario',
             foreignKey: 'cuilUsuarioId'
+        });
+        Incidente.belongsTo(models.ClasificacionIncidente,{
+            as: 'clasificacionesIncidentes',
+            foreignKey: 'clasificacionIncidenteId'
         });
         Incidente.belongsTo(models.Equipamiento,{
             as: 'equipamiento',

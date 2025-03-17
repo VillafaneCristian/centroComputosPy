@@ -57,5 +57,85 @@ VALUES
         (cuilUsuarioId,nombre,apellido,codigoDependenciaId) 
     VALUES
         (1,'Sin','especificar','SIN-ESPECIFICAR');
+
+
+    /*******NUEVOS SEEDERS AL 16/03/2025*******/
+
+
+    INSERT INTO estados
+        (estado) 
+    VALUES
+        ('Instalado'),
+        ('Para prestamo'),
+        ('Prestado'),
+        ('Stock para instalacion'),
+        ('Dado de baja');
+
+    INSERT INTO clasificacionIncidentes
+        (clasificacionNombre)
+    VALUES  
+        ('Entrega de insumos'),
+        ('Permisos de internet'),
+        ('ABM de carpetas en el servidor'),
+        ('ABM de usuarios de dominio'),
+        ('Instalacion de software'),
+        ('Reparacion de equipos'),
+        ('Configuracion de impresora'),
+        ('Otros');
+
+    INSERT INTO edificios
+        (ubicacion,localidad,codigoPostal,descripcion)
+    VALUES
+        ('Sin especificar',NULL,NULL,NULL),
+        ('Av. Comodoro Py 2002','CABA','C1104BEN',NULL),
+        ('Libertad 731','CABA','C1012AA0',NULL),
+        ('Lavalle 1240','CABA','C1048AAF',NULL),
+        ('Av. De los Inmigrantes 1950','CABA','C1104ASO',NULL),
+        ('Cerrito 536','CABA','C1010AL',NULL),
+        ('Viamonte 1147','CABA','C1053ABW',NULL);
+
+INSERT INTO acls
+    (nombre,descripcion)
+VALUES  
+    ('IP permitidos','Internet sin redes sociales, youtube y zoom'),
+    ('Usuarios ampliados','Internet con redes sociales, youtube'),
+    ('Zoom','Internet con redes sociales, youtube y zoom'),
+    ('Computos ampliados','Internet con redes sociales, youtube'),
+    ('Prosecretarios','Internet sin redes sociales, youtube y zoom'),
+    ('Youtube','Intenet sin redes sociales y con youtube'),
+    ('Restringido','Solo determinadas paginas indicadas por la DGT y whatsapp web');
     
-    
+INSERT INTO tiposEquipamiento
+    (tipo,descripcion)
+VALUES  
+    ('Sin especificar',NULL),
+    ('Desktop',NULL),
+    ('Laptop',NULL),
+    ('Impresora',NULL),
+    ('Escaner',NULL),
+    ('Monitor',NULL);
+
+
+INSERT INTO areas   
+    (codigoAreaId,nombre,encargado,email,telefono,descripcion,edificioId)
+VALUES
+    ('SIN-ESPECIFICAR','Sin especificar',NULL,NULL,NULL,NULL,1),
+    ('DGT-C2','Centro de Cómputos de Comodoro Py','Jorge JURE','dgt.cc-comodoropy@pjn.gov.ar','4032-7479/7480/7481/7482',NULL,2),
+    ('DGT-TALLER','Taller','Guillermo Iglesias','dgt.taller@pjn.gov.ar',NULL,NULL,6),
+    ('DGT-INSUMOS','Insumos','Paula Roldán','dgt.insumos@pjn.gov.ar','4124-4545',NULL,6),
+    ('DGT-CABLEADO','Cableado','Raúl ZELAYA','dgt.cableado@pjn.gov.ar',NULL,NULL,7),
+    ('DGT-OPERACIONES','Operaciones','Gastón CALLEJÓN','dgt.operaciones@pjn.gov.ar',NULL,NULL,4),
+    ('DGT-SERVIDORES','Servidores','Diego CHAREK','dgt.servidores@pjn.gov.ar',NULL,NULL,4),
+    ('DGT-REDES','Redes','Pablo ROSSI','dgt.redes@pjn.gov.ar',NULL,NULL,4),
+    ('DGT-AUDIOVIDEO','Audio y video','Gabriel Giannateli','dgt.audiovideo@pjn.gov.ar',NULL,NULL,4);
+
+
+
+INSERT INTO operadores
+    (cuilOperadorId, nombre, apellido, email, telefono, codigoAreaId, avatar, contrasenia, rol)
+VALUES  
+    ('1', 'Sin', 'especificar', 'sinEspecificar@pjn.gov.ar', '', 'SIN-ESPECIFICAR', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',NULL),
+    ('20318243655', 'Cristian', 'VILLAFAÑE', 'cristian.villafane@pjn.gov.ar', '4032-7479', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',NULL),
+    ('27181628419', 'Graciela', 'OLIVERA', 'graciela.olivera@pjn.gov.ar', '4032-7479', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',NULL),
+    ('20146363483', 'Hernan', 'GARAY', 'hernan.garay@pjn.gov.ar', '4032-7808', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',NULL),
+    ('20253141612', 'Hector', 'CAMPOS', 'hector.campos@pjn.gov.ar', '4032-7480', 'dgt-c2', 'default.jpg', '$2a$10$t7HYveBsDzY/NAiINNmCyu.h4tdarOi4WXPNjyy1ZOSOAtUYfCMLC',NULL);
